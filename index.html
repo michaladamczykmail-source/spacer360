@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>bokaWorks — Spacery 360°, zdjęcia, video, dron</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #f2efe9;
+    --bg-alt: #ece7de;
+    --ink: #1a1d1f;
+    --ink-soft: #55585c;
+    --ink-faint: #8a8d8f;
+    --navy: #17222c;
+    --navy-soft: #263340;
+    --line: #ddd8cd;
+    --white: #ffffff;
+    --accent: #c9a24b;
+    --radius-lg: 18px;
+    --radius-md: 12px;
+    --radius-sm: 8px;
+    --maxw: 1200px;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    background:var(--bg);
+    color:var(--ink);
+    line-height:1.5;
+    -webkit-font-smoothing:antialiased;
+  }
+  img{max-width:100%; display:block;}
+  a{color:inherit; text-decoration:none;}
+  ul{list-style:none;}
+  .wrap{max-width:var(--maxw); margin:0 auto; padding:0 40px;}
+  section{position:relative;}
+
+  /* ---------- Buttons ---------- */
+  .btn{
+    display:inline-flex; align-items:center; gap:8px;
+    font-size:13px; font-weight:700; letter-spacing:.04em; text-transform:uppercase;
+    padding:14px 26px; border-radius:999px; border:1px solid transparent;
+    cursor:pointer; white-space:nowrap; transition:transform .15s ease, background .15s ease, opacity .15s ease;
+  }
+  .btn:hover{transform:translateY(-1px);}
+  .btn-dark{background:var(--navy); color:#fff;}
+  .btn-dark:hover{background:#0d151c;}
+  .btn-outline{background:transparent; color:var(--ink); border:1.5px solid var(--ink);}
+  .btn-outline:hover{background:var(--ink); color:#fff;}
+  .btn-outline-light{background:transparent; color:#fff; border:1.5px solid rgba(255,255,255,.55);}
+  .btn-outline-light:hover{background:rgba(255,255,255,.12);}
+  .btn-white{background:#fff; color:var(--navy);}
+  .btn-white:hover{opacity:.9;}
+  .btn svg{width:14px; height:14px;}
+
+  /* ---------- Header ---------- */
+  header{
+    position:sticky; top:0; z-index:100;
+    background:rgba(242,239,233,.92);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  header .wrap{display:flex; align-items:center; justify-content:space-between; height:84px;}
+  .logo{font-size:22px; font-weight:800; letter-spacing:-.01em;}
+  .logo span{font-weight:500; color:var(--ink-soft);}
+  nav{display:flex; gap:34px;}
+  nav a{font-size:14.5px; font-weight:500; color:var(--ink); opacity:.85; transition:opacity .15s;}
+  nav a:hover{opacity:1;}
+  .header-cta{display:flex; align-items:center; gap:20px;}
+  .nav-toggle{display:none; background:none; border:none; cursor:pointer; padding:6px;}
+  .nav-toggle svg{width:24px; height:24px;}
+
+  /* ---------- Hero ---------- */
+  .hero{
+    position:relative; min-height:640px; color:#fff;
+    display:flex; align-items:center; overflow:hidden;
+  }
+  .hero-bg{
+    position:absolute; inset:0;
+    background-image:
+      linear-gradient(180deg, rgba(10,12,14,.55) 0%, rgba(10,12,14,.35) 35%, rgba(10,12,14,.62) 100%),
+      url('https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=2000&q=80');
+    background-size:cover; background-position:center;
+    transform:scale(1.02);
+  }
+  .hero-inner{position:relative; z-index:2; width:100%; padding:72px 40px 56px; text-align:center;}
+  .kicker{
+    font-size:12.5px; font-weight:700; letter-spacing:.16em; text-transform:uppercase;
+    color:rgba(255,255,255,.85); margin-bottom:18px;
+  }
+  .hero h1{
+    font-size:clamp(34px, 5vw, 54px); font-weight:800; letter-spacing:-.02em; line-height:1.08;
+    max-width:780px; margin:0 auto 22px;
+  }
+  .hero p.lead{
+    font-size:16.5px; color:rgba(255,255,255,.88); max-width:560px; margin:0 auto 40px; line-height:1.6;
+  }
+  .viewer{
+    width:120px; height:120px; margin:0 auto 14px; border-radius:50%;
+    border:1.5px solid rgba(255,255,255,.75);
+    display:flex; align-items:center; justify-content:center; flex-direction:column;
+    cursor:pointer; background:rgba(20,22,24,.15); backdrop-filter:blur(2px);
+    transition:transform .2s ease, background .2s ease;
+  }
+  .viewer:hover{transform:scale(1.05); background:rgba(20,22,24,.3);}
+  .viewer .deg{font-size:30px; font-weight:700; letter-spacing:-.01em;}
+  .viewer-hint{font-size:13px; color:rgba(255,255,255,.85); margin-bottom:26px; font-weight:500;}
+  .controls-row{display:flex; align-items:center; justify-content:center; gap:10px;}
+  .ctrl{
+    width:42px; height:42px; border-radius:999px; border:1px solid rgba(255,255,255,.5);
+    display:flex; align-items:center; justify-content:center; background:rgba(255,255,255,.06);
+    cursor:pointer; transition:background .15s ease;
+  }
+  .ctrl:hover{background:rgba(255,255,255,.18);}
+  .ctrl svg{width:17px; height:17px;}
+
+  .mp-embed{position:absolute; inset:0; z-index:3; display:none;}
+  .mp-embed.active{display:block;}
+  .mp-embed iframe{width:100%; height:100%; border:0;}
+  .mp-close{
+    position:absolute; top:18px; right:18px; z-index:4;
+    width:40px; height:40px; border-radius:50%; background:rgba(10,12,14,.6);
+    border:1px solid rgba(255,255,255,.4); color:#fff; cursor:pointer;
+    display:flex; align-items:center; justify-content:center;
+  }
+  .mp-close svg{width:18px; height:18px;}
+
+  /* ---------- Feature bar ---------- */
+  .feature-bar{background:var(--bg); border-bottom:1px solid var(--line);}
+  .feature-bar .wrap{
+    display:grid; grid-template-columns:repeat(5, 1fr);
+    padding:38px 40px;
+  }
+  .feature-item{display:flex; gap:14px; align-items:flex-start; padding:0 18px; border-left:1px solid var(--line);}
+  .feature-item:first-child{border-left:none; padding-left:0;}
+  .feature-icon{
+    flex:none; width:44px; height:44px; border-radius:50%; border:1.5px solid var(--ink);
+    display:flex; align-items:center; justify-content:center;
+  }
+  .feature-icon svg{width:19px; height:19px;}
+  .feature-title{font-size:14.5px; font-weight:700; margin-bottom:3px;}
+  .feature-desc{font-size:13px; color:var(--ink-soft); line-height:1.45;}
+
+  /* ---------- Section shared ---------- */
+  .eyebrow{
+    font-size:12px; font-weight:700; letter-spacing:.14em; text-transform:uppercase;
+    color:var(--ink-faint); margin-bottom:14px;
+  }
+  .section-head{text-align:center; max-width:640px; margin:0 auto 50px;}
+  .section-head h2{font-size:clamp(26px,3vw,36px); font-weight:800; letter-spacing:-.02em; margin-bottom:14px;}
+  .section-head p{color:var(--ink-soft); font-size:15.5px;}
+
+  /* ---------- More than 360 ---------- */
+  .more-section{padding:100px 0;}
+  .more-grid{display:grid; grid-template-columns:.85fr 1.15fr; gap:64px; align-items:center;}
+  .more-copy h2{font-size:clamp(26px,3vw,34px); font-weight:800; letter-spacing:-.02em; margin-bottom:18px; line-height:1.18;}
+  .more-copy > p{color:var(--ink-soft); font-size:15.5px; margin-bottom:26px; line-height:1.6;}
+  .checklist{display:flex; flex-direction:column; gap:13px; margin-bottom:32px;}
+  .checklist li{display:flex; align-items:center; gap:11px; font-size:14.5px; font-weight:500;}
+  .check-dot{
+    flex:none; width:20px; height:20px; border-radius:50%; background:var(--navy);
+    display:flex; align-items:center; justify-content:center;
+  }
+  .check-dot svg{width:11px; height:11px; stroke:#fff;}
+  .media-grid{display:grid; grid-template-columns:1fr 1fr; gap:16px;}
+  .media-card{
+    position:relative; border-radius:var(--radius-md); overflow:hidden; aspect-ratio:1/0.82;
+    background-size:cover; background-position:center; display:flex; align-items:flex-start; justify-content:flex-start;
+    box-shadow:0 10px 24px rgba(0,0,0,.08);
+  }
+  .media-card::after{content:""; position:absolute; inset:0; background:linear-gradient(180deg, rgba(0,0,0,.28), rgba(0,0,0,0) 45%);}
+  .media-tag{
+    position:relative; z-index:1; margin:14px; font-size:11.5px; font-weight:700; letter-spacing:.08em;
+    color:#fff; text-transform:uppercase;
+  }
+  .media-center-icon{
+    position:absolute; inset:0; margin:auto; width:56px; height:56px; z-index:1;
+  }
+  .media-360-badge{
+    position:absolute; inset:0; margin:auto; width:60px; height:60px; border-radius:50%;
+    border:1.5px solid #fff; display:flex; align-items:center; justify-content:center;
+    color:#fff; font-weight:700; font-size:16px; z-index:1;
+  }
+  .media-cam-badge{
+    position:absolute; inset:0; margin:auto; width:56px; height:56px; border-radius:50%;
+    background:rgba(255,255,255,.14); border:1px solid rgba(255,255,255,.7);
+    display:flex; align-items:center; justify-content:center; z-index:1;
+  }
+  .media-cam-badge svg{width:22px; height:22px; stroke:#fff;}
+
+  /* ---------- Pricing ---------- */
+  .pricing-section{padding:100px 0; background:var(--bg-alt);}
+  .pricing-grid{display:grid; grid-template-columns:repeat(3, 1fr); gap:26px; align-items:stretch;}
+  .price-card{
+    background:#fff; border:1px solid var(--line); border-radius:var(--radius-lg);
+    padding:34px 30px; display:flex; flex-direction:column;
+  }
+  .price-card.featured{
+    background:var(--navy); color:#fff; border-color:var(--navy);
+    box-shadow:0 20px 45px rgba(23,34,44,.25); transform:translateY(-10px);
+  }
+  .badge{
+    display:inline-block; align-self:flex-start; font-size:11px; font-weight:700; letter-spacing:.08em;
+    text-transform:uppercase; background:rgba(255,255,255,.14); color:#fff;
+    padding:6px 12px; border-radius:999px; margin-bottom:18px;
+  }
+  .price-name{font-size:17px; font-weight:800; margin-bottom:8px; letter-spacing:-.01em;}
+  .price-card p.desc{font-size:13.8px; color:var(--ink-soft); margin-bottom:22px; line-height:1.5; min-height:42px;}
+  .price-card.featured p.desc{color:rgba(255,255,255,.75);}
+  .price-amount{display:flex; align-items:baseline; gap:8px; margin-bottom:26px;}
+  .price-amount .num{font-size:38px; font-weight:800; letter-spacing:-.02em;}
+  .price-amount .netto{font-size:13.5px; color:var(--ink-soft); font-weight:600;}
+  .price-card.featured .netto{color:rgba(255,255,255,.7);}
+  .price-list{display:flex; flex-direction:column; gap:12px; margin-bottom:30px; flex:1;}
+  .price-list li{display:flex; align-items:flex-start; gap:10px; font-size:13.8px;}
+  .price-list svg{flex:none; width:16px; height:16px; margin-top:2px;}
+  .price-card .btn{justify-content:center; width:100%;}
+
+  .custom-note{text-align:center; margin-top:44px; font-size:14.5px; color:var(--ink-soft);}
+  .custom-note a{font-weight:700; color:var(--ink); text-decoration:underline; text-underline-offset:3px;}
+
+  /* ---------- How it works ---------- */
+  .how-section{padding:100px 0;}
+  .how-section .section-head{margin-bottom:64px;}
+  .steps{display:flex; align-items:flex-start; justify-content:space-between; gap:8px;}
+  .step{flex:1; text-align:left; max-width:200px;}
+  .step-icon-row{display:flex; align-items:center; gap:8px; margin-bottom:18px;}
+  .step-icon{
+    width:56px; height:56px; border-radius:50%; border:1.5px solid var(--line); background:#fff;
+    display:flex; align-items:center; justify-content:center; flex:none;
+  }
+  .step-icon svg{width:22px; height:22px;}
+  .step-arrow{flex:none; color:var(--ink-faint); margin-top:20px;}
+  .step-arrow svg{width:20px; height:20px;}
+  .step-num{font-size:12px; font-weight:700; color:var(--ink-faint); margin-bottom:6px; letter-spacing:.06em;}
+  .step-title{font-size:15px; font-weight:700; margin-bottom:6px;}
+  .step-desc{font-size:13.3px; color:var(--ink-soft); line-height:1.5;}
+
+  /* ---------- Trust ---------- */
+  .trust-section{padding:52px 0; border-top:1px solid var(--line); border-bottom:1px solid var(--line);}
+  .trust-inner{display:flex; align-items:center; gap:40px; flex-wrap:wrap;}
+  .trust-label{font-size:12px; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:var(--ink-faint); flex:none;}
+  .trust-logos{display:flex; align-items:center; gap:46px; flex:1; flex-wrap:wrap; font-weight:800; font-size:18px; color:#2c2c2c; opacity:.55; letter-spacing:-.01em;}
+  .trust-logos span.thin{font-weight:400; letter-spacing:.06em; font-size:13px; display:block; opacity:.8;}
+  .trust-more{flex:none; font-size:14px; font-weight:600; display:flex; align-items:center; gap:6px; color:var(--ink);}
+  .trust-more svg{width:14px; height:14px;}
+
+  /* ---------- Final CTA ---------- */
+  .cta-section{padding:70px 0;}
+  .cta-box{
+    background:var(--navy); border-radius:var(--radius-lg); color:#fff;
+    padding:42px 48px; display:flex; align-items:center; justify-content:space-between; gap:30px; flex-wrap:wrap;
+  }
+  .cta-left{display:flex; align-items:center; gap:22px;}
+  .cta-icon{
+    flex:none; width:52px; height:52px; border-radius:50%; background:rgba(255,255,255,.1);
+    display:flex; align-items:center; justify-content:center;
+  }
+  .cta-icon svg{width:22px; height:22px;}
+  .cta-box h3{font-size:20px; font-weight:700; margin-bottom:4px;}
+  .cta-box p{font-size:14px; color:rgba(255,255,255,.7);}
+
+  /* ---------- Footer ---------- */
+  footer{padding:64px 0 28px; border-top:1px solid var(--line);}
+  .footer-grid{display:grid; grid-template-columns:1.4fr .8fr .8fr .9fr; gap:40px; padding-bottom:44px;}
+  .footer-about p{font-size:13.6px; color:var(--ink-soft); margin-top:14px; max-width:280px; line-height:1.6;}
+  .footer-col h4{font-size:12px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:var(--ink-faint); margin-bottom:16px;}
+  .footer-col ul{display:flex; flex-direction:column; gap:10px;}
+  .footer-col a, .footer-col li{font-size:13.8px; color:var(--ink-soft);}
+  .footer-col a:hover{color:var(--ink);}
+  .footer-bottom{
+    border-top:1px solid var(--line); padding-top:22px; display:flex; justify-content:flex-end; gap:26px;
+  }
+  .footer-bottom a{font-size:13px; color:var(--ink-soft);}
+  .footer-bottom a:hover{color:var(--ink);}
+
+  /* ---------- Responsive ---------- */
+  @media (max-width: 980px){
+    .wrap{padding:0 24px;}
+    nav{display:none;}
+    .nav-toggle{display:flex;}
+    .feature-bar .wrap{grid-template-columns:repeat(2, 1fr); gap:24px;}
+    .feature-item{border-left:none; padding:0;}
+    .more-grid{grid-template-columns:1fr; gap:40px;}
+    .pricing-grid{grid-template-columns:1fr; max-width:440px; margin:0 auto;}
+    .price-card.featured{transform:none;}
+    .steps{flex-wrap:wrap; row-gap:32px;}
+    .step{min-width:44%; max-width:none;}
+    .step-arrow{display:none;}
+    .footer-grid{grid-template-columns:1fr 1fr; row-gap:36px;}
+    .cta-box{flex-direction:column; align-items:flex-start; text-align:left;}
+  }
+  @media (max-width: 600px){
+    header .wrap{height:70px;}
+    .hero{min-height:560px;}
+    .hero-inner{padding:56px 20px 40px;}
+    .viewer{width:96px; height:96px;}
+    .feature-bar .wrap{grid-template-columns:1fr;}
+    .footer-grid{grid-template-columns:1fr;}
+    .trust-inner{flex-direction:column; align-items:flex-start;}
+    .footer-bottom{justify-content:flex-start; flex-wrap:wrap;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <a href="#" class="logo">boka<span>Works</span></a>
+    <nav>
+      <a href="#oferta">Oferta</a>
+      <a href="#pakiety">Pakiety i ceny</a>
+      <a href="#realizacje">Realizacje</a>
+      <a href="#jak-to-dziala">Jak to działa</a>
+      <a href="#o-nas">O nas</a>
+      <a href="#kontakt">Kontakt</a>
+    </nav>
+    <div class="header-cta">
+      <a href="#kontakt" class="btn btn-dark">
+        WYCENA
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+      <button class="nav-toggle" aria-label="Menu">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<section class="hero" id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-inner">
+    <div class="kicker">SPACERY 360° · ZDJĘCIA · VIDEO · DRON</div>
+    <h1>Pokaż swoją firmę<br>z każdej strony.</h1>
+    <p class="lead">Jedna sesja. Kompletny obraz Twojej firmy – 360°, zdjęcia, video i dron – gotowy do Google, strony i social mediów.</p>
+
+    <div class="viewer" id="viewerBtn">
+      <div class="deg">360°</div>
+    </div>
+    <div class="viewer-hint">Kliknij i rozejrzyj się</div>
+
+    <div class="controls-row">
+      <div class="ctrl"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></div>
+      <div class="ctrl"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14"/></svg></div>
+      <div class="ctrl" id="viewerBtn2"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></div>
+      <div class="ctrl"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3H5a2 2 0 0 0-2 2v3M16 3h3a2 2 0 0 1 2 2v3M21 16v3a2 2 0 0 1-2 2h-3M3 16v3a2 2 0 0 0 2 2h3"/></svg></div>
+      <div class="ctrl"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 8a3 3 0 0 1 3-3h14a3 3 0 0 1 3 3v6a3 3 0 0 1-3 3h-3.5l-1.2 2.4a1 1 0 0 1-1.8 0L11.5 17H5a3 3 0 0 1-3-3z"/><circle cx="8" cy="11" r="1.4"/><circle cx="16" cy="11" r="1.4"/></svg></div>
+    </div>
+  </div>
+
+  <div class="mp-embed" id="mpEmbed">
+    <button class="mp-close" id="mpClose" aria-label="Zamknij spacer 360">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
+    </button>
+    <iframe id="mpIframe" allow="xr-spatial-tracking; fullscreen" title="Spacer 360 bokaWorks"></iframe>
+  </div>
+</section>
+
+<div class="feature-bar">
+  <div class="wrap">
+    <div class="feature-item">
+      <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg></div>
+      <div>
+        <div class="feature-title">Jedna wizyta</div>
+        <div class="feature-desc">360°, foto, video, dron podczas jednej sesji.</div>
+      </div>
+    </div>
+    <div class="feature-item">
+      <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M23 6l-9.5 9.5-5-5L1 18"/><path d="M17 6h6v6"/></svg></div>
+      <div>
+        <div class="feature-title">Efekt biznesowy</div>
+        <div class="feature-desc">Większa widoczność, zaufanie i więcej zapytań.</div>
+      </div>
+    </div>
+    <div class="feature-item">
+      <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div>
+      <div>
+        <div class="feature-title">Szybka realizacja</div>
+        <div class="feature-desc">Gotowe materiały w 48–72h.</div>
+      </div>
+    </div>
+    <div class="feature-item">
+      <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 16.6A4.5 4.5 0 0 0 18 8h-1.3A7 7 0 1 0 4 14.9"/><path d="M12 12v9M9 18l3 3 3-3"/></svg></div>
+      <div>
+        <div class="feature-title">Gotowe do publikacji</div>
+        <div class="feature-desc">Google, strona WWW, social media.</div>
+      </div>
+    </div>
+    <div class="feature-item">
+      <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 18v-6a9 9 0 0 1 18 0v6"/><path d="M21 19a2 2 0 0 1-2 2h-1v-8h3zM3 19a2 2 0 0 0 2 2h1v-8H3z"/></svg></div>
+      <div>
+        <div class="feature-title">Pełne wsparcie</div>
+        <div class="feature-desc">Pomożemy na każdym etapie współpracy.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<section class="more-section" id="oferta">
+  <div class="wrap">
+    <div class="more-grid">
+      <div class="more-copy">
+        <div class="eyebrow">KOMPLETNY OBRAZ TWOJEJ FIRMY</div>
+        <h2>Więcej niż spacer 360°</h2>
+        <p>Zamiast wielu wykonawców – jedna wizyta i jeden zestaw materiałów, które pracują na Twój biznes.</p>
+        <ul class="checklist">
+          <li><span class="check-dot"><svg viewBox="0 0 24 24" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span>Spacery 360° (Matterport)</li>
+          <li><span class="check-dot"><svg viewBox="0 0 24 24" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span>Zdjęcia profesjonalne</li>
+          <li><span class="check-dot"><svg viewBox="0 0 24 24" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span>Video promocyjne</li>
+          <li><span class="check-dot"><svg viewBox="0 0 24 24" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span>Ujęcia z drona</li>
+          <li><span class="check-dot"><svg viewBox="0 0 24 24" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span>Materiały gotowe do publikacji</li>
+        </ul>
+        <a href="#pakiety" class="btn btn-outline">
+          DOWIEDZ SIĘ WIĘCEJ
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+      </div>
+      <div class="media-grid">
+        <div class="media-card" style="background-image:url('https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=900&q=80')">
+          <div class="media-tag">Spacery 360°</div>
+          <div class="media-360-badge">360°</div>
+        </div>
+        <div class="media-card" style="background-image:url('https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=900&q=80')">
+          <div class="media-tag">Zdjęcia</div>
+        </div>
+        <div class="media-card" style="background-image:url('https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&w=900&q=80')">
+          <div class="media-tag">Video</div>
+          <div class="media-cam-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 7l-7 5 7 5V7z"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg></div>
+        </div>
+        <div class="media-card" style="background-image:url('https://images.unsplash.com/photo-1524758631624-e2822e304c36?auto=format&fit=crop&w=900&q=80')">
+          <div class="media-tag">Dron</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="pricing-section" id="pakiety">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow" style="text-align:center;">PAKIETY I CENY</div>
+      <h2>Wybierz pakiet dopasowany do Twojej firmy</h2>
+      <p>Każdy pakiet zawiera spacer 360° i gotowe materiały do publikacji.</p>
+    </div>
+
+    <div class="pricing-grid">
+      <div class="price-card">
+        <div class="price-name">START 360°</div>
+        <p class="desc">Profesjonalny spacer 360° Twojej firmy.</p>
+        <div class="price-amount"><span class="num">690 zł</span><span class="netto">netto</span></div>
+        <ul class="price-list">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="#17222c" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>Spacery 360° (do 15 punktów)</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="#17222c" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>Hosting 12 miesięcy</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="#17222c" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>Embed na stronie</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="#17222c" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>Gotowy link do udostępnienia</li>
+        </ul>
+        <a href="#kontakt" class="btn btn-outline">WYBIERAM</a>
+      </div>
+
+      <div class="price-card featured">
+        <div class="badge">NAJPOPULARNIEJSZY</div>
+        <div class="price-name">PRO 360° + FOTO + VIDEO</div>
+        <p class="desc">Spacer 360° + zdjęcia + krótkie filmy promocyjne.</p>
+        <div class="price-amount"><span class="num">1 490 zł</span><span class="netto">netto</span></div>
+        <ul class="price-list">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>Spacery 360° (do 30 punktów)</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>Zdjęcia profesjonalne (ok. 20 ujęć)</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>Krótkie filmy (30–60s)</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>Hosting 12 miesięcy</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>Embed + link do udostępnienia</li>
+        </ul>
+        <a href="#kontakt" class="btn btn-white">WYBIERAM</a>
+      </div>
+
+      <div class="price-card">
+        <div class="price-name">PREMIUM 360° + FOTO + VIDEO + DRON</div>
+        <p class="desc">Pełen obraz Twojej firmy z każdej perspektywy.</p>
+        <div class="price-amount"><span class="num">2 490 zł</span><span class="netto">netto</span></div>
+        <ul class="price-list">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="#17222c" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>Spacery 360° (do 50 punktów)</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="#17222c" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>Zdjęcia profesjonalne (ok. 40 ujęć)</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="#17222c" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>Film promocyjny (60–90s)</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="#17222c" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>Ujęcia z drona (foto + video)</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="#17222c" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>Hosting 12 miesięcy</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="#17222c" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>Embed + link do udostępnienia</li>
+        </ul>
+        <a href="#kontakt" class="btn btn-outline">WYBIERAM</a>
+      </div>
+    </div>
+
+    <p class="custom-note">Potrzebujesz niestandardowego zakresu? <a href="#kontakt">Skontaktuj się z nami.</a></p>
+  </div>
+</section>
+
+<section class="how-section" id="jak-to-dziala">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow" style="text-align:center;">JAK TO DZIAŁA</div>
+      <h2>Prosto. Szybko. Kompleksowo.</h2>
+    </div>
+
+    <div class="steps">
+      <div class="step">
+        <div class="step-icon-row">
+          <div class="step-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#17222c" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
+        </div>
+        <div class="step-num">01</div>
+        <div class="step-title">Kontakt i cel</div>
+        <div class="step-desc">Rozmawiamy o Twojej firmie i efektach, jakie chcesz osiągnąć.</div>
+      </div>
+      <div class="step-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
+
+      <div class="step">
+        <div class="step-icon-row">
+          <div class="step-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#17222c" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg></div>
+        </div>
+        <div class="step-num">02</div>
+        <div class="step-title">Plan i termin</div>
+        <div class="step-desc">Ustalamy zakres i dogodny termin sesji.</div>
+      </div>
+      <div class="step-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
+
+      <div class="step">
+        <div class="step-icon-row">
+          <div class="step-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#17222c" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg></div>
+        </div>
+        <div class="step-num">03</div>
+        <div class="step-title">Sesja</div>
+        <div class="step-desc">Jedna wizyta – 360°, zdjęcia, video i dron.</div>
+      </div>
+      <div class="step-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
+
+      <div class="step">
+        <div class="step-icon-row">
+          <div class="step-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#17222c" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg></div>
+        </div>
+        <div class="step-num">04</div>
+        <div class="step-title">Postprodukcja</div>
+        <div class="step-desc">Selekcja i montaż. Materiały gotowe w 48–72h.</div>
+      </div>
+      <div class="step-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
+
+      <div class="step">
+        <div class="step-icon-row">
+          <div class="step-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#17222c" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="M17 8l-5-5-5 5M12 3v12"/></svg></div>
+        </div>
+        <div class="step-num">05</div>
+        <div class="step-title">Gotowe do publikacji</div>
+        <div class="step-desc">Otrzymujesz komplet materiałów gotowych do Google, strony i social mediów.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="trust-section">
+  <div class="wrap trust-inner">
+    <div class="trust-label">ZAUFALI NAM</div>
+    <div class="trust-logos">
+      <span>REKORD</span>
+      <span>VERSO<span class="thin">— CLINIC</span></span>
+      <span>CAR<span class="thin">SELECT</span></span>
+      <span style="font-style:italic;">MOREFIT</span>
+      <span>EVO<span class="thin">STUDIO</span></span>
+    </div>
+    <a href="#kontakt" class="trust-more">i wiele innych
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+    </a>
+  </div>
+</section>
+
+<section class="cta-section" id="kontakt">
+  <div class="wrap">
+    <div class="cta-box">
+      <div class="cta-left">
+        <div class="cta-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div>
+        <div>
+          <h3>Gotowy pokazać swoją firmę z najlepszej strony?</h3>
+          <p>Napisz do nas – przygotujemy wycenę dopasowaną do Twoich potrzeb.</p>
+        </div>
+      </div>
+      <a href="mailto:kontakt@bokaworks.pl" class="btn btn-white">
+        WYŚLIJ ZAPYTANIE
+        <svg viewBox="0 0 24 24" fill="none" stroke="#17222c" stroke-width="2.4" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer id="o-nas">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-about">
+        <a href="#" class="logo">boka<span>Works</span></a>
+        <p>Stawiamy na jakość obrazu. Spacery 360°, zdjęcia, video i dron – jeden zespół, pełne wsparcie, materiały gotowe do działania.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Oferta</h4>
+        <ul>
+          <li><a href="#oferta">Spacery 360°</a></li>
+          <li><a href="#oferta">Zdjęcia</a></li>
+          <li><a href="#oferta">Video</a></li>
+          <li><a href="#oferta">Dron</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Pakiety i ceny</h4>
+        <ul>
+          <li><a href="#pakiety">Pakiety i ceny</a></li>
+          <li><a href="#realizacje">Realizacje</a></li>
+          <li><a href="#jak-to-dziala">Jak to działa</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Kontakt</h4>
+        <ul>
+          <li>+48 789 000 000</li>
+          <li><a href="mailto:kontakt@bokaworks.pl">kontakt@bokaworks.pl</a></li>
+          <li>Pon–Pt: 9:00–17:00</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <a href="#">Polityka prywatności</a>
+      <a href="#">Regulamin</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  var MATTERPORT_SRC = "https://my.matterport.com/show/?m=gieoGSqgmHo&play=1";
+  var embed = document.getElementById('mpEmbed');
+  var iframe = document.getElementById('mpIframe');
+
+  var loaded = false;
+  function openViewer(){
+    if(!loaded){ iframe.src = MATTERPORT_SRC; loaded = true; }
+    embed.classList.add('active');
+  }
+  function closeViewer(){
+    embed.classList.remove('active');
+  }
+
+  document.getElementById('viewerBtn').addEventListener('click', openViewer);
+  document.getElementById('viewerBtn2').addEventListener('click', openViewer);
+  document.getElementById('mpClose').addEventListener('click', closeViewer);
+</script>
+
+</body>
+</html>
