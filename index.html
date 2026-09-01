@@ -67,17 +67,18 @@
   header .wrap{display:flex; align-items:center; justify-content:space-between; height:84px;}
   .logo{font-size:22px; font-weight:800; letter-spacing:-.01em;}
   .logo span{font-weight:500; color:var(--ink-soft);}
-  .logo-lockup{display:flex; align-items:center; gap:14px;}
+  .logo-lockup{display:flex; flex-direction:column; align-items:flex-start; line-height:1;}
   .logo-word{font-size:22px; font-weight:800; letter-spacing:-.01em; color:var(--ink);}
   .logo-word .thin{font-weight:500; color:var(--ink-soft);}
-  .logo-sub{display:flex; align-items:center; gap:6px; font-size:13.5px; font-weight:600; color:var(--ink-soft); letter-spacing:-.01em;}
-  .logo-icon{width:26px; height:20px; color:var(--ink-soft); flex:none;}
+  .logo-sub{display:flex; align-items:center; gap:5px; margin-top:3px; margin-left:33px; font-size:12.5px; font-weight:600; color:var(--ink-soft); letter-spacing:-.01em;}
+  .logo-icon{width:19px; height:15px; color:var(--ink-soft); flex:none;}
   footer .logo-word{font-size:24px;}
-  footer .logo-icon{width:28px; height:21px;}
-  footer .logo-sub{font-size:14.5px;}
+  footer .logo-sub{margin-left:36px; font-size:13.5px;}
+  footer .logo-icon{width:21px; height:16px;}
   nav{display:flex; gap:34px;}
-  nav a{font-size:14.5px; font-weight:500; color:var(--ink); opacity:.85; transition:opacity .15s;}
-  nav a:hover{opacity:1;}
+  nav a{position:relative; font-size:14.5px; font-weight:500; color:var(--ink); padding-block:4px;}
+  nav a::after{content:""; position:absolute; left:0; bottom:0; width:0; height:2px; background:var(--ink); transition:width .25s cubic-bezier(0.22,1,0.36,1);}
+  nav a:hover::after{width:100%;}
   .header-cta{display:flex; align-items:center; gap:20px;}
   .nav-toggle{display:none; background:none; border:none; cursor:pointer; padding:6px;}
   .nav-toggle svg{width:24px; height:24px;}
@@ -602,7 +603,7 @@
           <p>Napisz do nas – przygotujemy wycenę dopasowaną do Twoich potrzeb.</p>
         </div>
       </div>
-      <a href="mailto:kontakt@bokaworks.pl" class="btn btn-white">
+      <a href="mailto:info@bokaWorks.pl" class="btn btn-white">
         WYŚLIJ ZAPYTANIE
         <svg viewBox="0 0 24 24" fill="none" stroke="#17222c" stroke-width="2.4" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
       </a>
@@ -641,7 +642,7 @@
         <h4>Kontakt</h4>
         <ul>
           <li>+48 789 000 000</li>
-          <li><a href="mailto:kontakt@bokaworks.pl">kontakt@bokaworks.pl</a></li>
+          <li><a href="mailto:info@bokaWorks.pl">info@bokaWorks.pl</a></li>
           <li>Pon–Pt: 9:00–17:00</li>
         </ul>
       </div>
