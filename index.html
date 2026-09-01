@@ -67,6 +67,14 @@
   header .wrap{display:flex; align-items:center; justify-content:space-between; height:84px;}
   .logo{font-size:22px; font-weight:800; letter-spacing:-.01em;}
   .logo span{font-weight:500; color:var(--ink-soft);}
+  .logo-lockup{display:flex; align-items:center; gap:14px;}
+  .logo-word{font-size:22px; font-weight:800; letter-spacing:-.01em; color:var(--ink);}
+  .logo-word .thin{font-weight:500; color:var(--ink-soft);}
+  .logo-sub{display:flex; align-items:center; gap:6px; font-size:13.5px; font-weight:600; color:var(--ink-soft); letter-spacing:-.01em;}
+  .logo-icon{width:26px; height:20px; color:var(--ink-soft); flex:none;}
+  footer .logo-word{font-size:24px;}
+  footer .logo-icon{width:28px; height:21px;}
+  footer .logo-sub{font-size:14.5px;}
   nav{display:flex; gap:34px;}
   nav a{font-size:14.5px; font-weight:500; color:var(--ink); opacity:.85; transition:opacity .15s;}
   nav a:hover{opacity:1;}
@@ -308,9 +316,21 @@
 </head>
 <body>
 
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="icon-spacer-orbit" viewBox="0 0 44 34">
+    <ellipse cx="22" cy="18" rx="19" ry="7.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-dasharray="72 20" stroke-dashoffset="18"/>
+    <path d="M27.5 24.8 L32.8 23.3 L31.6 28.7 Z" fill="currentColor" stroke="none"/>
+    <path d="M16 5 L24 9 L24 20 L16 24 L8 20 L8 9 Z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+    <path d="M8 9 L16 13.5 L24 9 M16 13.5 L16 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round"/>
+  </symbol>
+</svg>
+
 <header>
   <div class="wrap">
-    <a href="#" class="logo">boka<span>Works</span></a>
+    <a href="#" class="logo-lockup">
+      <span class="logo-word">boka<span class="thin">Works</span></span>
+      <span class="logo-sub"><svg class="logo-icon"><use href="#icon-spacer-orbit"></use></svg>spacer 360</span>
+    </a>
     <nav>
       <a href="#oferta">Oferta</a>
       <a href="#pakiety">Pakiety i ceny</a>
@@ -594,7 +614,10 @@
   <div class="wrap">
     <div class="footer-grid">
       <div class="footer-about">
-        <a href="#" class="logo">boka<span>Works</span></a>
+        <a href="#" class="logo-lockup">
+          <span class="logo-word">boka<span class="thin">Works</span></span>
+          <span class="logo-sub"><svg class="logo-icon"><use href="#icon-spacer-orbit"></use></svg>spacer 360</span>
+        </a>
         <p>Stawiamy na jakość obrazu. Spacery 360°, zdjęcia, video i dron – jeden zespół, pełne wsparcie, materiały gotowe do działania.</p>
       </div>
       <div class="footer-col">
