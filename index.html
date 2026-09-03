@@ -101,12 +101,11 @@
     content:""; position:absolute; inset:0;
     background:linear-gradient(180deg, rgba(10,12,14,.4) 0%, rgba(10,12,14,.05) 28%, rgba(10,12,14,.42) 100%);
   }
-  .hero-bg-alt{
+  .hero-bg-layer{
     position:absolute; inset:0; z-index:0;
     background-size:cover; background-position:center;
     opacity:0; transition:opacity 1.5s ease;
   }
-  .hero-bg-alt.is-active{opacity:1;}
   .viewer{
     position:relative; z-index:1;
     width:112px; height:112px; border-radius:50%;
@@ -353,7 +352,8 @@
 <section class="hero" id="hero">
   <div class="hero-media" id="viewerBtn" role="button" tabindex="0" aria-label="Otwórz spacer 360°">
     <div class="hero-media-inner" style="background-image:url('hotel1.png')">
-      <div class="hero-bg-alt" id="heroBgAlt"></div>
+      <div class="hero-bg-layer" id="heroLayerA"></div>
+      <div class="hero-bg-layer" id="heroLayerB"></div>
       <div class="viewer"><div class="deg">360°</div></div>
       <div class="viewer-hint">Kliknij i rozejrzyj się</div>
       <div class="wrap hero-head">
@@ -681,20 +681,28 @@
   });
   embed.addEventListener('click', function(e){ e.stopPropagation(); });
 
-  var heroBgAlt = document.getElementById('heroBgAlt');
+  var heroLayerA = document.getElementById('heroLayerA');
+  var heroLayerB = document.getElementById('heroLayerB');
+  var heroFrontLayer = null;
+  var heroCurrentImg = null;
+  function heroShowImage(img){
+    if(img === heroCurrentImg) return;
+    heroCurrentImg = img;
+    if(!img){
+      if(heroFrontLayer){ heroFrontLayer.style.opacity = '0'; }
+      heroFrontLayer = null;
+      return;
+    }
+    var back = heroFrontLayer === heroLayerA ? heroLayerB : heroLayerA;
+    back.style.backgroundImage = "url('" + img + "')";
+    void back.offsetWidth;
+    back.style.opacity = '1';
+    if(heroFrontLayer){ heroFrontLayer.style.opacity = '0'; }
+    heroFrontLayer = back;
+  }
   document.querySelectorAll('[data-hero-target]').forEach(function(card){
-    var img = card.getAttribute('data-hero-img');
-    card.addEventListener('mouseenter', function(){
-      if(img){
-        heroBgAlt.style.backgroundImage = "url('" + img + "')";
-        heroBgAlt.classList.add('is-active');
-      } else {
-        heroBgAlt.classList.remove('is-active');
-      }
-    });
-    card.addEventListener('mouseleave', function(){
-      heroBgAlt.classList.remove('is-active');
-    });
+    var img = card.getAttribute('data-hero-img') || null;
+    card.addEventListener('mouseenter', function(){ heroShowImage(img); });
   });
 
   var galleryRow = document.getElementById('galleryRow');
