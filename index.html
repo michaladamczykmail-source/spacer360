@@ -162,22 +162,6 @@
   }
   .mp-close svg{width:18px; height:18px;}
 
-  /* ---------- Feature bar ---------- */
-  .feature-bar{background:var(--bg); border-bottom:1px solid var(--line); margin-top:70px;}
-  .feature-bar .wrap{
-    display:grid; grid-template-columns:repeat(4, 1fr);
-    padding:38px 40px;
-  }
-  .feature-item{display:flex; gap:14px; align-items:flex-start; padding:0 18px; border-left:1px solid var(--line);}
-  .feature-item:first-child{border-left:none; padding-left:0;}
-  .feature-icon{
-    flex:none; width:44px; height:44px; border-radius:50%; border:1.5px solid var(--ink);
-    display:flex; align-items:center; justify-content:center;
-  }
-  .feature-icon svg{width:19px; height:19px;}
-  .feature-title{font-size:14.5px; font-weight:700; margin-bottom:3px;}
-  .feature-desc{font-size:13px; color:var(--ink-soft); line-height:1.45;}
-
   /* ---------- Section shared ---------- */
   .eyebrow{
     font-size:12px; font-weight:700; letter-spacing:.14em; text-transform:uppercase;
@@ -186,25 +170,6 @@
   .section-head{text-align:center; max-width:640px; margin:0 auto 50px;}
   .section-head h2{font-size:clamp(26px,3vw,36px); font-weight:800; letter-spacing:-.02em; margin-bottom:14px;}
   .section-head p{color:var(--ink-soft); font-size:15.5px;}
-
-  /* ---------- Verticals (dla twojego biznesu) ---------- */
-  .verticals-section{padding:100px 0;}
-  .vertical-list{display:grid; grid-template-columns:repeat(3,1fr); gap:22px;}
-  .vertical-card{
-    display:flex; flex-direction:column; background:#fff; border:1px solid var(--line); border-radius:var(--radius-lg);
-    overflow:hidden;
-  }
-  .vertical-media{position:relative; width:100%; height:240px; flex:none; background-size:cover; background-position:center;}
-  .vertical-icon{
-    position:absolute; top:16px; left:16px; width:44px; height:44px; border-radius:50%;
-    background:#fff; display:flex; align-items:center; justify-content:center;
-    box-shadow:0 6px 16px rgba(0,0,0,.18); color:var(--navy);
-  }
-  .vertical-icon svg{width:19px; height:19px;}
-  .vertical-body{padding:28px 26px 30px; display:flex; flex-direction:column; justify-content:flex-start; flex:1; min-width:0;}
-  .vertical-title{font-size:21px; font-weight:800; letter-spacing:-.01em; margin-bottom:10px; overflow-wrap:break-word;}
-  .vertical-tag{font-size:14.5px; font-weight:600; color:var(--ink); margin-bottom:8px; line-height:1.4;}
-  .vertical-desc{font-size:13.8px; color:var(--ink-soft); margin-bottom:20px; line-height:1.6;}
   .link-more{display:inline-flex; align-items:center; gap:6px; font-size:12.5px; font-weight:700; letter-spacing:.05em; text-transform:uppercase; margin-top:auto;}
   .link-more svg{width:13px; height:13px;}
 
@@ -391,10 +356,7 @@
     .wrap{padding:0 24px;}
     nav{display:none;}
     .nav-toggle{display:flex;}
-    .feature-bar .wrap{grid-template-columns:repeat(2, 1fr); gap:24px;}
-    .feature-item{border-left:none; padding:0;}
     .hero-verticals{grid-template-columns:1fr; margin-top:-90px; gap:14px;}
-    .vertical-list{grid-template-columns:1fr;}
     .pricing-grid{grid-template-columns:1fr; max-width:440px; margin:0 auto;}
     .price-card.featured{transform:none;}
     .footer-grid{grid-template-columns:1fr 1fr; row-gap:36px;}
@@ -411,8 +373,6 @@
     .hero-media-inner{height:375px;}
     .viewer{width:88px; height:88px;}
     .viewer .deg{font-size:22px;}
-    .feature-bar .wrap{grid-template-columns:1fr;}
-    .vertical-media{height:200px;}
     .footer-grid{grid-template-columns:1fr;}
     .footer-bottom{justify-content:flex-start; flex-wrap:wrap;}
     .gallery-item{width:150px;}
@@ -526,7 +486,7 @@
   </div>
 </section>
 
-<section class="channels-section" id="kanaly">
+<section class="channels-section" id="oferta">
   <div class="wrap">
     <div class="section-head">
       <div class="eyebrow" style="text-align:center;">GDZIE POJAWI SIĘ TWÓJ SPACER</div>
@@ -709,109 +669,6 @@
         </div>
         <div class="streetview-label">WNĘTRZE</div>
         <div class="streetview-sub">Spacer 360°</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<div class="feature-bar">
-  <div class="wrap">
-    <div class="feature-item">
-      <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg></div>
-      <div>
-        <div class="feature-title">Jedna wizyta</div>
-        <div class="feature-desc">Przyjeżdżamy raz i realizujemy komplet materiałów.</div>
-      </div>
-    </div>
-    <div class="feature-item">
-      <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div>
-      <div>
-        <div class="feature-title">Szybka realizacja</div>
-        <div class="feature-desc">Gotowe materiały nawet w 48–72h.</div>
-      </div>
-    </div>
-    <div class="feature-item">
-      <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 16.6A4.5 4.5 0 0 0 18 8h-1.3A7 7 0 1 0 4 14.9"/><path d="M12 12v9M9 18l3 3 3-3"/></svg></div>
-      <div>
-        <div class="feature-title">Pełne wsparcie</div>
-        <div class="feature-desc">Od realizacji po publikację i hosting.</div>
-      </div>
-    </div>
-    <div class="feature-item">
-      <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 12l3 3 5-6"/></svg></div>
-      <div>
-        <div class="feature-title">Bez ukrytych kosztów</div>
-        <div class="feature-desc">Jasny zakres i uczciwe ceny netto.</div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<section class="verticals-section" id="oferta">
-  <div class="wrap">
-    <div class="section-head">
-      <div class="eyebrow" style="text-align:center;">DLA TWOJEGO BIZNESU</div>
-      <h2>Pomagamy miejscom, które klienci wybierają oczami.</h2>
-    </div>
-
-    <div class="vertical-list">
-      <div class="vertical-card">
-        <div class="vertical-media" style="background-image:url('https://images.unsplash.com/photo-1572177215152-32f247303126?auto=format&fit=crop&w=900&q=80')">
-          <div class="vertical-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M2 20v-7a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v7"/>
-              <path d="M2 20v-3M22 20v-3"/>
-              <rect x="4" y="9" width="7" height="4" rx="1"/>
-              <path d="M2 13h20"/>
-            </svg>
-          </div>
-        </div>
-        <div class="vertical-body">
-          <div class="vertical-title">NOCLEGI</div>
-          <p class="vertical-tag">Zwiększ pewność przed rezerwacją.</p>
-          <p class="vertical-desc">Pokaż standard, układ i otoczenie, zanim gość zarezerwuje.</p>
-          <a href="#pakiety" class="link-more">DOWIEDZ SIĘ WIĘCEJ
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-          </a>
-        </div>
-      </div>
-
-      <div class="vertical-card">
-        <div class="vertical-media" style="background-image:url('https://images.unsplash.com/photo-1583354608715-177553a4035e?auto=format&fit=crop&w=900&q=80')">
-          <div class="vertical-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M6 2v7a2 2 0 0 0 4 0V2M8 9v13M18 2c-1.5 0-3 1.5-3 4v4a2 2 0 0 0 2 2h1M18 2v20"/>
-            </svg>
-          </div>
-        </div>
-        <div class="vertical-body">
-          <div class="vertical-title">RESTAURACJE</div>
-          <p class="vertical-tag">Pokaż atmosferę przed wizytą.</p>
-          <p class="vertical-desc">Goście zobaczą klimat i zdecydują się przyjść.</p>
-          <a href="#pakiety" class="link-more">DOWIEDZ SIĘ WIĘCEJ
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-          </a>
-        </div>
-      </div>
-
-      <div class="vertical-card">
-        <div class="vertical-media" style="background-image:url('https://images.unsplash.com/photo-1616394584738-fc6e612e71b9?auto=format&fit=crop&w=900&q=80')">
-          <div class="vertical-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M12 22c-4-2-7-6-7-10a7 7 0 0 1 7-7 7 7 0 0 1 7 7c0 4-3 8-7 10z"/>
-              <path d="M12 22V9"/>
-              <path d="M5 12c2 0 4 1 5 3M19 12c-2 0-4 1-5 3"/>
-            </svg>
-          </div>
-        </div>
-        <div class="vertical-body">
-          <div class="vertical-title">BEAUTY</div>
-          <p class="vertical-tag">Zbuduj zaufanie przed pierwszą wizytą.</p>
-          <p class="vertical-desc">Pokaż czystość, wnętrze i profesjonalizm.</p>
-          <a href="#pakiety" class="link-more">DOWIEDZ SIĘ WIĘCEJ
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-          </a>
-        </div>
       </div>
     </div>
   </div>
