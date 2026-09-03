@@ -85,17 +85,16 @@
 
   /* ---------- Hero ---------- */
   .hero{padding:0; background:var(--bg);}
-  .hero-head{position:relative; z-index:1; text-align:left; transform:translateY(-40px);}
+  .hero-head{position:relative; z-index:1; text-align:left;}
   .hero-head h1{
     font-size:clamp(30px, 4.2vw, 44px); font-weight:800; letter-spacing:-.02em; line-height:1.14;
     max-width:620px; color:#fff; text-shadow:0 3px 18px rgba(0,0,0,.4);
   }
   .hero-head h1 .hero-accent{color:rgba(255,255,255,.72);}
   .hero-sub{
-    position:relative; z-index:1; margin-top:2px;
+    position:relative; z-index:1;
     font-size:13px; font-weight:500; white-space:nowrap;
     color:rgba(255,255,255,.75); text-shadow:0 2px 10px rgba(0,0,0,.35);
-    transform:translateY(-70px);
   }
   .hero-media{position:relative; width:100%; cursor:pointer;}
   .hero-media-inner{
@@ -119,14 +118,12 @@
     display:flex; align-items:center; justify-content:center; flex-direction:column;
     background:rgba(20,22,24,.2); backdrop-filter:blur(2px); color:#fff;
     transition:transform .2s ease, background .2s ease;
-    transform:translateY(-65px);
   }
-  .hero-media:hover .viewer{transform:translateY(-65px) scale(1.05); background:rgba(20,22,24,.35);}
+  .hero-media:hover .viewer{transform:scale(1.05); background:rgba(20,22,24,.35);}
   .viewer .deg{font-size:26px; font-weight:700; letter-spacing:-.01em;}
   .viewer-hint{
     position:relative; z-index:1;
     font-size:13px; font-weight:600; color:#fff;
-    transform:translateY(-65px);
   }
 
   .hero-verticals{display:grid; grid-template-columns:repeat(3,1fr); gap:22px; margin-top:-134px; position:relative; z-index:10;}
@@ -366,9 +363,9 @@
     <div class="hero-media-inner" style="background-image:url('hotel1.png')">
       <div class="hero-bg-layer" id="heroLayerA"></div>
       <div class="hero-bg-layer" id="heroLayerB"></div>
+      <p class="hero-sub">Spacer do Google Maps &middot; Wizytówki Google &middot; spacer na Twojej stronie WWW &middot; link QR do spaceru</p>
       <div class="viewer"><div class="deg">360°</div></div>
       <div class="viewer-hint">Kliknij i rozejrzyj się</div>
-      <p class="hero-sub">Spacer do Google Maps &middot; Wizytówki Google &middot; spacer na Twojej stronie WWW &middot; link QR do spaceru</p>
       <div class="wrap hero-head">
         <h1>Pokaż swoje <span class="hero-accent">miejsce</span>,<br>zanim klient&hellip;</h1>
       </div>
