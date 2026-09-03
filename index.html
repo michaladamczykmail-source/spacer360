@@ -85,7 +85,7 @@
 
   /* ---------- Hero ---------- */
   .hero{padding:0; background:var(--bg);}
-  .hero-head{position:absolute; top:0; left:0; right:0; z-index:1; padding-top:40px; text-align:left;}
+  .hero-head{position:relative; z-index:1; text-align:left;}
   .hero-head h1{
     font-size:clamp(30px, 4.2vw, 44px); font-weight:800; letter-spacing:-.02em; line-height:1.14;
     max-width:620px; color:#fff; text-shadow:0 3px 18px rgba(0,0,0,.4);
@@ -344,11 +344,11 @@
 <section class="hero" id="hero">
   <div class="hero-media" id="viewerBtn" role="button" tabindex="0" aria-label="Otwórz spacer 360°">
     <div class="hero-media-inner" style="background-image:url('hotel1.png')">
+      <div class="viewer"><div class="deg">360°</div></div>
+      <div class="viewer-hint">Kliknij i rozejrzyj się</div>
       <div class="wrap hero-head">
         <h1>Pokaż swoje miejsce,<br>zanim klient&hellip;</h1>
       </div>
-      <div class="viewer"><div class="deg">360°</div></div>
-      <div class="viewer-hint">Kliknij i rozejrzyj się</div>
     </div>
 
     <div class="mp-embed" id="mpEmbed">
