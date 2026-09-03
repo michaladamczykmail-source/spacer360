@@ -128,11 +128,17 @@
   .hv-card{
     background:#fff; border:1px solid var(--line); border-radius:var(--radius-md);
     padding:28px 22px; text-align:center; box-shadow:0 16px 34px rgba(23,34,44,.12);
+    transition:border-color .3s ease, box-shadow .3s ease, transform .3s ease;
+  }
+  .hv-card.is-hero-active{
+    border-color:var(--navy); box-shadow:0 20px 40px rgba(23,34,44,.2); transform:translateY(-3px);
   }
   .hv-icon{
     width:50px; height:50px; margin:0 auto 14px; border-radius:50%; background:var(--bg-alt);
     display:flex; align-items:center; justify-content:center; color:var(--navy);
+    transition:background .3s ease, color .3s ease;
   }
+  .hv-card.is-hero-active .hv-icon{background:var(--navy); color:#fff;}
   .hv-icon svg{width:22px; height:22px;}
   .hv-title{font-size:16px; font-weight:800; letter-spacing:-.01em; margin-bottom:7px; color:var(--ink);}
   .hv-desc{font-size:13.3px; color:var(--ink-soft); line-height:1.5;}
@@ -372,7 +378,7 @@
   <div class="wrap hero-verticals">
     <div>
       <div class="hv-label">ZAREZERWUJE</div>
-      <div class="hv-card" data-hero-target="noclegi">
+      <div class="hv-card is-hero-active" data-hero-target="noclegi">
         <div class="hv-icon">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
             <path d="M2 20v-7a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v7"/>
@@ -700,9 +706,13 @@
     if(heroFrontLayer){ heroFrontLayer.style.opacity = '0'; }
     heroFrontLayer = back;
   }
-  document.querySelectorAll('[data-hero-target]').forEach(function(card){
+  var heroCards = document.querySelectorAll('[data-hero-target]');
+  heroCards.forEach(function(card){
     var img = card.getAttribute('data-hero-img') || null;
-    card.addEventListener('mouseenter', function(){ heroShowImage(img); });
+    card.addEventListener('mouseenter', function(){
+      heroShowImage(img);
+      heroCards.forEach(function(c){ c.classList.toggle('is-hero-active', c === card); });
+    });
   });
 
   var galleryRow = document.getElementById('galleryRow');
