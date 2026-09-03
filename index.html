@@ -177,76 +177,20 @@
   .channel-card{display:flex; flex-direction:column;}
   .channel-head{display:flex; align-items:flex-start; gap:12px; margin-bottom:14px;}
   .channel-num{
-    flex:none; width:32px; height:32px; border-radius:9px; background:var(--navy); color:#fff;
+    flex:none; width:34px; height:34px; border-radius:50%; background:var(--navy); color:#fff;
     display:flex; align-items:center; justify-content:center; font-size:12.5px; font-weight:800;
   }
-  .channel-title{font-size:16px; font-weight:800; letter-spacing:-.01em; line-height:1.28; padding-top:4px;}
+  .channel-title{font-size:18px; font-weight:800; letter-spacing:-.01em; line-height:1.28; padding-top:5px;}
   .channel-desc{font-size:13.5px; color:var(--ink-soft); line-height:1.55; margin-bottom:18px;}
   .channel-mock{
-    position:relative; height:220px; border-radius:var(--radius-md); background:var(--bg-alt);
+    position:relative; height:308px; border-radius:var(--radius-md); background:#fff;
     border:1px solid var(--line); margin-bottom:18px; overflow:hidden;
+    display:flex; align-items:center; justify-content:center; padding:14px;
   }
+  .channel-mock img{width:100%; height:100%; object-fit:contain;}
   .channel-link{display:inline-flex; align-items:center; gap:6px; font-size:13.5px; font-weight:600; color:var(--ink); margin-top:auto; transition:color .15s ease;}
   .channel-link svg{width:14px; height:14px;}
   .channel-link:hover{color:var(--navy);}
-
-  /* Google Maps mock */
-  .gm-frame{position:relative; width:100%; height:100%; display:flex; flex-direction:column;}
-  .gm-topbar{display:flex; align-items:center; gap:6px; padding:8px 10px; background:#fff; border-bottom:1px solid var(--line); flex:none;}
-  .gm-topbar svg{width:12px; height:12px; color:var(--ink-soft); flex:none;}
-  .gm-search{flex:1; display:flex; align-items:center; gap:4px; background:var(--bg-alt); border-radius:999px; padding:4px 8px; font-size:8px; font-weight:600; color:var(--ink-soft);}
-  .gm-avatar{width:14px; height:14px; border-radius:50%; background:var(--line); flex:none;}
-  .gm-map{
-    flex:1; position:relative; min-height:0;
-    background-image:linear-gradient(90deg, rgba(23,34,44,.07) 1px, transparent 1px), linear-gradient(0deg, rgba(23,34,44,.07) 1px, transparent 1px);
-    background-size:16px 16px; background-color:#eef0ee;
-  }
-  .gm-pin{position:absolute; top:50%; left:50%; transform:translate(-50%,-95%); width:22px; height:22px; color:#e0503e;}
-  .gm-card{background:#fff; padding:8px 10px 7px; border-top:1px solid var(--line); flex:none;}
-  .gm-card-row{display:flex; justify-content:space-between; gap:8px; margin-bottom:7px;}
-  .gm-card-title{font-size:10.5px; font-weight:800;}
-  .gm-card-stars{font-size:8px; color:var(--ink-soft); margin-top:2px;}
-  .gm-card-stars .stars{color:#e0a531; letter-spacing:-1px;}
-  .gm-card-meta{font-size:7.5px; color:var(--ink-faint); margin-top:2px;}
-  .gm-card-thumb{flex:none; width:28px; height:28px; border-radius:6px; background:var(--bg-alt);}
-  .gm-tabs{display:flex; gap:8px; font-size:6.5px; font-weight:800; letter-spacing:.02em; color:var(--ink-faint); border-top:1px solid var(--line); padding-top:6px;}
-  .gm-tabs .on{color:var(--navy); border-bottom:1.5px solid var(--navy); padding-bottom:5px; margin-bottom:-6px;}
-
-  /* Google Business Profile mock */
-  .mock-gbp{display:flex; align-items:stretch;}
-  .gbp-card{width:100%; padding:14px; display:flex; flex-direction:column;}
-  .gbp-top{display:flex; justify-content:space-between; gap:8px;}
-  .gbp-name{font-size:11px; font-weight:800;}
-  .gbp-stars{font-size:8px; color:var(--ink-soft); margin-top:3px;}
-  .gbp-stars .stars{color:#e0a531; letter-spacing:-1px;}
-  .gbp-meta{font-size:7.5px; color:var(--ink-faint); margin-top:3px;}
-  .gbp-meta .open{color:#2e8b4f; font-weight:700;}
-  .gbp-avatar{flex:none; width:28px; height:28px; border-radius:50%; background:var(--bg-alt);}
-  .gbp-tabs{display:flex; gap:8px; font-size:6.5px; font-weight:800; color:var(--ink-faint); border-bottom:1px solid var(--line); padding-bottom:7px; margin:10px 0;}
-  .gbp-tabs .on{color:var(--navy); border-bottom:1.5px solid var(--navy); padding-bottom:7px; margin-bottom:-8px;}
-  .gbp-actions{display:flex; justify-content:space-between; margin-bottom:10px;}
-  .gbp-action{display:flex; flex-direction:column; align-items:center; gap:3px; font-size:6px; font-weight:800; color:var(--navy); letter-spacing:.02em;}
-  .gbp-action svg{width:13px; height:13px;}
-  .gbp-photo{position:relative; flex:1; border-radius:8px; background:var(--bg-alt); min-height:30px;}
-  .pill-360{position:absolute; right:6px; bottom:6px; background:rgba(23,34,44,.78); color:#fff; font-size:7px; font-weight:800; padding:3px 7px; border-radius:999px;}
-
-  /* Website on laptop mock */
-  .mock-web{display:flex; align-items:center; justify-content:center; padding:16px;}
-  .laptop{width:100%; background:#fff; border:1px solid var(--line); border-radius:8px; overflow:hidden; box-shadow:0 10px 22px rgba(0,0,0,.1);}
-  .laptop-topbar{display:flex; align-items:center; gap:6px; padding:7px 10px; border-bottom:1px solid var(--line); font-size:8px; font-weight:800; letter-spacing:.06em; color:var(--ink);}
-  .laptop-topbar svg{width:11px; height:11px; color:var(--ink-soft);}
-  .laptop-body{position:relative; height:126px; background:linear-gradient(160deg, var(--navy), #2b3a48); display:flex; flex-direction:column; align-items:center; justify-content:center; gap:9px; color:#fff;}
-  .laptop-text{font-size:9px; font-weight:700; text-align:center; line-height:1.4;}
-  .laptop-badge{width:38px; height:38px; border-radius:50%; border:1.2px solid rgba(255,255,255,.75); display:flex; align-items:center; justify-content:center; font-size:10px; font-weight:800;}
-  .laptop-dock{position:absolute; bottom:9px; display:flex; gap:6px;}
-  .laptop-dock span{width:12px; height:12px; border-radius:4px; background:rgba(255,255,255,.25);}
-
-  /* Phone + QR mock */
-  .mock-qr-wrap{display:flex; align-items:center; justify-content:center; gap:16px; padding:16px;}
-  .phone-mini{flex:none; width:56px; height:104px; border-radius:14px; background:#1a1d1f; padding:5px; box-shadow:0 8px 18px rgba(0,0,0,.12);}
-  .phone-mini-screen{position:relative; width:100%; height:100%; border-radius:9px; background:linear-gradient(160deg, var(--navy), #2b3a48); display:flex; align-items:center; justify-content:center;}
-  .phone-badge{width:26px; height:26px; border-radius:50%; border:1.2px solid rgba(255,255,255,.75); display:flex; align-items:center; justify-content:center; font-size:8px; font-weight:800; color:#fff;}
-  .mock-qr{width:60px; height:60px; color:var(--ink); flex:none;}
 
   /* ---------- Jak to działa ---------- */
   .how-section{padding:100px 0;}
@@ -525,28 +469,8 @@
           <div class="channel-title">Google Maps<br>i Street View</div>
         </div>
         <p class="channel-desc">Klient znajduje Twoją firmę w Google i może rozejrzeć się po wnętrzu.</p>
-        <div class="channel-mock mock-maps">
-          <div class="gm-frame">
-            <div class="gm-topbar">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
-              <div class="gm-search">Hotel Natura</div>
-              <span class="gm-avatar"></span>
-            </div>
-            <div class="gm-map">
-              <svg class="gm-pin" viewBox="0 0 24 24" fill="currentColor"><path d="M12 22s7-7.58 7-13A7 7 0 0 0 5 9c0 5.42 7 13 7 13z"/><circle cx="12" cy="9" r="2.6" fill="#fff"/></svg>
-            </div>
-            <div class="gm-card">
-              <div class="gm-card-row">
-                <div>
-                  <div class="gm-card-title">Hotel Natura</div>
-                  <div class="gm-card-stars">4,8 <span class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span> (128)</div>
-                  <div class="gm-card-meta">Hotel &middot; 2 min</div>
-                </div>
-                <div class="gm-card-thumb"></div>
-              </div>
-              <div class="gm-tabs"><span class="on">PRZEGLĄD</span><span>CENY</span><span>OPINIE</span><span>ZDJĘCIA</span></div>
-            </div>
-          </div>
+        <div class="channel-mock">
+          <img src="channel-maps.png" alt="Podgląd wizytówki w Google Maps ze spacerem 360°" loading="lazy">
         </div>
         <a href="#realizacje" class="channel-link">Zobacz przykład
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
@@ -559,25 +483,8 @@
           <div class="channel-title">Wizytówka Google</div>
         </div>
         <p class="channel-desc">Spacer staje się częścią miejsca, które klient często sprawdza jeszcze przed kontaktem z firmą.</p>
-        <div class="channel-mock mock-gbp">
-          <div class="gbp-card">
-            <div class="gbp-top">
-              <div>
-                <div class="gbp-name">Restauracja Stół</div>
-                <div class="gbp-stars">4,7 <span class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span> (213) &middot; $$</div>
-                <div class="gbp-meta">Restauracja &middot; <span class="open">Otwarte</span></div>
-              </div>
-              <div class="gbp-avatar"></div>
-            </div>
-            <div class="gbp-tabs"><span class="on">PRZEGLĄD</span><span>MENU</span><span>OPINIE</span><span>ZDJĘCIA</span></div>
-            <div class="gbp-actions">
-              <div class="gbp-action"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.12.9.35 1.79.68 2.63a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.45-1.25a2 2 0 0 1 2.11-.45c.84.33 1.73.56 2.63.68A2 2 0 0 1 22 16.92z"/></svg><span>ZADZWOŃ</span></div>
-              <div class="gbp-action"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg><span>TRASA</span></div>
-              <div class="gbp-action"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15 15 0 0 1 0 20 15 15 0 0 1 0-20z"/></svg><span>STRONA</span></div>
-              <div class="gbp-action"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="M8.6 10.6l6.8-3.8M8.6 13.4l6.8 3.8"/></svg><span>UDOSTĘPNIJ</span></div>
-            </div>
-            <div class="gbp-photo"><span class="pill-360">360°</span></div>
-          </div>
+        <div class="channel-mock">
+          <img src="channel-gbp.png" alt="Podgląd wizytówki Google z sekcją zdjęć i spacerem 360°" loading="lazy">
         </div>
         <a href="#realizacje" class="channel-link">Zobacz przykład
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
@@ -590,18 +497,8 @@
           <div class="channel-title">Na Twojej stronie</div>
         </div>
         <p class="channel-desc">Osadzamy spacer na stronie tak, żeby klient mógł obejrzeć miejsce bez jej opuszczania.</p>
-        <div class="channel-mock mock-web">
-          <div class="laptop">
-            <div class="laptop-topbar">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
-              APARTAMENTY
-            </div>
-            <div class="laptop-body">
-              <div class="laptop-text">Zobacz nasz apartament<br>w 360°</div>
-              <div class="laptop-badge">360°</div>
-              <div class="laptop-dock"><span></span><span></span><span></span><span></span><span></span></div>
-            </div>
-          </div>
+        <div class="channel-mock">
+          <img src="channel-web.png" alt="Podgląd strony WWW z osadzonym spacerem 360°" loading="lazy">
         </div>
         <a href="#realizacje" class="channel-link">Zobacz przykład
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
@@ -614,34 +511,8 @@
           <div class="channel-title">Link i kod QR</div>
         </div>
         <p class="channel-desc">Wyślij spacer klientowi mailem, SMS-em lub Messengerem albo umieść QR w swoim lokalu.</p>
-        <div class="channel-mock mock-qr-wrap">
-          <div class="phone-mini"><div class="phone-mini-screen"><span class="phone-badge">360°</span></div></div>
-          <svg class="mock-qr" viewBox="0 0 63 63" xmlns="http://www.w3.org/2000/svg">
-            <rect x="0" y="0" width="21" height="21" fill="#1a1d1f"/><rect x="3" y="3" width="15" height="15" fill="#fff"/><rect x="6" y="6" width="9" height="9" fill="#1a1d1f"/>
-            <rect x="42" y="0" width="21" height="21" fill="#1a1d1f"/><rect x="45" y="3" width="15" height="15" fill="#fff"/><rect x="48" y="6" width="9" height="9" fill="#1a1d1f"/>
-            <rect x="0" y="42" width="21" height="21" fill="#1a1d1f"/><rect x="3" y="45" width="15" height="15" fill="#fff"/><rect x="6" y="48" width="9" height="9" fill="#1a1d1f"/>
-            <rect x="24" y="0" width="3" height="3" fill="#1a1d1f"/><rect x="27" y="0" width="3" height="3" fill="#1a1d1f"/><rect x="33" y="0" width="3" height="3" fill="#1a1d1f"/>
-            <rect x="24" y="3" width="3" height="3" fill="#1a1d1f"/><rect x="27" y="3" width="3" height="3" fill="#1a1d1f"/><rect x="33" y="3" width="3" height="3" fill="#1a1d1f"/>
-            <rect x="24" y="6" width="3" height="3" fill="#1a1d1f"/><rect x="27" y="6" width="3" height="3" fill="#1a1d1f"/><rect x="36" y="6" width="3" height="3" fill="#1a1d1f"/>
-            <rect x="24" y="9" width="3" height="3" fill="#1a1d1f"/><rect x="36" y="9" width="3" height="3" fill="#1a1d1f"/>
-            <rect x="27" y="12" width="3" height="3" fill="#1a1d1f"/><rect x="33" y="12" width="3" height="3" fill="#1a1d1f"/><rect x="36" y="12" width="3" height="3" fill="#1a1d1f"/>
-            <rect x="24" y="15" width="3" height="3" fill="#1a1d1f"/><rect x="27" y="15" width="3" height="3" fill="#1a1d1f"/><rect x="33" y="15" width="3" height="3" fill="#1a1d1f"/>
-            <rect x="27" y="18" width="3" height="3" fill="#1a1d1f"/><rect x="33" y="18" width="3" height="3" fill="#1a1d1f"/><rect x="36" y="18" width="3" height="3" fill="#1a1d1f"/>
-            <rect x="24" y="21" width="3" height="3" fill="#1a1d1f"/><rect x="33" y="21" width="3" height="3" fill="#1a1d1f"/>
-            <rect x="3" y="24" width="3" height="3" fill="#1a1d1f"/><rect x="12" y="24" width="3" height="3" fill="#1a1d1f"/><rect x="27" y="24" width="3" height="3" fill="#1a1d1f"/><rect x="33" y="24" width="3" height="3" fill="#1a1d1f"/><rect x="36" y="24" width="3" height="3" fill="#1a1d1f"/><rect x="42" y="24" width="3" height="3" fill="#1a1d1f"/><rect x="48" y="24" width="3" height="3" fill="#1a1d1f"/>
-            <rect x="0" y="27" width="3" height="3" fill="#1a1d1f"/><rect x="27" y="27" width="3" height="3" fill="#1a1d1f"/><rect x="42" y="27" width="3" height="3" fill="#1a1d1f"/><rect x="45" y="27" width="3" height="3" fill="#1a1d1f"/><rect x="51" y="27" width="3" height="3" fill="#1a1d1f"/><rect x="57" y="27" width="3" height="3" fill="#1a1d1f"/><rect x="60" y="27" width="3" height="3" fill="#1a1d1f"/>
-            <rect x="0" y="30" width="3" height="3" fill="#1a1d1f"/><rect x="6" y="30" width="3" height="3" fill="#1a1d1f"/><rect x="9" y="30" width="3" height="3" fill="#1a1d1f"/><rect x="12" y="30" width="3" height="3" fill="#1a1d1f"/><rect x="18" y="30" width="3" height="3" fill="#1a1d1f"/><rect x="36" y="30" width="3" height="3" fill="#1a1d1f"/><rect x="39" y="30" width="3" height="3" fill="#1a1d1f"/><rect x="42" y="30" width="3" height="3" fill="#1a1d1f"/><rect x="51" y="30" width="3" height="3" fill="#1a1d1f"/><rect x="54" y="30" width="3" height="3" fill="#1a1d1f"/><rect x="57" y="30" width="3" height="3" fill="#1a1d1f"/><rect x="60" y="30" width="3" height="3" fill="#1a1d1f"/>
-            <rect x="6" y="33" width="3" height="3" fill="#1a1d1f"/><rect x="9" y="33" width="3" height="3" fill="#1a1d1f"/><rect x="12" y="33" width="3" height="3" fill="#1a1d1f"/><rect x="15" y="33" width="3" height="3" fill="#1a1d1f"/><rect x="36" y="33" width="3" height="3" fill="#1a1d1f"/><rect x="51" y="33" width="3" height="3" fill="#1a1d1f"/><rect x="54" y="33" width="3" height="3" fill="#1a1d1f"/><rect x="57" y="33" width="3" height="3" fill="#1a1d1f"/>
-            <rect x="0" y="36" width="3" height="3" fill="#1a1d1f"/><rect x="3" y="36" width="3" height="3" fill="#1a1d1f"/><rect x="6" y="36" width="3" height="3" fill="#1a1d1f"/><rect x="9" y="36" width="3" height="3" fill="#1a1d1f"/><rect x="12" y="36" width="3" height="3" fill="#1a1d1f"/><rect x="15" y="36" width="3" height="3" fill="#1a1d1f"/><rect x="18" y="36" width="3" height="3" fill="#1a1d1f"/><rect x="21" y="36" width="3" height="3" fill="#1a1d1f"/><rect x="24" y="36" width="3" height="3" fill="#1a1d1f"/><rect x="27" y="36" width="3" height="3" fill="#1a1d1f"/><rect x="30" y="36" width="3" height="3" fill="#1a1d1f"/><rect x="39" y="36" width="3" height="3" fill="#1a1d1f"/><rect x="42" y="36" width="3" height="3" fill="#1a1d1f"/><rect x="45" y="36" width="3" height="3" fill="#1a1d1f"/><rect x="48" y="36" width="3" height="3" fill="#1a1d1f"/><rect x="51" y="36" width="3" height="3" fill="#1a1d1f"/>
-            <rect x="27" y="39" width="3" height="3" fill="#1a1d1f"/><rect x="30" y="39" width="3" height="3" fill="#1a1d1f"/><rect x="33" y="39" width="3" height="3" fill="#1a1d1f"/><rect x="36" y="39" width="3" height="3" fill="#1a1d1f"/><rect x="42" y="39" width="3" height="3" fill="#1a1d1f"/><rect x="45" y="39" width="3" height="3" fill="#1a1d1f"/><rect x="54" y="39" width="3" height="3" fill="#1a1d1f"/><rect x="60" y="39" width="3" height="3" fill="#1a1d1f"/>
-            <rect x="36" y="42" width="3" height="3" fill="#1a1d1f"/><rect x="39" y="42" width="3" height="3" fill="#1a1d1f"/><rect x="42" y="42" width="3" height="3" fill="#1a1d1f"/><rect x="54" y="42" width="3" height="3" fill="#1a1d1f"/><rect x="57" y="42" width="3" height="3" fill="#1a1d1f"/>
-            <rect x="39" y="45" width="3" height="3" fill="#1a1d1f"/><rect x="45" y="45" width="3" height="3" fill="#1a1d1f"/><rect x="48" y="45" width="3" height="3" fill="#1a1d1f"/><rect x="51" y="45" width="3" height="3" fill="#1a1d1f"/><rect x="54" y="45" width="3" height="3" fill="#1a1d1f"/><rect x="57" y="45" width="3" height="3" fill="#1a1d1f"/>
-            <rect x="39" y="48" width="3" height="3" fill="#1a1d1f"/><rect x="42" y="48" width="3" height="3" fill="#1a1d1f"/><rect x="45" y="48" width="3" height="3" fill="#1a1d1f"/><rect x="48" y="48" width="3" height="3" fill="#1a1d1f"/><rect x="51" y="48" width="3" height="3" fill="#1a1d1f"/>
-            <rect x="33" y="51" width="3" height="3" fill="#1a1d1f"/><rect x="51" y="51" width="3" height="3" fill="#1a1d1f"/><rect x="57" y="51" width="3" height="3" fill="#1a1d1f"/>
-            <rect x="27" y="54" width="3" height="3" fill="#1a1d1f"/><rect x="30" y="54" width="3" height="3" fill="#1a1d1f"/><rect x="39" y="54" width="3" height="3" fill="#1a1d1f"/><rect x="42" y="54" width="3" height="3" fill="#1a1d1f"/><rect x="45" y="54" width="3" height="3" fill="#1a1d1f"/><rect x="54" y="54" width="3" height="3" fill="#1a1d1f"/>
-            <rect x="27" y="57" width="3" height="3" fill="#1a1d1f"/><rect x="33" y="57" width="3" height="3" fill="#1a1d1f"/><rect x="36" y="57" width="3" height="3" fill="#1a1d1f"/><rect x="60" y="57" width="3" height="3" fill="#1a1d1f"/>
-            <rect x="24" y="60" width="3" height="3" fill="#1a1d1f"/><rect x="27" y="60" width="3" height="3" fill="#1a1d1f"/><rect x="30" y="60" width="3" height="3" fill="#1a1d1f"/><rect x="36" y="60" width="3" height="3" fill="#1a1d1f"/><rect x="39" y="60" width="3" height="3" fill="#1a1d1f"/><rect x="42" y="60" width="3" height="3" fill="#1a1d1f"/><rect x="48" y="60" width="3" height="3" fill="#1a1d1f"/>
-          </svg>
+        <div class="channel-mock">
+          <img src="channel-qr.png" alt="Telefon ze spacerem 360° obok kodu QR do zeskanowania" loading="lazy">
         </div>
         <a href="#kontakt" class="channel-link">Zeskanuj i zobacz
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
