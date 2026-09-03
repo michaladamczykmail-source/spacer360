@@ -19,6 +19,7 @@
     --line: #ddd8cd;
     --white: #ffffff;
     --accent: #c9a24b;
+    --teal: #4dc0da;
     --radius-lg: 18px;
     --radius-md: 12px;
     --radius-sm: 8px;
@@ -293,20 +294,37 @@
     color:#fff; font-weight:700; font-size:15px; background:rgba(0,0,0,.12);
   }
 
-  /* ---------- Final CTA ---------- */
-  .cta-section{padding:70px 0;}
-  .cta-box{
-    background:var(--navy); border-radius:var(--radius-lg); color:#fff;
-    padding:42px 48px; display:flex; align-items:center; justify-content:space-between; gap:30px; flex-wrap:wrap;
+  /* ---------- Stats ---------- */
+  .stats-section{padding:100px 0;}
+  .stats-accent{color:var(--teal);}
+  .stats-box{
+    background:var(--navy); border-radius:var(--radius-lg);
+    display:grid; grid-template-columns:repeat(4,1fr);
+    margin-top:50px; padding:46px 10px 40px;
   }
-  .cta-left{display:flex; align-items:center; gap:22px;}
-  .cta-icon{
-    flex:none; width:52px; height:52px; border-radius:50%; background:rgba(255,255,255,.1);
-    display:flex; align-items:center; justify-content:center;
+  .stat-item{
+    padding:0 26px; text-align:center; border-left:1px solid rgba(255,255,255,.15);
+    display:flex; flex-direction:column; align-items:center;
   }
-  .cta-icon svg{width:22px; height:22px;}
-  .cta-box h3{font-size:20px; font-weight:700; margin-bottom:4px;}
-  .cta-box p{font-size:14px; color:rgba(255,255,255,.7);}
+  .stat-item:first-child{border-left:none;}
+  .stat-icon{
+    flex:none; width:60px; height:60px; border-radius:50%;
+    background:rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.14);
+    display:flex; align-items:center; justify-content:center; margin-bottom:18px; color:var(--teal);
+  }
+  .stat-icon svg{width:24px; height:24px;}
+  .stat-value{font-size:32px; font-weight:800; color:var(--teal); letter-spacing:-.01em; margin-bottom:14px;}
+  .stat-value-text{font-size:19px; line-height:1.35;}
+  .stat-title{font-size:14.5px; font-weight:800; color:#fff; line-height:1.35; margin-bottom:14px;}
+  .stat-desc{font-size:13px; color:rgba(255,255,255,.65); line-height:1.6; margin-bottom:20px; flex:1;}
+  .stat-source{
+    width:100%; padding-top:16px; border-top:1px solid rgba(255,255,255,.15);
+    font-size:12.5px; color:rgba(255,255,255,.55);
+    display:flex; align-items:center; justify-content:center; gap:5px;
+  }
+  .stat-source a{color:var(--teal); text-decoration:underline; display:inline-flex; align-items:center; gap:3px;}
+  .stat-source svg{width:12px; height:12px;}
+  .stats-footnotes{margin-top:24px; text-align:center; font-size:12px; color:var(--ink-faint); line-height:1.8;}
 
   /* ---------- Footer ---------- */
   footer{padding:64px 0 28px; border-top:1px solid var(--line);}
@@ -331,7 +349,8 @@
     .pricing-grid{grid-template-columns:1fr; max-width:440px; margin:0 auto;}
     .price-card.featured{transform:none;}
     .footer-grid{grid-template-columns:1fr 1fr; row-gap:36px;}
-    .cta-box{flex-direction:column; align-items:flex-start; text-align:left;}
+    .stats-box{grid-template-columns:1fr 1fr; row-gap:34px;}
+    .stat-item:nth-child(3){border-left:none;}
     .channels-grid{grid-template-columns:1fr 1fr; row-gap:40px;}
     .how-panel{flex-direction:column; align-items:flex-start;}
     .how-steps{gap:26px;}
@@ -350,6 +369,9 @@
     .channels-grid{grid-template-columns:1fr;}
     .how-panel{padding:34px 26px;}
     .how-steps{flex-direction:column;}
+    .stats-box{grid-template-columns:1fr;}
+    .stat-item{border-left:none; border-top:1px solid rgba(255,255,255,.15); padding-top:30px;}
+    .stat-item:first-child{border-top:none; padding-top:0;}
   }
 </style>
 </head>
@@ -701,21 +723,65 @@
   </div>
 </section>
 
-<section class="cta-section" id="kontakt">
+<section class="stats-section">
   <div class="wrap">
-    <div class="cta-box">
-      <div class="cta-left">
-        <div class="cta-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg></div>
-        <div>
-          <h3>Pokaż swoje miejsce tak, jak wygląda naprawdę.</h3>
-          <p>Odezwij się – przygotujemy wycenę dopasowaną do Ciebie.</p>
-        </div>
-      </div>
-      <a href="mailto:info@bokaWorks.pl" class="btn btn-white">
-        ZAMÓW WYCENĘ
-        <svg viewBox="0 0 24 24" fill="none" stroke="#17222c" stroke-width="2.4" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-      </a>
+    <div class="section-head">
+      <h2>Liczby, które przekładają się na <span class="stats-accent">realne efekty</span></h2>
+      <p>Spacery 360° to nie tylko piękna prezentacja. To więcej zainteresowania, dłuższy czas, lepsze decyzje i realne rezerwacje.</p>
     </div>
+    <div class="stats-box">
+      <div class="stat-item">
+        <div class="stat-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 16l4-4 3 3 5-6"/><path d="M16 9h3v3"/></svg>
+        </div>
+        <div class="stat-value">2&times;</div>
+        <div class="stat-title">większe zainteresowanie</div>
+        <p class="stat-desc">Wizytówki ze zdjęciami i wirtualnym spacerem częściej wzbudzają zainteresowanie niż bez spaceru.</p>
+        <div class="stat-source">Źródło: <a href="https://business.google.com" target="_blank" rel="noopener">Google&sup1;
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><path d="M15 3h6v6"/><path d="M10 14L21 3"/></svg>
+        </a></div>
+      </div>
+
+      <div class="stat-item">
+        <div class="stat-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+        </div>
+        <div class="stat-value">14%</div>
+        <div class="stat-title">więcej rezerwacji</div>
+        <p class="stat-desc">Wzrost rezerwacji / konwersji dla obiektów z branży Travel &amp; Hospitality korzystających z Matterport.</p>
+        <div class="stat-source">Źródło: <a href="https://matterport.com" target="_blank" rel="noopener">Matterport&sup2;
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><path d="M15 3h6v6"/><path d="M10 14L21 3"/></svg>
+        </a></div>
+      </div>
+
+      <div class="stat-item">
+        <div class="stat-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+        </div>
+        <div class="stat-value">4,5&times;</div>
+        <div class="stat-title">więcej czasu na stronie</div>
+        <p class="stat-desc">Użytkownicy spędzają znacznie więcej czasu na stronie, gdy mogą zobaczyć obiekt w 3D.</p>
+        <div class="stat-source">Źródło: <a href="https://matterport.com" target="_blank" rel="noopener">Matterport&sup2;
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><path d="M15 3h6v6"/><path d="M10 14L21 3"/></svg>
+        </a></div>
+      </div>
+
+      <div class="stat-item">
+        <div class="stat-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>
+        </div>
+        <div class="stat-value stat-value-text">lepsze decyzje<br>przed wizytą</div>
+        <p class="stat-desc">Spacery 360° pomagają lepiej poznać obiekt i zwiększają intencję wizyty względem samych zdjęć.</p>
+        <div class="stat-source">Źródło: <a href="https://www.tandfonline.com" target="_blank" rel="noopener">Journal of Travel Research&sup3;
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><path d="M15 3h6v6"/><path d="M10 14L21 3"/></svg>
+        </a></div>
+      </div>
+    </div>
+    <p class="stats-footnotes">
+      &sup1; Google &ndash; The Power of Media-Rich Map Listings, 2015, badanie na próbie 1201 osób. &nbsp;|&nbsp;
+      &sup2; Matterport &ndash; Travel &amp; Hospitality. &nbsp;|&nbsp;
+      &sup3; McLean &amp; Barhorst, Journal of Travel Research, 2022.
+    </p>
   </div>
 </section>
 
@@ -745,7 +811,7 @@
           <li><a href="#realizacje">Realizacje</a></li>
         </ul>
       </div>
-      <div class="footer-col">
+      <div class="footer-col" id="kontakt">
         <h4>Kontakt</h4>
         <ul>
           <li>+48 789 000 000</li>
