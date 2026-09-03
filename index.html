@@ -101,6 +101,12 @@
     content:""; position:absolute; inset:0;
     background:linear-gradient(180deg, rgba(10,12,14,.4) 0%, rgba(10,12,14,.05) 28%, rgba(10,12,14,.42) 100%);
   }
+  .hero-bg-alt{
+    position:absolute; inset:0; z-index:0;
+    background-size:cover; background-position:center;
+    opacity:0; transition:opacity .5s ease;
+  }
+  .hero-bg-alt.is-active{opacity:1;}
   .viewer{
     position:relative; z-index:1;
     width:112px; height:112px; border-radius:50%;
@@ -347,6 +353,7 @@
 <section class="hero" id="hero">
   <div class="hero-media" id="viewerBtn" role="button" tabindex="0" aria-label="Otwórz spacer 360°">
     <div class="hero-media-inner" style="background-image:url('hotel1.png')">
+      <div class="hero-bg-alt" id="heroBgAlt"></div>
       <div class="viewer"><div class="deg">360°</div></div>
       <div class="viewer-hint">Kliknij i rozejrzyj się</div>
       <div class="wrap hero-head">
@@ -365,7 +372,7 @@
   <div class="wrap hero-verticals">
     <div>
       <div class="hv-label">ZAREZERWUJE</div>
-      <div class="hv-card">
+      <div class="hv-card" data-hero-target="noclegi">
         <div class="hv-icon">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
             <path d="M2 20v-7a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v7"/>
@@ -380,7 +387,7 @@
     </div>
     <div>
       <div class="hv-label">ODWIEDZI</div>
-      <div class="hv-card">
+      <div class="hv-card" data-hero-target="restauracje" data-hero-img="hero_restauracja.png">
         <div class="hv-icon">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
             <path d="M6 2v7a2 2 0 0 0 4 0V2M8 9v13M18 2c-1.5 0-3 1.5-3 4v4a2 2 0 0 0 2 2h1M18 2v20"/>
@@ -392,7 +399,7 @@
     </div>
     <div>
       <div class="hv-label">UMÓWI WIZYTĘ</div>
-      <div class="hv-card">
+      <div class="hv-card" data-hero-target="beauty" data-hero-img="hero_beauty.png">
         <div class="hv-icon">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
             <path d="M12 22c-4-2-7-6-7-10a7 7 0 0 1 7-7 7 7 0 0 1 7 7c0 4-3 8-7 10z"/>
@@ -673,6 +680,22 @@
     closeViewer();
   });
   embed.addEventListener('click', function(e){ e.stopPropagation(); });
+
+  var heroBgAlt = document.getElementById('heroBgAlt');
+  document.querySelectorAll('[data-hero-target]').forEach(function(card){
+    var img = card.getAttribute('data-hero-img');
+    card.addEventListener('mouseenter', function(){
+      if(img){
+        heroBgAlt.style.backgroundImage = "url('" + img + "')";
+        heroBgAlt.classList.add('is-active');
+      } else {
+        heroBgAlt.classList.remove('is-active');
+      }
+    });
+    card.addEventListener('mouseleave', function(){
+      heroBgAlt.classList.remove('is-active');
+    });
+  });
 
   var galleryRow = document.getElementById('galleryRow');
   document.getElementById('galleryNext').addEventListener('click', function(){
