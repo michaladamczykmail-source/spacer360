@@ -264,15 +264,16 @@
 
   /* ---------- Potrzebujesz więcej? (upsell) ---------- */
   .upsell-section{padding:100px 0; background:var(--bg-alt);}
+  .upsell-section .section-head h2{font-size:clamp(30px,3.6vw,42px);}
 
   .upsell-grid{display:grid; grid-template-columns:1fr 1fr; gap:26px;}
   .upsell-card{background:#fff; border:1px solid var(--line); border-radius:var(--radius-lg); padding:26px; display:flex; gap:26px; align-items:center;}
   .upsell-visual{flex:none; width:38%;}
   .upsell-img{width:100%; display:block;}
   .upsell-body{flex:1; min-width:0;}
-  .upsell-card-head{display:flex; align-items:baseline; justify-content:space-between; gap:12px; margin-bottom:10px;}
-  .upsell-card-head h3{font-size:19.5px; font-weight:800; letter-spacing:-.01em;}
-  .upsell-price{font-size:13px; color:var(--ink-soft); white-space:nowrap;}
+  .upsell-card-head{margin-bottom:10px;}
+  .upsell-card-head h3{font-size:22px; font-weight:800; letter-spacing:-.01em; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;}
+  .upsell-price{font-size:13px; color:var(--ink-soft); white-space:nowrap; margin-top:3px; display:block;}
   .upsell-price strong{font-size:16px; font-weight:800; color:var(--ink);}
   .upsell-desc{font-size:13px; color:var(--ink-soft); line-height:1.5; margin-bottom:16px;}
   .upsell-list{display:flex; flex-direction:column; gap:8px; margin-bottom:20px; list-style:none;}
@@ -954,7 +955,7 @@
   <div class="wrap">
     <div class="section-head">
       <div class="eyebrow" style="text-align:center;">POTRZEBUJESZ WIĘCEJ?</div>
-      <h2>Wykorzystaj wirtualny spacer, aby zdobywać więcej rezerwacji i zapytań.</h2>
+      <h2>Pójdź krok dalej niż spacer 360° &mdash; zbuduj landing lub stronę firmową, która wykorzysta jego pełny potencjał.</h2>
     </div>
 
     <div class="upsell-grid">
