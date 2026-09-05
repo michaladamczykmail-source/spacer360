@@ -263,14 +263,12 @@
   .how-arrow svg{width:16px; height:16px;}
 
   /* ---------- Potrzebujesz więcej? (upsell) ---------- */
-  .upsell-section{padding:70px 0 100px;}
-  .upsell-head{display:flex; flex-wrap:wrap; align-items:baseline; column-gap:12px; row-gap:4px; margin-bottom:40px;}
-  .upsell-label{font-size:13px; font-weight:800; letter-spacing:.04em; text-transform:uppercase; color:var(--ink); white-space:nowrap;}
-  .upsell-head p{font-size:14.5px; color:var(--ink-soft);}
+  .upsell-section{padding:100px 0; background:var(--bg-alt);}
 
   .upsell-grid{display:grid; grid-template-columns:1fr 1fr; gap:26px;}
   .upsell-card{background:#fff; border:1px solid var(--line); border-radius:var(--radius-lg); padding:26px; display:flex; gap:26px; align-items:center;}
   .upsell-visual{flex:none; width:38%;}
+  .upsell-img{width:100%; display:block;}
   .upsell-body{flex:1; min-width:0;}
   .upsell-card-head{display:flex; align-items:baseline; justify-content:space-between; gap:12px; margin-bottom:10px;}
   .upsell-card-head h3{font-size:16.5px; font-weight:800; letter-spacing:-.01em;}
@@ -284,18 +282,8 @@
   .upsell-btn:hover{transform:translateY(-1px);}
   .upsell-btn svg{width:13px; height:13px;}
 
-  .laptop-mock{width:100%;}
-  .laptop-screen{
-    position:relative; aspect-ratio:16/10; border-radius:8px 8px 2px 2px; border:7px solid #1a1d1f;
-    border-bottom-width:2px; overflow:hidden; background-size:cover; background-position:center;
-  }
-  .laptop-screen::after{content:""; position:absolute; inset:0; background:linear-gradient(180deg, rgba(10,12,14,.1) 0%, rgba(10,12,14,.6) 100%);}
-  .laptop-overlay{position:absolute; left:10%; top:14%; right:10%; z-index:1; color:#fff; font-size:11px; font-weight:800; line-height:1.35;}
-  .laptop-base{height:8px; background:#2a2e33; border-radius:0 0 5px 5px; position:relative;}
-  .laptop-base::before{content:""; position:absolute; left:50%; top:0; transform:translateX(-50%); width:16%; height:3px; background:#1a1d1f; border-radius:0 0 3px 3px;}
-
   /* ---------- Znasz to już z Google Street View ---------- */
-  .streetview-section{padding:100px 0; background:var(--bg-alt);}
+  .streetview-section{padding:100px 0;}
   .streetview-content{display:grid; grid-template-columns:280px 1fr; gap:44px; align-items:center;}
   .streetview-text h2{font-size:clamp(24px,2.8vw,30px); font-weight:800; letter-spacing:-.02em; margin-bottom:14px; line-height:1.25;}
   .streetview-text p{color:var(--ink-soft); font-size:15px; line-height:1.6; margin-bottom:8px;}
@@ -947,20 +935,15 @@
 
 <section class="upsell-section">
   <div class="wrap">
-    <div class="upsell-head">
-      <span class="upsell-label">Potrzebujesz więcej?</span>
-      <p>Wykorzystaj wirtualny spacer, aby zdobywać więcej rezerwacji i zapytań.</p>
+    <div class="section-head">
+      <div class="eyebrow" style="text-align:center;">POTRZEBUJESZ WIĘCEJ?</div>
+      <h2>Wykorzystaj wirtualny spacer, aby zdobywać więcej rezerwacji i zapytań.</h2>
     </div>
 
     <div class="upsell-grid">
       <div class="upsell-card">
         <div class="upsell-visual">
-          <div class="laptop-mock">
-            <div class="laptop-screen" style="background-image:url('hotel1.jpg')">
-              <div class="laptop-overlay">Miejsce, do którego<br>chcesz wracać.</div>
-            </div>
-            <div class="laptop-base"></div>
-          </div>
+          <img class="upsell-img" src="upsell-landing.png" alt="Mockup strony typu landing page z wirtualnym spacerem 360° dla apartamentów nad jeziorem" loading="lazy">
         </div>
         <div class="upsell-body">
           <div class="upsell-card-head">
@@ -981,12 +964,7 @@
 
       <div class="upsell-card">
         <div class="upsell-visual">
-          <div class="laptop-mock">
-            <div class="laptop-screen" style="background-image:url('channel-web.jpg')">
-              <div class="laptop-overlay">Zadbaj o siebie<br>w wyjątkowym miejscu.</div>
-            </div>
-            <div class="laptop-base"></div>
-          </div>
+          <img class="upsell-img" src="upsell-website.png" alt="Mockup pełnej strony firmowej z wirtualnym spacerem 360° dla studia urody" loading="lazy">
         </div>
         <div class="upsell-body">
           <div class="upsell-card-head">
