@@ -266,19 +266,21 @@
   .upsell-section{padding:100px 0; background:var(--bg-alt);}
   .upsell-section .section-head h2{font-size:clamp(30px,3.6vw,42px);}
 
+  .upsell-section .section-head h2{font-size:clamp(28px,3.2vw,38px);}
   .upsell-grid{display:grid; grid-template-columns:1fr 1fr; gap:26px;}
-  .upsell-card{background:#fff; border:1px solid var(--line); border-radius:var(--radius-lg); padding:26px; display:flex; gap:26px; align-items:center;}
-  .upsell-visual{flex:none; width:38%;}
-  .upsell-img{width:100%; display:block;}
-  .upsell-body{flex:1; min-width:0;}
-  .upsell-card-head{margin-bottom:10px;}
+  .upsell-card{background:#fff; border:1px solid var(--line); border-radius:var(--radius-lg); overflow:hidden;}
+  .upsell-visual{background:var(--bg-alt); padding:28px 28px 0; display:flex; justify-content:center;}
+  .upsell-img{width:100%; max-width:420px; display:block;}
+  .upsell-body{padding:26px 28px 28px;}
+  .upsell-card-head{display:flex; align-items:baseline; justify-content:space-between; gap:12px; margin-bottom:10px;}
   .upsell-card-head h3{font-size:22px; font-weight:800; letter-spacing:-.01em; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;}
-  .upsell-price{font-size:13px; color:var(--ink-soft); white-space:nowrap; margin-top:3px; display:block;}
-  .upsell-price strong{font-size:16px; font-weight:800; color:var(--ink);}
-  .upsell-desc{font-size:13px; color:var(--ink-soft); line-height:1.5; margin-bottom:16px;}
-  .upsell-list{display:flex; flex-direction:column; gap:8px; margin-bottom:20px; list-style:none;}
-  .upsell-list li{display:flex; align-items:center; gap:8px; font-size:12.8px; color:var(--ink);}
-  .upsell-list li svg{flex:none; width:15px; height:15px; color:var(--navy);}
+  .upsell-price{flex:none; font-size:11px; font-weight:700; letter-spacing:.04em; color:var(--ink-soft); white-space:nowrap; text-align:right;}
+  .upsell-price strong{display:block; font-size:18px; font-weight:800; color:var(--ink); letter-spacing:-.01em; margin-top:1px;}
+  .upsell-desc{font-size:13px; color:var(--ink-soft); line-height:1.55; margin-bottom:22px;}
+  .upsell-features{display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin-bottom:24px;}
+  .upsell-feature{display:flex; align-items:flex-start; gap:8px;}
+  .upsell-feature svg{flex:none; width:19px; height:19px; color:var(--ink); margin-top:1px;}
+  .upsell-feature span{font-size:11.8px; color:var(--ink); line-height:1.35;}
   .upsell-btn{display:inline-flex; align-items:center; gap:8px; background:var(--navy); color:#fff; font-size:12.5px; font-weight:700; padding:11px 20px; border-radius:999px; transition:transform .15s ease;}
   .upsell-btn:hover{transform:translateY(-1px);}
   .upsell-btn svg{width:13px; height:13px;}
@@ -362,10 +364,10 @@
   .contact-trust{display:flex; flex-direction:column; gap:18px;}
   .contact-trust-item{display:flex; align-items:flex-start; gap:12px;}
   .contact-trust-icon{
-    flex:none; width:34px; height:34px; border-radius:50%; background:var(--bg-alt);
+    flex:none; width:40px; height:52px; border-radius:50%; background:var(--bg-alt);
     display:flex; align-items:center; justify-content:center; color:var(--navy);
   }
-  .contact-trust-icon svg{width:15px; height:15px;}
+  .contact-trust-icon svg{width:18px; height:18px;}
   .contact-trust-title{font-size:13.3px; font-weight:700; color:var(--ink); margin-bottom:1px;}
   .contact-trust-sub{font-size:12px; color:var(--ink-soft);}
 
@@ -523,8 +525,7 @@
     .stats-box{grid-template-columns:1fr;}
     .stat-item{border-left:none; border-top:1px solid rgba(255,255,255,.15); padding-top:30px;}
     .stat-item:first-child{border-top:none; padding-top:0;}
-    .upsell-card{flex-direction:column; align-items:stretch;}
-    .upsell-visual{width:100%;}
+    .upsell-features{grid-template-columns:1fr;}
   }
 </style>
 </head>
@@ -955,8 +956,9 @@
 <section class="upsell-section">
   <div class="wrap">
     <div class="section-head">
-      <div class="eyebrow" style="text-align:center;">POTRZEBUJESZ WIĘCEJ?</div>
-      <h2>Pójdź krok dalej niż spacer 360° &mdash; zbuduj landing lub stronę firmową, która wykorzysta jego pełny potencjał.</h2>
+      <div class="eyebrow" style="text-align:center;">CHCESZ WIĘCEJ?</div>
+      <h2>Rozwiń spacer 360° o własną stronę</h2>
+      <p>Zamień zainteresowanie w zapytania i rezerwacje.</p>
     </div>
 
     <div class="upsell-grid">
@@ -967,15 +969,24 @@
         <div class="upsell-body">
           <div class="upsell-card-head">
             <h3>Landing 360</h3>
-            <div class="upsell-price">od <strong>1 990 zł</strong></div>
+            <div class="upsell-price">OD <strong>1 990 zł</strong></div>
           </div>
           <p class="upsell-desc">Dedykowana strona typu landing page, która prezentuje Twój obiekt i zachęca do rezerwacji lub kontaktu.</p>
-          <ul class="upsell-list">
-            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Nowoczesny design</li>
-            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Integracja ze spacerem 360°</li>
-            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Formularz zapytań / rezerwacji</li>
-          </ul>
-          <a href="#kontakt" class="upsell-btn" data-interest="Landing 360">Zapytaj o landing
+          <div class="upsell-features">
+            <div class="upsell-feature">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+              <span>Nowoczesny design</span>
+            </div>
+            <div class="upsell-feature">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17 2l4 4-4 4"/><path d="M3 12V10a4 4 0 0 1 4-4h14"/><path d="M7 22l-4-4 4-4"/><path d="M21 12v2a4 4 0 0 1-4 4H3"/></svg>
+              <span>Integracja ze spacerem 360°</span>
+            </div>
+            <div class="upsell-feature">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M8 12l3 3 5-5"/></svg>
+              <span>Formularz zapytań / rezerwacji</span>
+            </div>
+          </div>
+          <a href="#kontakt" class="upsell-btn" data-interest="Landing 360">Zobacz Landing 360
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
           </a>
         </div>
@@ -988,15 +999,24 @@
         <div class="upsell-body">
           <div class="upsell-card-head">
             <h3>Strona firmowa 360</h3>
-            <div class="upsell-price">od <strong>3 490 zł</strong></div>
+            <div class="upsell-price">OD <strong>3 490 zł</strong></div>
           </div>
           <p class="upsell-desc">Pełna strona internetowa dla Twojej firmy z wirtualnym spacerem, galerią, ofertą i formularzem kontaktowym.</p>
-          <ul class="upsell-list">
-            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Indywidualny projekt</li>
-            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Wiele podstron (np. oferta, galeria)</li>
-            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Integracja ze spacerem 360°</li>
-          </ul>
-          <a href="#kontakt" class="upsell-btn" data-interest="Strona firmowa">Zapytaj o stronę
+          <div class="upsell-features">
+            <div class="upsell-feature">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22a10 10 0 1 1 10-10 4 4 0 0 1-4 4h-2.5a2 2 0 0 0-1.4 3.4A2 2 0 0 1 12 22z"/><circle cx="7" cy="10" r="1.2"/><circle cx="12" cy="7" r="1.2"/><circle cx="17" cy="10" r="1.2"/></svg>
+              <span>Indywidualny projekt</span>
+            </div>
+            <div class="upsell-feature">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
+              <span>Wiele podstron (np. oferta, galeria)</span>
+            </div>
+            <div class="upsell-feature">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 1 1-3-6.7"/><path d="M21 3v5h-5"/></svg>
+              <span>Integracja ze spacerem 360°</span>
+            </div>
+          </div>
+          <a href="#kontakt" class="upsell-btn" data-interest="Strona firmowa">Zobacz stronę firmową
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
           </a>
         </div>
