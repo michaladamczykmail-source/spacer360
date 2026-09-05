@@ -355,28 +355,38 @@
   .addons-label{font-weight:700; letter-spacing:.06em; color:var(--ink); text-transform:uppercase; font-size:12px;}
 
   /* ---------- Contact form ---------- */
-  .contact-section{padding:100px 0; background:var(--bg-alt);}
-  .contact-grid{display:grid; grid-template-columns:1fr 1.3fr; gap:60px; align-items:start;}
-  .contact-eyebrow{
-    display:flex; align-items:center; gap:10px; font-size:12px; font-weight:700;
-    letter-spacing:.14em; text-transform:uppercase; color:var(--ink-faint); margin-bottom:18px;
+  .contact-section{padding:26px 0 90px;}
+  .contact-panel{
+    position:relative; background:#fff; border:1px solid var(--line); border-radius:var(--radius-lg);
+    padding:44px 48px; box-shadow:0 20px 45px rgba(23,34,44,.07);
+    display:grid; grid-template-columns:0.85fr 1.6fr; gap:48px;
   }
-  .contact-eyebrow::before{content:""; flex:none; width:3px; height:16px; background:var(--accent); border-radius:2px;}
-  .contact-heading{font-size:clamp(26px,3vw,34px); font-weight:800; letter-spacing:-.02em; line-height:1.28; margin-bottom:36px;}
-  .contact-trust{display:flex; flex-direction:column; gap:20px;}
-  .contact-trust-item{display:flex; align-items:center; gap:14px;}
+  .contact-panel::before{
+    content:""; position:absolute; top:-11px; left:50%; transform:translateX(-50%);
+    width:64px; height:22px; background:#fff; border:1px solid var(--line); border-bottom:none;
+    border-radius:12px 12px 0 0;
+  }
+  .contact-heading{font-size:20px; font-weight:800; letter-spacing:-.01em; line-height:1.3; margin-bottom:10px;}
+  .contact-sub{font-size:13.3px; color:var(--ink-soft); line-height:1.55; margin-bottom:28px;}
+  .contact-trust{display:flex; flex-direction:column; gap:18px;}
+  .contact-trust-item{display:flex; align-items:flex-start; gap:12px;}
   .contact-trust-icon{
-    flex:none; width:36px; height:36px; border-radius:50%; border:1.5px solid var(--line);
+    flex:none; width:34px; height:34px; border-radius:50%; background:var(--bg-alt);
     display:flex; align-items:center; justify-content:center; color:var(--navy);
   }
-  .contact-trust-icon svg{width:16px; height:16px;}
-  .contact-trust-item span{font-size:14px; font-weight:600; color:var(--ink);}
+  .contact-trust-icon svg{width:15px; height:15px;}
+  .contact-trust-title{font-size:13.3px; font-weight:700; color:var(--ink); margin-bottom:1px;}
+  .contact-trust-sub{font-size:12px; color:var(--ink-soft);}
 
-  .contact-form-panel{
-    background:#fff; border:1px solid var(--line); border-radius:var(--radius-lg); padding:36px;
-    box-shadow:0 20px 45px rgba(23,34,44,.06);
+  .contact-form-head{
+    display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:14px;
+    margin-bottom:24px; padding-bottom:22px; border-bottom:1px solid var(--line);
   }
-  .form-row{display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-bottom:16px;}
+  .contact-selected-package{font-size:14.5px; font-weight:700; color:var(--ink);}
+  .contact-selected-package strong{color:var(--navy);}
+
+  .form-row{display:grid; grid-template-columns:1fr; gap:16px; margin-bottom:16px;}
+  .form-row-3{grid-template-columns:1fr 1fr 1fr;}
   .form-field{display:flex; flex-direction:column; gap:6px;}
   .form-field label{font-size:12.5px; font-weight:700; color:var(--ink);}
   .form-field input, .form-field textarea{
@@ -385,27 +395,27 @@
   }
   .form-field input::placeholder, .form-field textarea::placeholder{color:var(--ink-faint);}
   .form-field input:focus, .form-field textarea:focus{outline:none; border-color:var(--navy);}
-  .form-field textarea{resize:vertical; min-height:100px; line-height:1.5;}
-  .form-label-standalone{font-size:12.5px; font-weight:700; color:var(--ink); margin-bottom:10px; display:block;}
+  .form-field textarea{resize:vertical; min-height:96px; line-height:1.5;}
 
-  .package-chips{display:flex; flex-wrap:wrap; gap:10px; margin-bottom:20px;}
+  .package-chips{display:flex; flex-wrap:wrap; gap:8px;}
   .package-chip{
-    padding:9px 16px; border-radius:999px; border:1.5px solid var(--line); background:#fff;
-    font-size:12.5px; font-weight:700; color:var(--ink-soft); cursor:pointer; transition:all .15s ease;
-    font-family:inherit;
+    padding:8px 14px; border-radius:999px; border:1.5px solid var(--line); background:#fff;
+    font-size:11.5px; font-weight:700; color:var(--ink-soft); cursor:pointer; transition:all .15s ease;
+    font-family:inherit; white-space:nowrap;
   }
   .package-chip:hover{border-color:var(--navy); color:var(--ink);}
   .package-chip.is-active{background:var(--navy); border-color:var(--navy); color:#fff;}
 
-  .form-consent{display:flex; align-items:flex-start; gap:10px; margin-bottom:22px;}
+  .form-consent{display:flex; align-items:flex-start; gap:10px; margin-bottom:24px;}
   .form-consent input[type=checkbox]{margin-top:3px; flex:none; width:16px; height:16px; accent-color:var(--navy);}
-  .form-consent label{font-size:12.3px; color:var(--ink-soft); line-height:1.55;}
-  .form-consent a{text-decoration:underline; color:var(--ink);}
+  .form-consent-text{font-size:12.3px; color:var(--ink-soft); line-height:1.55;}
+  .form-consent-text a{display:inline-block; margin-top:2px; text-decoration:underline; color:var(--ink); font-weight:600;}
 
+  .form-actions{display:flex; justify-content:flex-end;}
   .form-submit-btn{border:none; cursor:pointer; font-family:inherit;}
   .form-submit-btn:disabled{opacity:.6; cursor:default; transform:none;}
   .form-submit-btn svg{width:15px; height:15px;}
-  .form-status{font-size:13px; margin-top:14px; display:none; line-height:1.5;}
+  .form-status{font-size:13px; margin-top:14px; display:none; line-height:1.5; text-align:right;}
   .form-status.is-success{color:#1a7f37; display:block;}
   .form-status.is-error{color:#c0392b; display:block;}
   .hp-field{position:absolute; left:-9999px; width:1px; height:1px; opacity:0; pointer-events:none;}
@@ -499,9 +509,11 @@
     .example-media-row{flex-direction:column; align-items:center;}
     .example-side{max-width:270px; align-items:center; text-align:center; padding-top:0;}
     .example-annotation svg{display:none;}
-    .contact-grid{grid-template-columns:1fr; gap:36px;}
-    .contact-form-panel{padding:28px;}
-    .form-row{grid-template-columns:1fr;}
+    .contact-panel{grid-template-columns:1fr; gap:32px; padding:32px 26px;}
+    .form-row-3{grid-template-columns:1fr;}
+    .form-actions{justify-content:stretch;}
+    .form-submit-btn{width:100%; justify-content:center;}
+    .form-status{text-align:center;}
   }
   @media (max-width: 600px){
     header .wrap{height:50px;}
@@ -958,85 +970,92 @@
       </div>
     </div>
 
-    <p class="addons-note"><span class="addons-label">DODATKI I ROZSZERZENIA</span> &middot; Sesja foto 590 zł &middot; Dron 690 zł &middot; Dodatkowa strefa 360 od 250 zł &middot; Duże obiekty: indywidualnie</p>
   </div>
 </section>
 
 <section class="contact-section" id="kontakt">
   <div class="wrap">
-    <div class="contact-grid">
+    <div class="contact-panel">
       <div class="contact-copy">
-        <div class="contact-eyebrow">SKONTAKTUJ SIĘ Z NAMI</div>
-        <h2 class="contact-heading">Zostaw swoje dane,<br>a my skontaktujemy się<br>z Tobą w ciągu 24 godzin.</h2>
+        <h2 class="contact-heading">Zapytaj o wybrany pakiet</h2>
+        <p class="contact-sub">Wypełnij krótki formularz, a odezwiemy się z wyceną i możliwym terminem.</p>
         <div class="contact-trust">
           <div class="contact-trust-item">
-            <span class="contact-trust-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg></span>
-            <span>Szybka odpowiedź</span>
+            <span class="contact-trust-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 3 14h8l-1 8 10-12h-8z"/></svg></span>
+            <div>
+              <div class="contact-trust-title">Szybka odpowiedź</div>
+              <div class="contact-trust-sub">Zwykle w ciągu kilku godzin</div>
+            </div>
           </div>
           <div class="contact-trust-item">
-            <span class="contact-trust-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6z"/><path d="M9 12l2 2 4-4"/></svg></span>
-            <span>Bez zobowiązań</span>
+            <span class="contact-trust-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg></span>
+            <div>
+              <div class="contact-trust-title">Bez zobowiązań</div>
+              <div class="contact-trust-sub">To tylko zapytanie</div>
+            </div>
           </div>
           <div class="contact-trust-item">
-            <span class="contact-trust-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a8 8 0 1 1-3.5-6.6"/><path d="M21 4v5h-5"/></svg></span>
-            <span>Doradzimy najlepsze rozwiązanie</span>
+            <span class="contact-trust-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></span>
+            <div>
+              <div class="contact-trust-title">Pomożemy w wyborze</div>
+              <div class="contact-trust-sub">Doradzimy najlepsze rozwiązanie</div>
+            </div>
           </div>
         </div>
       </div>
 
-      <form class="contact-form-panel" id="contactForm" action="contact-handler.php" method="post" novalidate>
-        <div class="form-row">
+      <form id="contactForm" action="contact-handler.php" method="post" novalidate>
+        <div class="contact-form-head">
+          <div class="contact-selected-package">Wybrany pakiet: <strong id="selectedPackageText">MIEJSCE PRO</strong></div>
+          <div class="package-chips" id="packageChips" role="group" aria-label="Wybierz pakiet">
+            <button type="button" class="package-chip" data-package="360 START">360 START</button>
+            <button type="button" class="package-chip is-active" data-package="MIEJSCE PRO">MIEJSCE PRO</button>
+            <button type="button" class="package-chip" data-package="PEŁNA PREZENTACJA">PEŁNA PREZENTACJA</button>
+          </div>
+          <input type="hidden" id="cf-package" name="package" value="MIEJSCE PRO">
+        </div>
+
+        <div class="form-row form-row-3">
           <div class="form-field">
             <label for="cf-name">Imię i nazwisko *</label>
-            <input type="text" id="cf-name" name="name" placeholder="Wpisz swoje imię i nazwisko" autocomplete="name" required>
+            <input type="text" id="cf-name" name="name" placeholder="Jan Kowalski" autocomplete="name" required>
           </div>
           <div class="form-field">
             <label for="cf-phone">Telefon *</label>
-            <input type="tel" id="cf-phone" name="phone" placeholder="Wpisz numer telefonu" autocomplete="tel" required>
-          </div>
-        </div>
-        <div class="form-row">
-          <div class="form-field">
-            <label for="cf-company">Nazwa firmy</label>
-            <input type="text" id="cf-company" name="company" placeholder="Wpisz nazwę firmy" autocomplete="organization">
+            <input type="tel" id="cf-phone" name="phone" placeholder="+48 123 456 789" autocomplete="tel" required>
           </div>
           <div class="form-field">
-            <label for="cf-nip">NIP</label>
-            <input type="text" id="cf-nip" name="nip" placeholder="Wpisz NIP" inputmode="numeric">
+            <label for="cf-email">Adres e-mail *</label>
+            <input type="email" id="cf-email" name="email" placeholder="jan@twojafirma.pl" autocomplete="email" required>
           </div>
         </div>
-        <div class="form-field" style="margin-bottom:16px;">
-          <label for="cf-email">Adres e-mail *</label>
-          <input type="email" id="cf-email" name="email" placeholder="Wpisz adres e-mail" autocomplete="email" required>
-        </div>
-
-        <span class="form-label-standalone">Wybierz pakiet</span>
-        <div class="package-chips" id="packageChips" role="group" aria-label="Wybierz pakiet">
-          <button type="button" class="package-chip" data-package="360 START">360 START</button>
-          <button type="button" class="package-chip" data-package="MIEJSCE PRO">MIEJSCE PRO</button>
-          <button type="button" class="package-chip" data-package="PEŁNA PREZENTACJA">PEŁNA PREZENTACJA</button>
-        </div>
-        <input type="hidden" id="cf-package" name="package" value="">
 
         <div class="form-field" style="margin-bottom:16px;">
           <label for="cf-message">Wiadomość *</label>
-          <textarea id="cf-message" name="message" placeholder="Proszę o kontakt ws umówienia spaceru 360 w mojej firmie." required></textarea>
+          <textarea id="cf-message" name="message" placeholder="Proszę o kontakt ws. umówienia spaceru 360 w mojej firmie." required></textarea>
         </div>
 
         <div class="form-consent">
           <input type="checkbox" id="cf-consent" name="consent" required>
-          <label for="cf-consent">Wyrażam zgodę na przetwarzanie moich danych osobowych w celu realizacji zamówienia zgodnie z <a href="polityka-prywatnosci.html" target="_blank" rel="noopener">Polityką prywatności</a>. *</label>
+          <div class="form-consent-text">
+            Wyrażam zgodę na przetwarzanie moich danych osobowych na potrzeby obsługi zapytania i kontaktu zwrotnego. *
+            <a href="polityka-prywatnosci.html" target="_blank" rel="noopener">Polityka prywatności</a>
+          </div>
         </div>
 
         <input type="text" name="website" class="hp-field" tabindex="-1" autocomplete="off" aria-hidden="true">
 
-        <button type="submit" class="btn btn-dark form-submit-btn">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2 11 13"/><path d="M22 2 15 22l-4-9-9-4z"/></svg>
-          Wyślij wiadomość
-        </button>
+        <div class="form-actions">
+          <button type="submit" class="btn btn-dark form-submit-btn">
+            Wyślij wiadomość
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </button>
+        </div>
         <p class="form-status" id="formStatus" role="status"></p>
       </form>
     </div>
+
+    <p class="addons-note"><span class="addons-label">DODATKI I ROZSZERZENIA</span> &middot; Sesja foto 590 zł &middot; Dron 690 zł &middot; Dodatkowa strefa 360 od 250 zł &middot; Duże obiekty: indywidualnie</p>
   </div>
 </section>
 
@@ -1228,17 +1247,19 @@
   });
 
   var packageInput = document.getElementById('cf-package');
+  var selectedPackageText = document.getElementById('selectedPackageText');
   var chips = document.querySelectorAll('.package-chip');
+  var DEFAULT_PACKAGE = 'MIEJSCE PRO';
   function selectPackage(name){
     chips.forEach(function(chip){
       chip.classList.toggle('is-active', chip.getAttribute('data-package') === name);
     });
     packageInput.value = name;
+    if(selectedPackageText) selectedPackageText.textContent = name;
   }
   chips.forEach(function(chip){
     chip.addEventListener('click', function(){
-      var isActive = chip.classList.contains('is-active');
-      selectPackage(isActive ? '' : chip.getAttribute('data-package'));
+      selectPackage(chip.getAttribute('data-package'));
     });
   });
   document.querySelectorAll('[data-package]').forEach(function(el){
@@ -1272,7 +1293,7 @@
           formStatus.className = 'form-status is-success';
           formStatus.textContent = 'Dziękujemy! Odezwiemy się w ciągu 24 godzin.';
           contactForm.reset();
-          selectPackage('');
+          selectPackage(DEFAULT_PACKAGE);
         } else {
           formStatus.className = 'form-status is-error';
           formStatus.textContent = data.error || 'Coś poszło nie tak. Zadzwoń do nas lub napisz na info@bokaWorks.pl.';
