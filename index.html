@@ -225,27 +225,50 @@
   .flow-row{display:flex; align-items:flex-start; min-width:0;}
   .flow-step{flex:1; display:flex; flex-direction:column; align-items:center; gap:10px; min-width:0;}
   .flow-icon{
-    flex:none; width:42px; height:42px; border-radius:50%; background:var(--bg-alt); border:1px solid var(--line);
+    position:relative; flex:none; width:44px; height:44px; border-radius:50%; background:var(--bg-alt); border:1px solid var(--line);
     display:flex; align-items:center; justify-content:center; color:var(--navy);
   }
   .flow-icon svg{width:18px; height:18px;}
-  .flow-icon .logo-icon{width:20px; height:12px;}
-  .flow-icon .flow-brands{font-size:8.5px; font-weight:800; line-height:1.15; text-align:center; color:var(--navy);}
+  .flow-icon.is-dark{background:var(--navy); border-color:var(--navy); color:#fff;}
+  .flow-icon .flow-360-label{font-size:9px; font-weight:800; letter-spacing:-.01em;}
+  .flow-logo-stack{position:relative; width:26px; height:34px;}
+  .flow-logo-stack .fl-badge{
+    position:absolute; left:50%; transform:translateX(-50%); width:19px; height:19px; border-radius:50%;
+    display:flex; align-items:center; justify-content:center; box-shadow:0 0 0 2px var(--bg-alt);
+  }
+  .flow-logo-stack .fl-google{top:0; background:#fff; border:1px solid var(--line);}
+  .flow-logo-stack .fl-google svg{width:12px; height:12px;}
+  .flow-logo-stack .fl-fb{bottom:0; background:#1877F2;}
+  .flow-logo-stack .fl-fb svg{width:11px; height:11px;}
   .flow-label{font-size:10.3px; font-weight:700; color:var(--ink-soft); text-align:center; line-height:1.35; padding:0 2px;}
-  .flow-arrow{flex:none; color:var(--ink-faint); margin-top:11px; padding:0 1px;}
+  .flow-arrow{flex:none; color:var(--ink-faint); margin-top:12px; padding:0 1px;}
   .flow-arrow svg{width:13px; height:13px;}
 
+  .social-row{display:flex; align-items:center; justify-content:center; gap:16px;}
   .social-phone{
-    position:relative; width:118px; margin:0 auto; aspect-ratio:9/16; border-radius:16px; overflow:hidden;
+    position:relative; flex:none; width:112px; aspect-ratio:9/16; border-radius:16px; overflow:hidden;
     background-size:cover; background-position:center; box-shadow:0 10px 22px rgba(0,0,0,.16);
   }
-  .social-phone::after{content:""; position:absolute; inset:0; background:linear-gradient(180deg, rgba(0,0,0,0) 55%, rgba(0,0,0,.55) 100%);}
-  .social-badge{
-    position:absolute; top:8px; left:8px; z-index:1; background:rgba(20,22,24,.55); backdrop-filter:blur(2px);
-    color:#fff; font-size:9.5px; font-weight:700; padding:3px 8px; border-radius:999px;
+  .social-phone::after{content:""; position:absolute; inset:0; background:linear-gradient(180deg, rgba(0,0,0,0) 45%, rgba(0,0,0,.65) 100%);}
+  .social-chip{
+    position:absolute; top:9px; left:9px; right:9px; z-index:1; background:#fff; color:var(--ink);
+    font-size:8.6px; font-weight:600; line-height:1.3; padding:6px 8px; border-radius:10px;
+    box-shadow:0 4px 10px rgba(0,0,0,.18);
   }
-  .social-caption{position:absolute; left:9px; right:9px; bottom:9px; z-index:1; color:#fff; font-size:9.5px; font-weight:600; line-height:1.3;}
-  .social-platforms{text-align:center; font-size:12px; color:var(--ink-soft); margin-top:16px;}
+  .social-bottom{position:absolute; left:9px; right:9px; bottom:9px; z-index:1; color:#fff;}
+  .social-badge{
+    display:inline-block; background:rgba(255,255,255,.22); backdrop-filter:blur(2px);
+    font-size:9px; font-weight:700; padding:2px 7px; border-radius:999px; margin-bottom:5px;
+  }
+  .social-caption{font-size:9px; font-weight:700; line-height:1.3;}
+  .social-icons{display:flex; flex-direction:column; gap:8px;}
+  .social-icon{width:26px; height:26px; border-radius:50%; display:flex; align-items:center; justify-content:center; color:#fff; flex:none;}
+  .social-icon svg{width:14px; height:14px;}
+  .social-icon.ig{background:radial-gradient(circle at 30% 110%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);}
+  .social-icon.fb{background:#1877F2;}
+  .social-icon.yt{background:#FF0000; border-radius:8px;}
+  .social-icon.pin{background:#E60023;}
+  .social-platforms{text-align:center; font-size:12px; color:var(--ink-soft); margin-top:18px;}
 
   .radial-diagram{width:100%; height:auto; overflow:visible;}
   .radial-line{stroke:var(--line); stroke-width:1.4;}
@@ -622,7 +645,16 @@
         <div class="capability-visual">
           <div class="flow-row">
             <div class="flow-step">
-              <div class="flow-icon"><span class="flow-brands">G<br>f</span></div>
+              <div class="flow-icon">
+                <div class="flow-logo-stack">
+                  <span class="fl-badge fl-google">
+                    <svg viewBox="0 0 48 48"><path fill="#4285F4" d="M45.12 24.5c0-1.56-.14-3.06-.4-4.5H24v8.51h11.84c-.51 2.75-2.06 5.08-4.39 6.64v5.52h7.11c4.16-3.83 6.56-9.47 6.56-16.17z"/><path fill="#34A853" d="M24 46c5.94 0 10.92-1.97 14.56-5.33l-7.11-5.52c-1.97 1.32-4.49 2.1-7.45 2.1-5.73 0-10.58-3.87-12.31-9.07H4.34v5.7C7.96 41.07 15.4 46 24 46z"/><path fill="#FBBC05" d="M11.69 28.18C11.25 26.86 11 25.45 11 24s.25-2.86.69-4.18v-5.7H4.34C2.85 17.09 2 20.45 2 24s.85 6.91 2.34 9.88l7.35-5.7z"/><path fill="#EA4335" d="M24 10.75c3.23 0 6.13 1.11 8.41 3.29l6.31-6.31C34.91 4.18 29.93 2 24 2 15.4 2 7.96 6.93 4.34 14.12l7.35 5.7c1.73-5.2 6.58-9.07 12.31-9.07z"/></svg>
+                  </span>
+                  <span class="fl-badge fl-fb">
+                    <svg viewBox="0 0 24 24" fill="#fff"><path d="M13.5 21v-7.5H16l.4-3H13.5V8.4c0-.9.3-1.5 1.6-1.5H16V4.3c-.3 0-1.2-.1-2.3-.1-2.3 0-3.8 1.4-3.8 3.9v2.3H7.5v3H10V21h3.5z"/></svg>
+                  </span>
+                </div>
+              </div>
               <div class="flow-label">Google / Facebook Ads</div>
             </div>
             <div class="flow-arrow">
@@ -638,7 +670,7 @@
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
             </div>
             <div class="flow-step">
-              <div class="flow-icon"><svg class="logo-icon"><use href="#icon-spacer-orbit"></use></svg></div>
+              <div class="flow-icon is-dark"><span class="flow-360-label">360°</span></div>
               <div class="flow-label">spacer 360°</div>
             </div>
             <div class="flow-arrow">
@@ -663,13 +695,23 @@
         <p class="capability-desc">Wykorzystaj atrakcyjne ujęcia ze spaceru w krótkich formach wideo.</p>
 
         <div class="capability-visual">
-          <div class="social-phone" style="background-image:url('hotel1.jpg')">
-            <div class="social-badge">15 s</div>
-            <div class="social-caption">Zajrzyj do naszego wnętrza ✨</div>
+          <div class="social-row">
+            <div class="social-phone" style="background-image:url('hotel1.jpg')">
+              <div class="social-chip">Zajrzyj do naszego nowego apartamentu 💛</div>
+              <div class="social-bottom">
+                <span class="social-badge">15 s</span>
+                <div class="social-caption">Pełny spacer w linku w bio</div>
+              </div>
+            </div>
+            <div class="social-icons">
+              <span class="social-icon ig"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1"/></svg></span>
+              <span class="social-icon fb"><svg viewBox="0 0 24 24" fill="#fff"><path d="M13.5 21v-7.5H16l.4-3H13.5V8.4c0-.9.3-1.5 1.6-1.5H16V4.3c-.3 0-1.2-.1-2.3-.1-2.3 0-3.8 1.4-3.8 3.9v2.3H7.5v3H10V21h3.5z"/></svg></span>
+              <span class="social-icon yt"><svg viewBox="0 0 24 24" fill="#fff"><path d="M10 8.5l6 3.5-6 3.5z"/></svg></span>
+              <span class="social-icon pin"><svg viewBox="0 0 24 24" fill="#fff"><path d="M12 2a10 10 0 0 0-3.6 19.3c0-.8-.1-2 0-2.9l1.3-5.5s-.3-.7-.3-1.6c0-1.5.9-2.6 1.9-2.6.9 0 1.4.7 1.4 1.5 0 .9-.6 2.3-.9 3.5-.3 1.1.5 1.9 1.6 1.9 1.9 0 3.2-2.4 3.2-5.3 0-2.2-1.5-3.8-4.1-3.8-3 0-4.8 2.2-4.8 4.6 0 .8.3 1.4.7 1.8.2.2.2.3.1.6l-.2.9c-.1.3-.3.4-.6.2-1.1-.5-1.6-1.9-1.6-3.4 0-2.5 2.1-5.6 6.4-5.6 3.4 0 5.7 2.5 5.7 5.1 0 3.5-1.9 6.1-4.7 6.1-.9 0-1.8-.5-2.1-1.1l-.6 2.3c-.2.8-.6 1.6-1 2.3A10 10 0 1 0 12 2z"/></svg></span>
+            </div>
           </div>
           <p class="social-platforms">Instagram &middot; Facebook &middot; YouTube Shorts &middot; Pinterest</p>
         </div>
-        <p class="capability-caption">Gotowe ujęcia bez dodatkowej sesji zdjęciowej.</p>
       </div>
 
       <div class="capability-card">
