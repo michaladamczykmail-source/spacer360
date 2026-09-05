@@ -22,7 +22,7 @@
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Caveat:wght@600;700&display=swap" rel="stylesheet">
 <style>
   :root{
     --bg: #ffffff;
@@ -211,71 +211,107 @@
   /* ---------- Jeden spacer. Więcej możliwości. ---------- */
   .capabilities-section{padding:100px 0; background:var(--bg-alt);}
   .capabilities-grid{display:grid; grid-template-columns:repeat(3, minmax(0,1fr)); gap:26px; align-items:stretch;}
-  .capability-card{background:#fff; border:1px solid var(--line); border-radius:var(--radius-lg); padding:32px 28px; display:flex; flex-direction:column;}
-  .capability-icon{
-    flex:none; width:50px; height:50px; margin-bottom:18px; border-radius:50%; background:var(--bg-alt);
-    display:flex; align-items:center; justify-content:center; color:var(--navy);
-  }
-  .capability-icon svg{width:22px; height:22px;}
-  .capability-title{font-size:17px; font-weight:800; letter-spacing:-.01em; margin-bottom:8px;}
-  .capability-desc{font-size:13.5px; color:var(--ink-soft); line-height:1.55; margin-bottom:28px;}
-  .capability-visual{flex:1; display:flex; flex-direction:column; justify-content:center; margin-bottom:20px;}
-  .capability-caption{font-size:12px; color:var(--ink-faint); text-align:center; margin-top:auto;}
+  .capability-card{background:#fff; border:1px solid var(--line); border-radius:var(--radius-lg); padding:30px 26px; display:flex; flex-direction:column;}
+  .capability-card .channel-head{margin-bottom:14px;}
+  .capability-desc{font-size:13.3px; color:var(--ink-soft); line-height:1.55; margin-bottom:22px;}
+  .capability-visual{flex:1; display:flex; flex-direction:column; justify-content:center; margin-bottom:16px;}
+  .capability-tags{font-size:12px; color:var(--ink-soft); line-height:1.7;}
+  .capability-note{font-size:11.5px; color:var(--ink-faint); font-style:italic; margin-top:8px;}
 
-  .flow-row{display:flex; align-items:flex-start; min-width:0;}
-  .flow-step{flex:1; display:flex; flex-direction:column; align-items:center; gap:10px; min-width:0;}
-  .flow-icon{
-    position:relative; flex:none; width:44px; height:44px; border-radius:50%; background:var(--bg-alt); border:1px solid var(--line);
-    display:flex; align-items:center; justify-content:center; color:var(--navy);
-  }
-  .flow-icon svg{width:18px; height:18px;}
-  .flow-icon.is-dark{background:var(--navy); border-color:var(--navy); color:#fff;}
-  .flow-icon .flow-360-label{font-size:9px; font-weight:800; letter-spacing:-.01em;}
-  .flow-logo-stack{position:relative; width:26px; height:34px;}
-  .flow-logo-stack .fl-badge{
-    position:absolute; left:50%; transform:translateX(-50%); width:19px; height:19px; border-radius:50%;
-    display:flex; align-items:center; justify-content:center; box-shadow:0 0 0 2px var(--bg-alt);
-  }
-  .flow-logo-stack .fl-google{top:0; background:#fff; border:1px solid var(--line);}
-  .flow-logo-stack .fl-google svg{width:12px; height:12px;}
-  .flow-logo-stack .fl-fb{bottom:0; background:#1877F2;}
-  .flow-logo-stack .fl-fb svg{width:11px; height:11px;}
-  .flow-label{font-size:10.3px; font-weight:700; color:var(--ink-soft); text-align:center; line-height:1.35; padding:0 2px;}
-  .flow-arrow{flex:none; color:var(--ink-faint); margin-top:12px; padding:0 1px;}
-  .flow-arrow svg{width:13px; height:13px;}
+  /* card 1: ad + landing page mockup */
+  .adflow-row{display:flex; align-items:center; gap:10px;}
+  .adflow-arrow{flex:none; color:var(--ink-faint);}
+  .adflow-arrow svg{width:16px; height:16px;}
+  .ad-mock, .form-mock{flex:1; min-width:0; background:#fff; border:1px solid var(--line); border-radius:12px; padding:12px;}
+  .ad-mock-top{display:flex; align-items:center; gap:6px; margin-bottom:8px;}
+  .ad-mock-dot{flex:none; width:15px; height:15px; border-radius:50%; background:#1877F2; display:flex; align-items:center; justify-content:center;}
+  .ad-mock-dot svg{width:9px; height:9px;}
+  .ad-mock-top span{font-size:9px; font-weight:700; color:var(--ink-soft);}
+  .ad-mock-title{font-size:11px; font-weight:800; line-height:1.25; margin-bottom:2px;}
+  .ad-mock-sub{font-size:8.8px; color:var(--ink-soft); margin-bottom:8px;}
+  .ad-mock-img{width:100%; height:60px; border-radius:8px; background-size:cover; background-position:center; margin-bottom:8px;}
+  .ad-mock-btn{display:block; text-align:center; background:#1877F2; color:#fff; font-size:9px; font-weight:700; padding:7px; border-radius:7px;}
+  .form-mock-title{font-size:11px; font-weight:800; margin-bottom:10px;}
+  .form-mock-field{background:var(--bg-alt); border:1px solid var(--line); border-radius:7px; padding:7px 9px; font-size:9px; color:var(--ink-soft); margin-bottom:6px;}
+  .form-mock-btn{display:block; text-align:center; background:var(--navy); color:#fff; font-size:9px; font-weight:700; padding:8px; border-radius:7px; margin-top:4px;}
 
-  .social-row{display:flex; align-items:center; justify-content:center; gap:16px;}
-  .social-phone{
-    position:relative; flex:none; width:112px; aspect-ratio:9/16; border-radius:16px; overflow:hidden;
+  /* card 2: phone + platform list */
+  .phone2-row{display:flex; align-items:center; gap:16px;}
+  .phone2{
+    position:relative; flex:none; width:108px; aspect-ratio:9/16; border-radius:16px; overflow:hidden;
     background-size:cover; background-position:center; box-shadow:0 10px 22px rgba(0,0,0,.16);
   }
-  .social-phone::after{content:""; position:absolute; inset:0; background:linear-gradient(180deg, rgba(0,0,0,0) 45%, rgba(0,0,0,.65) 100%);}
-  .social-chip{
-    position:absolute; top:9px; left:9px; right:9px; z-index:1; background:#fff; color:var(--ink);
-    font-size:8.6px; font-weight:600; line-height:1.3; padding:6px 8px; border-radius:10px;
-    box-shadow:0 4px 10px rgba(0,0,0,.18);
+  .phone2::after{content:""; position:absolute; inset:0; background:linear-gradient(180deg, rgba(0,0,0,.3) 0%, rgba(0,0,0,0) 26%, rgba(0,0,0,0) 55%, rgba(0,0,0,.62) 100%);}
+  .phone2-menu{position:absolute; top:7px; right:9px; z-index:1; color:#fff; font-size:11px; font-weight:900; letter-spacing:1px; text-shadow:0 1px 3px rgba(0,0,0,.5);}
+  .phone2-play{
+    position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); z-index:1; width:32px; height:32px; border-radius:50%;
+    background:rgba(255,255,255,.25); backdrop-filter:blur(2px); display:flex; align-items:center; justify-content:center;
   }
-  .social-bottom{position:absolute; left:9px; right:9px; bottom:9px; z-index:1; color:#fff;}
-  .social-badge{
-    display:inline-block; background:rgba(255,255,255,.22); backdrop-filter:blur(2px);
-    font-size:9px; font-weight:700; padding:2px 7px; border-radius:999px; margin-bottom:5px;
-  }
-  .social-caption{font-size:9px; font-weight:700; line-height:1.3;}
-  .social-icons{display:flex; flex-direction:column; gap:8px;}
-  .social-icon{width:26px; height:26px; border-radius:50%; display:flex; align-items:center; justify-content:center; color:#fff; flex:none;}
-  .social-icon svg{width:14px; height:14px;}
+  .phone2-play svg{width:12px; height:12px;}
+  .phone2-top{position:absolute; top:9px; left:9px; right:24px; z-index:1; color:#fff; font-size:9px; font-weight:700; line-height:1.3; text-shadow:0 1px 4px rgba(0,0,0,.45);}
+  .phone2-bottom{position:absolute; left:9px; bottom:9px; z-index:1; color:#fff;}
+  .phone2-bottom .b1{font-size:9.5px; font-weight:800; line-height:1.3;}
+  .phone2-bottom .b2{font-size:8.8px; font-weight:600; opacity:.85;}
+  .platform-list{display:flex; flex-direction:column; gap:12px;}
+  .platform-row{display:flex; align-items:center; gap:8px;}
+  .platform-row .social-icon{width:25px; height:25px; flex:none;}
+  .platform-row span{font-size:11.8px; font-weight:600; color:var(--ink);}
+
+  .social-icon{border-radius:50%; display:flex; align-items:center; justify-content:center; color:#fff; flex:none;}
+  .social-icon svg{width:55%; height:55%;}
   .social-icon.ig{background:radial-gradient(circle at 30% 110%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);}
   .social-icon.fb{background:#1877F2;}
-  .social-icon.yt{background:#FF0000; border-radius:8px;}
+  .social-icon.yt{background:#FF0000; border-radius:26%;}
   .social-icon.pin{background:#E60023;}
-  .social-platforms{text-align:center; font-size:12px; color:var(--ink-soft); margin-top:18px;}
 
-  .radial-diagram{width:100%; height:auto; overflow:visible;}
-  .radial-line{stroke:var(--line); stroke-width:1.4;}
-  .radial-pill{fill:#fff; stroke:var(--line); stroke-width:1;}
-  .radial-pill-label{font-size:9.6px; font-weight:700; fill:var(--ink);}
-  .radial-hub{fill:var(--navy);}
-  .radial-hub-label{font-size:11px; font-weight:800; fill:#fff;}
+  /* card 3: materials collage */
+  .collage{position:relative; height:170px;}
+  .collage-photo{position:absolute; border-radius:12px; background-size:cover; background-position:center; box-shadow:0 10px 20px rgba(0,0,0,.14);}
+  .collage-photo.a{left:0; bottom:0; width:62%; height:78%;}
+  .collage-photo.b{right:0; bottom:2%; width:42%; height:54%; box-shadow:0 12px 22px rgba(0,0,0,.2);}
+  .collage-plan{
+    position:absolute; top:0; left:28%; width:44%; height:50%; background:#fff; border-radius:10px;
+    box-shadow:0 10px 20px rgba(0,0,0,.14); display:flex; align-items:center; justify-content:center; padding:14%;
+  }
+  .collage-plan svg{width:100%; height:100%; color:var(--ink-faint);}
+  .collage-badge{
+    position:absolute; top:2%; right:2%; width:56px; height:56px; border-radius:50%; background:var(--navy); color:#fff;
+    display:flex; flex-direction:column; align-items:center; justify-content:center; box-shadow:0 10px 20px rgba(0,0,0,.2);
+  }
+  .collage-badge svg{width:13px; height:13px; margin-bottom:1px;}
+  .collage-badge span{font-size:10.5px; font-weight:800;}
+
+  /* Example / real short-form video section */
+  .example-section{padding:0 0 100px;}
+  .example-panel{background:var(--bg-alt); border-radius:var(--radius-lg); padding:56px; display:grid; grid-template-columns:1.15fr 1fr; gap:48px; align-items:center;}
+  .example-copy h2{font-size:clamp(24px,2.6vw,32px); font-weight:800; letter-spacing:-.02em; line-height:1.2; margin-bottom:14px;}
+  .example-copy > p{font-size:15px; color:var(--ink-soft); line-height:1.6; margin-bottom:28px; max-width:460px;}
+  .example-pills{display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-bottom:32px; max-width:400px;}
+  .example-pill{display:flex; align-items:center; gap:9px; background:#fff; border-radius:999px; padding:7px 14px 7px 7px; box-shadow:0 4px 10px rgba(0,0,0,.05);}
+  .example-pill .social-icon{width:24px; height:24px;}
+  .example-pill span{font-size:12.3px; font-weight:700; color:var(--ink);}
+  .example-steps{display:flex; align-items:flex-start; gap:4px; margin-bottom:28px;}
+  .example-step{display:flex; flex-direction:column; align-items:center; gap:9px; flex:1; min-width:0;}
+  .example-step-icon{flex:none; width:40px; height:40px; border-radius:50%; border:1.5px solid var(--line); background:#fff; display:flex; align-items:center; justify-content:center; color:var(--navy);}
+  .example-step-icon svg{width:17px; height:17px;}
+  .example-step-label{font-size:11px; font-weight:700; color:var(--ink-soft); text-align:center; line-height:1.3; padding:0 2px;}
+  .example-step-arrow{flex:none; color:var(--ink-faint); margin-top:9px;}
+  .example-step-arrow svg{width:13px; height:13px;}
+  .example-note{font-family:'Caveat', cursive; font-size:23px; font-weight:700; color:var(--ink-soft); display:inline-block; position:relative;}
+  .example-note::after{content:""; position:absolute; left:2px; right:8px; bottom:-1px; height:2px; background:var(--accent); border-radius:1px;}
+
+  .example-media{display:flex; flex-direction:column; align-items:center; gap:22px;}
+  .example-media-row{display:flex; align-items:center; gap:16px;}
+  .example-phone{
+    position:relative; flex:none; width:210px; aspect-ratio:9/16; border-radius:26px; overflow:hidden;
+    background:#000; box-shadow:0 24px 50px rgba(0,0,0,.28); border:6px solid var(--navy);
+  }
+  .example-phone iframe{width:100%; height:100%; border:0; display:block;}
+  .example-annotation{font-family:'Caveat', cursive; font-size:17px; font-weight:600; color:var(--ink-soft); line-height:1.3; max-width:120px;}
+  .example-annotation svg{width:32px; height:30px; color:var(--ink-faint); margin-bottom:6px;}
+  .example-info{background:#fff; border-radius:14px; padding:18px 20px; box-shadow:0 10px 24px rgba(0,0,0,.06); max-width:290px;}
+  .example-info-title{font-size:13.3px; font-weight:800; margin-bottom:6px; display:flex; align-items:center; gap:6px;}
+  .example-info p{font-size:12.3px; color:var(--ink-soft); line-height:1.55;}
 
   /* ---------- Jak to działa ---------- */
   .how-section{padding:100px 0;}
@@ -445,6 +481,10 @@
     .streetview-content{grid-template-columns:1fr; gap:30px;}
     .streetview-row{flex-direction:column;}
     .streetview-arrow{transform:rotate(90deg);}
+    .example-panel{grid-template-columns:1fr; padding:40px 26px; gap:36px;}
+    .example-media-row{flex-direction:column;}
+    .example-annotation{max-width:260px; text-align:center;}
+    .example-annotation svg{display:none;}
   }
   @media (max-width: 600px){
     header .wrap{height:50px;}
@@ -629,133 +669,158 @@
 <section class="capabilities-section">
   <div class="wrap">
     <div class="section-head">
-      <div class="eyebrow" style="text-align:center;">WIĘCEJ NIŻ TYLKO OBECNOŚĆ W GOOGLE</div>
+      <div class="eyebrow" style="text-align:center;">WIĘCEJ NIŻ TYLKO SPACER</div>
       <h2>Jeden spacer. Więcej możliwości.</h2>
-      <p>Ta sama realizacja może pracować nie tylko w Google i na stronie, ale też w marketingu i sprzedaży.</p>
+      <p>Z jednej realizacji zyskujesz materiał, który możesz wykorzystać w marketingu, sprzedaży i codziennej komunikacji.</p>
     </div>
 
     <div class="capabilities-grid">
       <div class="capability-card">
-        <div class="capability-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11v2a2 2 0 0 0 2 2h1l1 4h2l-1-4h2l7 4V5l-7 4H6a2 2 0 0 0-2 2z"/></svg>
+        <div class="channel-head">
+          <div class="channel-num">01</div>
+          <div class="channel-title">Kampanie reklamowe</div>
         </div>
-        <div class="capability-title">Kampanie reklamowe</div>
-        <p class="capability-desc">Przyciągaj lepszych, bardziej zdecydowanych klientów dzięki realistycznemu podglądowi.</p>
+        <p class="capability-desc">Zwiększ skuteczność reklam w Google i na Facebooku. Kieruj ruch na landing page ze spacerem 360° i zdobywaj więcej rezerwacji i zapytań.</p>
 
         <div class="capability-visual">
-          <div class="flow-row">
-            <div class="flow-step">
-              <div class="flow-icon">
-                <div class="flow-logo-stack">
-                  <span class="fl-badge fl-google">
-                    <svg viewBox="0 0 48 48"><path fill="#4285F4" d="M45.12 24.5c0-1.56-.14-3.06-.4-4.5H24v8.51h11.84c-.51 2.75-2.06 5.08-4.39 6.64v5.52h7.11c4.16-3.83 6.56-9.47 6.56-16.17z"/><path fill="#34A853" d="M24 46c5.94 0 10.92-1.97 14.56-5.33l-7.11-5.52c-1.97 1.32-4.49 2.1-7.45 2.1-5.73 0-10.58-3.87-12.31-9.07H4.34v5.7C7.96 41.07 15.4 46 24 46z"/><path fill="#FBBC05" d="M11.69 28.18C11.25 26.86 11 25.45 11 24s.25-2.86.69-4.18v-5.7H4.34C2.85 17.09 2 20.45 2 24s.85 6.91 2.34 9.88l7.35-5.7z"/><path fill="#EA4335" d="M24 10.75c3.23 0 6.13 1.11 8.41 3.29l6.31-6.31C34.91 4.18 29.93 2 24 2 15.4 2 7.96 6.93 4.34 14.12l7.35 5.7c1.73-5.2 6.58-9.07 12.31-9.07z"/></svg>
-                  </span>
-                  <span class="fl-badge fl-fb">
-                    <svg viewBox="0 0 24 24" fill="#fff"><path d="M13.5 21v-7.5H16l.4-3H13.5V8.4c0-.9.3-1.5 1.6-1.5H16V4.3c-.3 0-1.2-.1-2.3-.1-2.3 0-3.8 1.4-3.8 3.9v2.3H7.5v3H10V21h3.5z"/></svg>
-                  </span>
-                </div>
+          <div class="adflow-row">
+            <div class="ad-mock">
+              <div class="ad-mock-top">
+                <span class="ad-mock-dot"><svg viewBox="0 0 24 24" fill="#fff"><path d="M13.5 21v-7.5H16l.4-3H13.5V8.4c0-.9.3-1.5 1.6-1.5H16V4.3c-.3 0-1.2-.1-2.3-.1-2.3 0-3.8 1.4-3.8 3.9v2.3H7.5v3H10V21h3.5z"/></svg></span>
+                <span>Reklama</span>
               </div>
-              <div class="flow-label">Google / Facebook Ads</div>
+              <div class="ad-mock-title">Wyjątkowy hotel nad jeziorem</div>
+              <div class="ad-mock-sub">Zobacz wnętrze w 360°</div>
+              <div class="ad-mock-img" style="background-image:url('hotel1.jpg')"></div>
+              <span class="ad-mock-btn">Zobacz wirtualny spacer</span>
             </div>
-            <div class="flow-arrow">
+            <div class="adflow-arrow">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
             </div>
-            <div class="flow-step">
-              <div class="flow-icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18"/></svg>
-              </div>
-              <div class="flow-label">landing page</div>
-            </div>
-            <div class="flow-arrow">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-            </div>
-            <div class="flow-step">
-              <div class="flow-icon is-dark"><span class="flow-360-label">360°</span></div>
-              <div class="flow-label">spacer 360°</div>
-            </div>
-            <div class="flow-arrow">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-            </div>
-            <div class="flow-step">
-              <div class="flow-icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M8 12l2.5 2.5L16 9"/></svg>
-              </div>
-              <div class="flow-label">formularz / rezerwacja</div>
+            <div class="form-mock">
+              <div class="form-mock-title">Zarezerwuj pobyt</div>
+              <div class="form-mock-field">Przyjazd</div>
+              <div class="form-mock-field">Wyjazd</div>
+              <div class="form-mock-field">Liczba osób</div>
+              <span class="form-mock-btn">Sprawdź dostępność</span>
             </div>
           </div>
         </div>
-        <p class="capability-caption">Lepsze zrozumienie miejsca przed kontaktem.</p>
+        <p class="capability-tags">Google Ads &middot; Facebook Ads &middot; Landing page &middot; Formularz</p>
       </div>
 
       <div class="capability-card">
-        <div class="capability-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+        <div class="channel-head">
+          <div class="channel-num">02</div>
+          <div class="channel-title">Social media content</div>
         </div>
-        <div class="capability-title">Social media content</div>
-        <p class="capability-desc">Wykorzystaj atrakcyjne ujęcia ze spaceru w krótkich formach wideo.</p>
+        <p class="capability-desc">Z jednej realizacji tworzymy krótkie, atrakcyjne materiały wideo do Twoich social mediów. Pokaż wnętrze, klimat i detale, które przyciągają klientów.</p>
 
         <div class="capability-visual">
-          <div class="social-row">
-            <div class="social-phone" style="background-image:url('hotel1.jpg')">
-              <div class="social-chip">Zajrzyj do naszego nowego apartamentu 💛</div>
-              <div class="social-bottom">
-                <span class="social-badge">15 s</span>
-                <div class="social-caption">Pełny spacer w linku w bio</div>
+          <div class="phone2-row">
+            <div class="phone2" style="background-image:url('hotel1.jpg')">
+              <span class="phone2-menu">&#8942;</span>
+              <div class="phone2-top">Zajrzyj do naszego nowego apartamentu</div>
+              <span class="phone2-play"><svg viewBox="0 0 24 24" fill="#fff"><path d="M8 5v14l11-7z"/></svg></span>
+              <div class="phone2-bottom">
+                <div class="b1">Pełny spacer</div>
+                <div class="b2">&rarr; link w bio</div>
               </div>
             </div>
-            <div class="social-icons">
-              <span class="social-icon ig"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1"/></svg></span>
-              <span class="social-icon fb"><svg viewBox="0 0 24 24" fill="#fff"><path d="M13.5 21v-7.5H16l.4-3H13.5V8.4c0-.9.3-1.5 1.6-1.5H16V4.3c-.3 0-1.2-.1-2.3-.1-2.3 0-3.8 1.4-3.8 3.9v2.3H7.5v3H10V21h3.5z"/></svg></span>
-              <span class="social-icon yt"><svg viewBox="0 0 24 24" fill="#fff"><path d="M10 8.5l6 3.5-6 3.5z"/></svg></span>
-              <span class="social-icon pin"><svg viewBox="0 0 24 24" fill="#fff"><path d="M12 2a10 10 0 0 0-3.6 19.3c0-.8-.1-2 0-2.9l1.3-5.5s-.3-.7-.3-1.6c0-1.5.9-2.6 1.9-2.6.9 0 1.4.7 1.4 1.5 0 .9-.6 2.3-.9 3.5-.3 1.1.5 1.9 1.6 1.9 1.9 0 3.2-2.4 3.2-5.3 0-2.2-1.5-3.8-4.1-3.8-3 0-4.8 2.2-4.8 4.6 0 .8.3 1.4.7 1.8.2.2.2.3.1.6l-.2.9c-.1.3-.3.4-.6.2-1.1-.5-1.6-1.9-1.6-3.4 0-2.5 2.1-5.6 6.4-5.6 3.4 0 5.7 2.5 5.7 5.1 0 3.5-1.9 6.1-4.7 6.1-.9 0-1.8-.5-2.1-1.1l-.6 2.3c-.2.8-.6 1.6-1 2.3A10 10 0 1 0 12 2z"/></svg></span>
+            <div class="platform-list">
+              <div class="platform-row"><span class="social-icon ig"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1"/></svg></span><span>Instagram Reels</span></div>
+              <div class="platform-row"><span class="social-icon yt"><svg viewBox="0 0 24 24" fill="#fff"><path d="M10 8.5l6 3.5-6 3.5z"/></svg></span><span>YouTube Shorts</span></div>
+              <div class="platform-row"><span class="social-icon fb"><svg viewBox="0 0 24 24" fill="#fff"><path d="M13.5 21v-7.5H16l.4-3H13.5V8.4c0-.9.3-1.5 1.6-1.5H16V4.3c-.3 0-1.2-.1-2.3-.1-2.3 0-3.8 1.4-3.8 3.9v2.3H7.5v3H10V21h3.5z"/></svg></span><span>Facebook</span></div>
+              <div class="platform-row"><span class="social-icon pin"><svg viewBox="0 0 24 24" fill="#fff"><path d="M12 2a10 10 0 0 0-3.6 19.3c0-.8-.1-2 0-2.9l1.3-5.5s-.3-.7-.3-1.6c0-1.5.9-2.6 1.9-2.6.9 0 1.4.7 1.4 1.5 0 .9-.6 2.3-.9 3.5-.3 1.1.5 1.9 1.6 1.9 1.9 0 3.2-2.4 3.2-5.3 0-2.2-1.5-3.8-4.1-3.8-3 0-4.8 2.2-4.8 4.6 0 .8.3 1.4.7 1.8.2.2.2.3.1.6l-.2.9c-.1.3-.3.4-.6.2-1.1-.5-1.6-1.9-1.6-3.4 0-2.5 2.1-5.6 6.4-5.6 3.4 0 5.7 2.5 5.7 5.1 0 3.5-1.9 6.1-4.7 6.1-.9 0-1.8-.5-2.1-1.1l-.6 2.3c-.2.8-.6 1.6-1 2.3A10 10 0 1 0 12 2z"/></svg></span><span>Pinterest</span></div>
             </div>
           </div>
-          <p class="social-platforms">Instagram &middot; Facebook &middot; YouTube Shorts &middot; Pinterest</p>
         </div>
       </div>
 
       <div class="capability-card">
-        <div class="capability-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M9 13h6M9 17h6"/></svg>
+        <div class="channel-head">
+          <div class="channel-num">03</div>
+          <div class="channel-title">Materiały marketingowe</div>
         </div>
-        <div class="capability-title">Materiały marketingowe</div>
-        <p class="capability-desc">Z jednego spaceru powstaje wiele materiałów do wykorzystania w Twojej komunikacji.</p>
+        <p class="capability-desc">Otrzymujesz nie tylko spacer, ale także dodatkowe materiały, które możesz wykorzystać na stronie, w ofertach, w social mediach i materiałach drukowanych.</p>
 
         <div class="capability-visual">
-          <svg class="radial-diagram" viewBox="0 0 320 220" xmlns="http://www.w3.org/2000/svg">
-            <line class="radial-line" x1="160" y1="110" x2="103" y2="32"/>
-            <line class="radial-line" x1="160" y1="110" x2="103" y2="78"/>
-            <line class="radial-line" x1="160" y1="110" x2="103" y2="124"/>
-            <line class="radial-line" x1="160" y1="110" x2="103" y2="170"/>
-            <line class="radial-line" x1="160" y1="110" x2="217" y2="32"/>
-            <line class="radial-line" x1="160" y1="110" x2="217" y2="78"/>
-            <line class="radial-line" x1="160" y1="110" x2="217" y2="124"/>
-            <line class="radial-line" x1="160" y1="110" x2="217" y2="170"/>
-
-            <rect class="radial-pill" x="10" y="18" width="93" height="28" rx="14"/>
-            <text class="radial-pill-label" x="56.5" y="36" text-anchor="middle">zdjęcia</text>
-            <rect class="radial-pill" x="10" y="64" width="93" height="28" rx="14"/>
-            <text class="radial-pill-label" x="56.5" y="82" text-anchor="middle">kadry</text>
-            <rect class="radial-pill" x="10" y="110" width="93" height="28" rx="14"/>
-            <text class="radial-pill-label" x="56.5" y="128" text-anchor="middle">miniatura</text>
-            <rect class="radial-pill" x="10" y="156" width="93" height="28" rx="14"/>
-            <text class="radial-pill-label" x="56.5" y="174" text-anchor="middle">krótkie video</text>
-
-            <rect class="radial-pill" x="217" y="18" width="93" height="28" rx="14"/>
-            <text class="radial-pill-label" x="263.5" y="36" text-anchor="middle">360°</text>
-            <rect class="radial-pill" x="217" y="64" width="93" height="28" rx="14"/>
-            <text class="radial-pill-label" x="263.5" y="82" text-anchor="middle">dollhouse 3D</text>
-            <rect class="radial-pill" x="217" y="110" width="93" height="28" rx="14"/>
-            <text class="radial-pill-label" x="263.5" y="128" text-anchor="middle">rzut pomieszczeń</text>
-            <rect class="radial-pill" x="217" y="156" width="93" height="28" rx="14"/>
-            <text class="radial-pill-label" x="263.5" y="174" text-anchor="middle">plan piętra</text>
-
-            <circle class="radial-hub" cx="160" cy="110" r="38"/>
-            <text class="radial-hub-label" x="160" y="107" text-anchor="middle">SPACER</text>
-            <text class="radial-hub-label" x="160" y="122" text-anchor="middle">360°</text>
-          </svg>
+          <div class="collage">
+            <div class="collage-photo a" style="background-image:url('hotel1.jpg')"></div>
+            <div class="collage-photo b" style="background-image:url('streetview-wnetrze.jpg')"></div>
+            <div class="collage-plan">
+              <svg viewBox="0 0 100 80" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="4" y="4" width="92" height="72" rx="2"/>
+                <path d="M45 4v41M45 45h51M20 45v31"/>
+              </svg>
+            </div>
+            <div class="collage-badge">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"><path d="M21 12a9 9 0 1 1-3-6.7"/><path d="M21 3v5h-5"/></svg>
+              <span>360°</span>
+            </div>
+          </div>
         </div>
-        <p class="capability-caption">* zależnie od pakietu i technologii</p>
+        <p class="capability-tags">Zdjęcia 360° &middot; Kadry do strony &middot; Krótkie wideo<br>Miniatura &middot; Dollhouse &middot; Rzut / plan pomieszczeń</p>
+        <p class="capability-note">Zakres materiałów zależy od wybranej technologii i pakietu.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="example-section">
+  <div class="wrap">
+    <div class="example-panel">
+      <div class="example-copy">
+        <div class="eyebrow">PRZYKŁADOWY EFEKT</div>
+        <h2>Ze spaceru 360° może powstać też taki materiał.</h2>
+        <p>Zobacz, jak z jednej realizacji tworzymy krótkie, atrakcyjne video do social mediów &mdash; bez potrzeby organizowania dodatkowego nagrania.</p>
+
+        <div class="example-pills">
+          <div class="example-pill"><span class="social-icon ig"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1"/></svg></span><span>Instagram Reels</span></div>
+          <div class="example-pill"><span class="social-icon yt"><svg viewBox="0 0 24 24" fill="#fff"><path d="M10 8.5l6 3.5-6 3.5z"/></svg></span><span>YouTube Shorts</span></div>
+          <div class="example-pill"><span class="social-icon fb"><svg viewBox="0 0 24 24" fill="#fff"><path d="M13.5 21v-7.5H16l.4-3H13.5V8.4c0-.9.3-1.5 1.6-1.5H16V4.3c-.3 0-1.2-.1-2.3-.1-2.3 0-3.8 1.4-3.8 3.9v2.3H7.5v3H10V21h3.5z"/></svg></span><span>Facebook</span></div>
+          <div class="example-pill"><span class="social-icon pin"><svg viewBox="0 0 24 24" fill="#fff"><path d="M12 2a10 10 0 0 0-3.6 19.3c0-.8-.1-2 0-2.9l1.3-5.5s-.3-.7-.3-1.6c0-1.5.9-2.6 1.9-2.6.9 0 1.4.7 1.4 1.5 0 .9-.6 2.3-.9 3.5-.3 1.1.5 1.9 1.6 1.9 1.9 0 3.2-2.4 3.2-5.3 0-2.2-1.5-3.8-4.1-3.8-3 0-4.8 2.2-4.8 4.6 0 .8.3 1.4.7 1.8.2.2.2.3.1.6l-.2.9c-.1.3-.3.4-.6.2-1.1-.5-1.6-1.9-1.6-3.4 0-2.5 2.1-5.6 6.4-5.6 3.4 0 5.7 2.5 5.7 5.1 0 3.5-1.9 6.1-4.7 6.1-.9 0-1.8-.5-2.1-1.1l-.6 2.3c-.2.8-.6 1.6-1 2.3A10 10 0 1 0 12 2z"/></svg></span><span>Pinterest</span></div>
+        </div>
+
+        <div class="example-steps">
+          <div class="example-step">
+            <div class="example-step-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l9 5v10l-9 5-9-5V7z"/><path d="M3 7l9 5 9-5M12 12v10"/></svg></div>
+            <div class="example-step-label">Spacer 360°<br>(1 realizacja)</div>
+          </div>
+          <div class="example-step-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
+          <div class="example-step">
+            <div class="example-step-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2v14a2 2 0 0 0 2 2h14"/><path d="M18 22V8a2 2 0 0 0-2-2H2"/></svg></div>
+            <div class="example-step-label">Wybieramy<br>najlepsze ujęcia</div>
+          </div>
+          <div class="example-step-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
+          <div class="example-step">
+            <div class="example-step-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M10 8l6 4-6 4z"/></svg></div>
+            <div class="example-step-label">Montujemy<br>krótkie video</div>
+          </div>
+          <div class="example-step-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
+          <div class="example-step">
+            <div class="example-step-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12v6a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-6"/><path d="M16 6l-4-4-4 4"/><path d="M12 2v14"/></svg></div>
+            <div class="example-step-label">Publikujesz<br>i przyciągasz klientów</div>
+          </div>
+        </div>
+
+        <span class="example-note">Jedna realizacja. Więcej contentu.</span>
+      </div>
+
+      <div class="example-media">
+        <div class="example-media-row">
+          <div class="example-phone">
+            <iframe src="https://www.youtube-nocookie.com/embed/Tt9qtHee7Uc" title="Przykładowy short bokaWorks ze spaceru 360°" loading="lazy" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>
+          </div>
+          <div class="example-annotation">
+            <svg viewBox="0 0 40 36" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M2 4C10 20 22 26 36 22"/><path d="M28 20l9 3-2 9"/></svg>
+            Przykład shorta wygenerowanego ze spaceru 360°
+          </div>
+        </div>
+        <div class="example-info">
+          <div class="example-info-title">💡 Dobrze wiedzieć</div>
+          <p>Ten materiał powstał na bazie tego samego spaceru 360°, który możesz wykorzystać w Google, na swojej stronie i w innych kanałach.</p>
+        </div>
       </div>
     </div>
   </div>
