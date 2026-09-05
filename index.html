@@ -271,7 +271,7 @@
   .upsell-img{width:100%; display:block;}
   .upsell-body{flex:1; min-width:0;}
   .upsell-card-head{display:flex; align-items:baseline; justify-content:space-between; gap:12px; margin-bottom:10px;}
-  .upsell-card-head h3{font-size:16.5px; font-weight:800; letter-spacing:-.01em;}
+  .upsell-card-head h3{font-size:19.5px; font-weight:800; letter-spacing:-.01em;}
   .upsell-price{font-size:13px; color:var(--ink-soft); white-space:nowrap;}
   .upsell-price strong{font-size:16px; font-weight:800; color:var(--ink);}
   .upsell-desc{font-size:13px; color:var(--ink-soft); line-height:1.5; margin-bottom:16px;}
@@ -380,6 +380,14 @@
   .form-row-2{grid-template-columns:1fr 1fr;}
   .form-field{display:flex; flex-direction:column; gap:6px;}
   .form-field label{font-size:12.5px; font-weight:700; color:var(--ink);}
+  .interest-chips{display:flex; flex-wrap:wrap; gap:8px; margin-top:8px;}
+  .interest-chip{
+    padding:8px 14px; border-radius:999px; border:1.5px solid var(--line); background:#fff;
+    font-size:12.5px; font-weight:700; color:var(--ink-soft); cursor:pointer; transition:all .15s ease;
+    font-family:inherit;
+  }
+  .interest-chip:hover{border-color:var(--navy); color:var(--ink);}
+  .interest-chip.is-active{background:var(--navy); border-color:var(--navy); color:#fff;}
   .form-field input, .form-field textarea{
     border:1px solid var(--line); border-radius:8px; padding:12px 14px; font-size:14px;
     font-family:inherit; color:var(--ink); background:#fff; transition:border-color .15s ease;
@@ -905,6 +913,15 @@
         </div>
 
         <div class="form-field" style="margin-bottom:16px;">
+          <label>Jestem zainteresowany:</label>
+          <div class="interest-chips" id="interestChips" role="group" aria-label="Jestem zainteresowany">
+            <button type="button" class="interest-chip" data-interest="Landing 360">Landingiem 360</button>
+            <button type="button" class="interest-chip" data-interest="Strona firmowa">Stroną firmową</button>
+          </div>
+          <input type="hidden" id="cf-interest" name="interest" value="">
+        </div>
+
+        <div class="form-field" style="margin-bottom:16px;">
           <label for="cf-message">Wiadomość *</label>
           <textarea id="cf-message" name="message" placeholder="Proszę o kontakt ws. umówienia spaceru 360 w mojej firmie." required></textarea>
         </div>
@@ -956,7 +973,7 @@
             <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Integracja ze spacerem 360°</li>
             <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Formularz zapytań / rezerwacji</li>
           </ul>
-          <a href="#kontakt" class="upsell-btn">Zapytaj o landing
+          <a href="#kontakt" class="upsell-btn" data-interest="Landing 360">Zapytaj o landing
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
           </a>
         </div>
@@ -977,7 +994,7 @@
             <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Wiele podstron (np. oferta, galeria)</li>
             <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Integracja ze spacerem 360°</li>
           </ul>
-          <a href="#kontakt" class="upsell-btn">Zapytaj o stronę
+          <a href="#kontakt" class="upsell-btn" data-interest="Strona firmowa">Zapytaj o stronę
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
           </a>
         </div>
@@ -1234,6 +1251,28 @@
     el.addEventListener('click', function(e){
       e.preventDefault();
       selectPackage(el.getAttribute('data-package'));
+    });
+  });
+
+  var interestInput = document.getElementById('cf-interest');
+  var interestChips = document.querySelectorAll('.interest-chip');
+  function selectInterest(name){
+    var chip = [...interestChips].find(function(c){ return c.getAttribute('data-interest') === name; });
+    if(chip) chip.classList.toggle('is-active');
+    var active = [...interestChips].filter(function(c){ return c.classList.contains('is-active'); })
+      .map(function(c){ return c.getAttribute('data-interest'); });
+    interestInput.value = active.join(', ');
+  }
+  interestChips.forEach(function(chip){
+    chip.addEventListener('click', function(){
+      selectInterest(chip.getAttribute('data-interest'));
+    });
+  });
+  document.querySelectorAll('.upsell-btn[data-interest]').forEach(function(el){
+    el.addEventListener('click', function(){
+      var name = el.getAttribute('data-interest');
+      var chip = [...interestChips].find(function(c){ return c.getAttribute('data-interest') === name; });
+      if(chip && !chip.classList.contains('is-active')) selectInterest(name);
     });
   });
 
