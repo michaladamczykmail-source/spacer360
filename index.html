@@ -398,10 +398,12 @@
   }
   .form-field input::placeholder, .form-field textarea::placeholder{color:var(--ink-faint);}
   .form-field input:focus, .form-field textarea:focus{outline:none; border-color:var(--navy);}
+  .form-field input.is-invalid, .form-field textarea.is-invalid{border-color:#c0392b;}
   .form-field textarea{resize:vertical; min-height:96px; line-height:1.5;}
 
   .form-consent{display:flex; align-items:flex-start; gap:10px; margin-bottom:24px;}
   .form-consent input[type=checkbox]{margin-top:3px; flex:none; width:16px; height:16px; accent-color:var(--navy);}
+  .form-consent.is-invalid input[type=checkbox]{outline:2px solid #c0392b; outline-offset:2px;}
   .form-consent-text{font-size:12.3px; color:var(--ink-soft); line-height:1.55; cursor:pointer;}
   .form-consent-text a{display:inline-block; margin-top:2px; text-decoration:underline; color:var(--ink); font-weight:600;}
 
@@ -1265,10 +1267,39 @@
 
   var contactForm = document.getElementById('contactForm');
   var formStatus = document.getElementById('formStatus');
+  var requiredFields = contactForm.querySelectorAll('[required]');
+
+  function clearFieldError(field){
+    field.classList.remove('is-invalid');
+    if(field.type === 'checkbox'){
+      var wrap = field.closest('.form-consent');
+      if(wrap) wrap.classList.remove('is-invalid');
+    }
+  }
+  requiredFields.forEach(function(field){
+    var evt = field.type === 'checkbox' ? 'change' : 'input';
+    field.addEventListener(evt, function(){
+      if(field.checkValidity()) clearFieldError(field);
+    });
+  });
+
   contactForm.addEventListener('submit', function(e){
     e.preventDefault();
-    if(!contactForm.checkValidity()){
-      contactForm.reportValidity();
+    var firstInvalid = null;
+    requiredFields.forEach(function(field){
+      if(!field.checkValidity()){
+        field.classList.add('is-invalid');
+        if(field.type === 'checkbox'){
+          var wrap = field.closest('.form-consent');
+          if(wrap) wrap.classList.add('is-invalid');
+        }
+        if(!firstInvalid) firstInvalid = field;
+      } else {
+        clearFieldError(field);
+      }
+    });
+    if(firstInvalid){
+      firstInvalid.focus();
       return;
     }
     var submitBtn = contactForm.querySelector('.form-submit-btn');
