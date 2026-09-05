@@ -262,6 +262,38 @@
   .how-arrow{flex:none; display:flex; color:var(--ink-faint); align-self:flex-start; margin-top:11px;}
   .how-arrow svg{width:16px; height:16px;}
 
+  /* ---------- Potrzebujesz więcej? (upsell) ---------- */
+  .upsell-section{padding:70px 0 100px;}
+  .upsell-head{display:flex; flex-wrap:wrap; align-items:baseline; column-gap:12px; row-gap:4px; margin-bottom:40px;}
+  .upsell-label{font-size:13px; font-weight:800; letter-spacing:.04em; text-transform:uppercase; color:var(--ink); white-space:nowrap;}
+  .upsell-head p{font-size:14.5px; color:var(--ink-soft);}
+
+  .upsell-grid{display:grid; grid-template-columns:1fr 1fr; gap:26px;}
+  .upsell-card{background:#fff; border:1px solid var(--line); border-radius:var(--radius-lg); padding:26px; display:flex; gap:26px; align-items:center;}
+  .upsell-visual{flex:none; width:38%;}
+  .upsell-body{flex:1; min-width:0;}
+  .upsell-card-head{display:flex; align-items:baseline; justify-content:space-between; gap:12px; margin-bottom:10px;}
+  .upsell-card-head h3{font-size:16.5px; font-weight:800; letter-spacing:-.01em;}
+  .upsell-price{font-size:13px; color:var(--ink-soft); white-space:nowrap;}
+  .upsell-price strong{font-size:16px; font-weight:800; color:var(--ink);}
+  .upsell-desc{font-size:13px; color:var(--ink-soft); line-height:1.5; margin-bottom:16px;}
+  .upsell-list{display:flex; flex-direction:column; gap:8px; margin-bottom:20px; list-style:none;}
+  .upsell-list li{display:flex; align-items:center; gap:8px; font-size:12.8px; color:var(--ink);}
+  .upsell-list li svg{flex:none; width:15px; height:15px; color:var(--navy);}
+  .upsell-btn{display:inline-flex; align-items:center; gap:8px; background:var(--navy); color:#fff; font-size:12.5px; font-weight:700; padding:11px 20px; border-radius:999px; transition:transform .15s ease;}
+  .upsell-btn:hover{transform:translateY(-1px);}
+  .upsell-btn svg{width:13px; height:13px;}
+
+  .laptop-mock{width:100%;}
+  .laptop-screen{
+    position:relative; aspect-ratio:16/10; border-radius:8px 8px 2px 2px; border:7px solid #1a1d1f;
+    border-bottom-width:2px; overflow:hidden; background-size:cover; background-position:center;
+  }
+  .laptop-screen::after{content:""; position:absolute; inset:0; background:linear-gradient(180deg, rgba(10,12,14,.1) 0%, rgba(10,12,14,.6) 100%);}
+  .laptop-overlay{position:absolute; left:10%; top:14%; right:10%; z-index:1; color:#fff; font-size:11px; font-weight:800; line-height:1.35;}
+  .laptop-base{height:8px; background:#2a2e33; border-radius:0 0 5px 5px; position:relative;}
+  .laptop-base::before{content:""; position:absolute; left:50%; top:0; transform:translateX(-50%); width:16%; height:3px; background:#1a1d1f; border-radius:0 0 3px 3px;}
+
   /* ---------- Znasz to już z Google Street View ---------- */
   .streetview-section{padding:100px 0; background:var(--bg-alt);}
   .streetview-content{display:grid; grid-template-columns:280px 1fr; gap:44px; align-items:center;}
@@ -472,6 +504,7 @@
     .streetview-content{grid-template-columns:1fr; gap:30px;}
     .streetview-row{flex-direction:column;}
     .streetview-arrow{transform:rotate(90deg);}
+    .upsell-grid{grid-template-columns:1fr;}
     .contact-panel{grid-template-columns:1fr; gap:32px; padding:32px 26px;}
     .form-row-3{grid-template-columns:1fr;}
     .form-row-2{grid-template-columns:1fr;}
@@ -493,6 +526,8 @@
     .stats-box{grid-template-columns:1fr;}
     .stat-item{border-left:none; border-top:1px solid rgba(255,255,255,.15); padding-top:30px;}
     .stat-item:first-child{border-top:none; padding-top:0;}
+    .upsell-card{flex-direction:column; align-items:stretch;}
+    .upsell-visual{width:100%;}
   }
 </style>
 </head>
@@ -907,6 +942,69 @@
     </div>
 
     <p class="addons-note"><span class="addons-label">DODATKI I ROZSZERZENIA</span> &middot; Sesja foto 590 zł &middot; Dron 690 zł &middot; Dodatkowa strefa 360 od 250 zł &middot; Duże obiekty: indywidualnie</p>
+  </div>
+</section>
+
+<section class="upsell-section">
+  <div class="wrap">
+    <div class="upsell-head">
+      <span class="upsell-label">Potrzebujesz więcej?</span>
+      <p>Wykorzystaj wirtualny spacer, aby zdobywać więcej rezerwacji i zapytań.</p>
+    </div>
+
+    <div class="upsell-grid">
+      <div class="upsell-card">
+        <div class="upsell-visual">
+          <div class="laptop-mock">
+            <div class="laptop-screen" style="background-image:url('hotel1.jpg')">
+              <div class="laptop-overlay">Miejsce, do którego<br>chcesz wracać.</div>
+            </div>
+            <div class="laptop-base"></div>
+          </div>
+        </div>
+        <div class="upsell-body">
+          <div class="upsell-card-head">
+            <h3>Landing 360</h3>
+            <div class="upsell-price">od <strong>1 990 zł</strong></div>
+          </div>
+          <p class="upsell-desc">Dedykowana strona typu landing page, która prezentuje Twój obiekt i zachęca do rezerwacji lub kontaktu.</p>
+          <ul class="upsell-list">
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Nowoczesny design</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Integracja ze spacerem 360°</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Formularz zapytań / rezerwacji</li>
+          </ul>
+          <a href="#kontakt" class="upsell-btn">Zapytaj o landing
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="upsell-card">
+        <div class="upsell-visual">
+          <div class="laptop-mock">
+            <div class="laptop-screen" style="background-image:url('channel-web.jpg')">
+              <div class="laptop-overlay">Zadbaj o siebie<br>w wyjątkowym miejscu.</div>
+            </div>
+            <div class="laptop-base"></div>
+          </div>
+        </div>
+        <div class="upsell-body">
+          <div class="upsell-card-head">
+            <h3>Strona firmowa 360</h3>
+            <div class="upsell-price">od <strong>3 490 zł</strong></div>
+          </div>
+          <p class="upsell-desc">Pełna strona internetowa dla Twojej firmy z wirtualnym spacerem, galerią, ofertą i formularzem kontaktowym.</p>
+          <ul class="upsell-list">
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Indywidualny projekt</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Wiele podstron (np. oferta, galeria)</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Integracja ze spacerem 360°</li>
+          </ul>
+          <a href="#kontakt" class="upsell-btn">Zapytaj o stronę
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 
