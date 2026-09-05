@@ -229,7 +229,7 @@
   .social-icon.pin{background:#E60023;}
 
   /* Example / real short-form video section */
-  .example-section{padding:0 0 100px;}
+  .example-section{padding:100px 0;}
   .example-panel{background:var(--bg-alt); border-radius:var(--radius-lg); padding:56px; display:grid; grid-template-columns:1.15fr 1fr; gap:48px; align-items:center;}
   .example-copy h2{font-size:clamp(24px,2.6vw,32px); font-weight:800; letter-spacing:-.02em; line-height:1.2; margin-bottom:14px;}
   .example-copy > p{font-size:15px; color:var(--ink-soft); line-height:1.6; margin-bottom:28px; max-width:460px;}
@@ -244,19 +244,23 @@
   .example-step-label{font-size:11px; font-weight:700; color:var(--ink-soft); text-align:center; line-height:1.3; padding:0 2px;}
   .example-step-arrow{flex:none; color:var(--ink-faint); margin-top:9px;}
   .example-step-arrow svg{width:13px; height:13px;}
-  .example-note{font-family:'Caveat', cursive; font-size:23px; font-weight:700; color:var(--ink-soft); display:inline-block; position:relative;}
-  .example-note::after{content:""; position:absolute; left:2px; right:8px; bottom:-1px; height:2px; background:var(--accent); border-radius:1px;}
+  .example-note{
+    font-family:'Caveat', cursive; font-size:27px; font-weight:600; color:var(--ink-soft);
+    display:inline-block; position:relative; transform:rotate(-2deg);
+  }
+  .example-note::after{content:""; position:absolute; left:2px; right:6px; bottom:-2px; height:2px; background:var(--accent); border-radius:2px; transform:rotate(-1deg);}
 
-  .example-media{display:flex; flex-direction:column; align-items:center; gap:22px;}
-  .example-media-row{display:flex; align-items:center; gap:16px;}
+  .example-media{display:flex; justify-content:center;}
+  .example-media-row{display:flex; align-items:flex-start; gap:22px;}
   .example-phone{
-    position:relative; flex:none; width:210px; aspect-ratio:9/16; border-radius:26px; overflow:hidden;
-    background:#000; box-shadow:0 24px 50px rgba(0,0,0,.28); border:6px solid var(--navy);
+    position:relative; flex:none; width:270px; aspect-ratio:9/16; border-radius:30px; overflow:hidden;
+    background:#000; box-shadow:0 24px 50px rgba(0,0,0,.28); border:7px solid var(--navy);
   }
   .example-phone iframe{width:100%; height:100%; border:0; display:block;}
-  .example-annotation{font-family:'Caveat', cursive; font-size:17px; font-weight:600; color:var(--ink-soft); line-height:1.3; max-width:120px;}
-  .example-annotation svg{width:32px; height:30px; color:var(--ink-faint); margin-bottom:6px;}
-  .example-info{background:#fff; border-radius:14px; padding:18px 20px; box-shadow:0 10px 24px rgba(0,0,0,.06); max-width:290px;}
+  .example-side{display:flex; flex-direction:column; gap:20px; max-width:190px; padding-top:14px;}
+  .example-annotation{font-family:'Caveat', cursive; font-size:19px; font-weight:600; color:var(--ink-soft); line-height:1.3; transform:rotate(-1deg);}
+  .example-annotation svg{width:34px; height:32px; color:var(--ink-faint); margin-bottom:6px;}
+  .example-info{background:#fff; border-radius:14px; padding:18px 20px; box-shadow:0 10px 24px rgba(0,0,0,.06);}
   .example-info-title{font-size:13.3px; font-weight:800; margin-bottom:6px; display:flex; align-items:center; gap:6px;}
   .example-info p{font-size:12.3px; color:var(--ink-soft); line-height:1.55;}
 
@@ -429,8 +433,8 @@
     .streetview-row{flex-direction:column;}
     .streetview-arrow{transform:rotate(90deg);}
     .example-panel{grid-template-columns:1fr; padding:40px 26px; gap:36px;}
-    .example-media-row{flex-direction:column;}
-    .example-annotation{max-width:260px; text-align:center;}
+    .example-media-row{flex-direction:column; align-items:center;}
+    .example-side{max-width:270px; align-items:center; text-align:center; padding-top:0;}
     .example-annotation svg{display:none;}
   }
   @media (max-width: 600px){
@@ -709,14 +713,16 @@
           <div class="example-phone">
             <iframe src="https://www.youtube-nocookie.com/embed/Tt9qtHee7Uc" title="Przykładowy short bokaWorks ze spaceru 360°" loading="lazy" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>
           </div>
-          <div class="example-annotation">
-            <svg viewBox="0 0 40 36" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M2 4C10 20 22 26 36 22"/><path d="M28 20l9 3-2 9"/></svg>
-            Przykład shorta wygenerowanego ze spaceru 360°
+          <div class="example-side">
+            <div class="example-annotation">
+              <svg viewBox="0 0 40 36" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M2 4C10 20 22 26 36 22"/><path d="M28 20l9 3-2 9"/></svg>
+              Przykład shorta wygenerowanego ze spaceru 360°
+            </div>
+            <div class="example-info">
+              <div class="example-info-title">💡 Dobrze wiedzieć</div>
+              <p>Ten materiał powstał na bazie tego samego spaceru 360°, który możesz wykorzystać w Google, na swojej stronie i w innych kanałach.</p>
+            </div>
           </div>
-        </div>
-        <div class="example-info">
-          <div class="example-info-title">💡 Dobrze wiedzieć</div>
-          <p>Ten materiał powstał na bazie tego samego spaceru 360°, który możesz wykorzystać w Google, na swojej stronie i w innych kanałach.</p>
         </div>
       </div>
     </div>
