@@ -397,14 +397,17 @@
   .form-field input:focus, .form-field textarea:focus{outline:none; border-color:var(--navy);}
   .form-field textarea{resize:vertical; min-height:96px; line-height:1.5;}
 
-  .package-chips{display:flex; flex-wrap:wrap; gap:8px;}
-  .package-chip{
-    padding:8px 14px; border-radius:999px; border:1.5px solid var(--line); background:#fff;
-    font-size:11.5px; font-weight:700; color:var(--ink-soft); cursor:pointer; transition:all .15s ease;
-    font-family:inherit; white-space:nowrap;
+  .package-tiles{display:grid; grid-template-columns:repeat(3, 1fr); gap:14px; margin-bottom:32px;}
+  .package-tile{
+    border:1.5px solid var(--line); border-radius:14px; padding:18px 16px; text-align:center;
+    background:#fff; cursor:pointer; font-family:inherit; transition:all .15s ease;
   }
-  .package-chip:hover{border-color:var(--navy); color:var(--ink);}
-  .package-chip.is-active{background:var(--navy); border-color:var(--navy); color:#fff;}
+  .package-tile:hover{border-color:var(--navy);}
+  .package-tile.is-active{border-color:var(--navy); background:var(--navy); box-shadow:0 14px 28px rgba(23,34,44,.2);}
+  .package-tile-name{font-size:14.5px; font-weight:800; letter-spacing:-.01em; color:var(--ink);}
+  .package-tile.is-active .package-tile-name{color:#fff;}
+  .package-tile-price{font-size:12.5px; color:var(--ink-soft); margin-top:4px;}
+  .package-tile.is-active .package-tile-price{color:rgba(255,255,255,.7);}
 
   .form-consent{display:flex; align-items:flex-start; gap:10px; margin-bottom:24px;}
   .form-consent input[type=checkbox]{margin-top:3px; flex:none; width:16px; height:16px; accent-color:var(--navy);}
@@ -516,6 +519,7 @@
     .form-status{text-align:center;}
   }
   @media (max-width: 600px){
+    .package-tiles{grid-template-columns:1fr;}
     header .wrap{height:50px;}
     .hero-media-inner{height:375px;}
     .viewer{width:88px; height:88px;}
@@ -976,6 +980,21 @@
 <section class="contact-section" id="kontakt">
   <div class="wrap">
     <div class="contact-panel">
+      <div class="package-tiles" id="packageTiles" role="group" aria-label="Wybierz pakiet">
+        <button type="button" class="package-tile" data-package="360 START">
+          <div class="package-tile-name">360 START</div>
+          <div class="package-tile-price">890 zł netto</div>
+        </button>
+        <button type="button" class="package-tile is-active" data-package="MIEJSCE PRO">
+          <div class="package-tile-name">MIEJSCE PRO</div>
+          <div class="package-tile-price">1 590 zł netto</div>
+        </button>
+        <button type="button" class="package-tile" data-package="PEŁNA PREZENTACJA">
+          <div class="package-tile-name">PEŁNA PREZENTACJA</div>
+          <div class="package-tile-price">2 490 zł netto</div>
+        </button>
+      </div>
+
       <div class="contact-copy">
         <h2 class="contact-heading">Zapytaj o wybrany pakiet</h2>
         <p class="contact-sub">Wypełnij krótki formularz, a odezwiemy się z wyceną i możliwym terminem.</p>
@@ -1007,11 +1026,6 @@
       <form id="contactForm" action="contact-handler.php" method="post" novalidate>
         <div class="contact-form-head">
           <div class="contact-selected-package">Wybrany pakiet: <strong id="selectedPackageText">MIEJSCE PRO</strong></div>
-          <div class="package-chips" id="packageChips" role="group" aria-label="Wybierz pakiet">
-            <button type="button" class="package-chip" data-package="360 START">360 START</button>
-            <button type="button" class="package-chip is-active" data-package="MIEJSCE PRO">MIEJSCE PRO</button>
-            <button type="button" class="package-chip" data-package="PEŁNA PREZENTACJA">PEŁNA PREZENTACJA</button>
-          </div>
           <input type="hidden" id="cf-package" name="package" value="MIEJSCE PRO">
         </div>
 
@@ -1027,6 +1041,17 @@
           <div class="form-field">
             <label for="cf-email">Adres e-mail *</label>
             <input type="email" id="cf-email" name="email" placeholder="jan@twojafirma.pl" autocomplete="email" required>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-field">
+            <label for="cf-company">Nazwa firmy</label>
+            <input type="text" id="cf-company" name="company" placeholder="Wpisz nazwę firmy" autocomplete="organization">
+          </div>
+          <div class="form-field">
+            <label for="cf-nip">NIP</label>
+            <input type="text" id="cf-nip" name="nip" placeholder="Wpisz NIP" inputmode="numeric">
           </div>
         </div>
 
@@ -1248,22 +1273,22 @@
 
   var packageInput = document.getElementById('cf-package');
   var selectedPackageText = document.getElementById('selectedPackageText');
-  var chips = document.querySelectorAll('.package-chip');
+  var tiles = document.querySelectorAll('.package-tile');
   var DEFAULT_PACKAGE = 'MIEJSCE PRO';
   function selectPackage(name){
-    chips.forEach(function(chip){
-      chip.classList.toggle('is-active', chip.getAttribute('data-package') === name);
+    tiles.forEach(function(tile){
+      tile.classList.toggle('is-active', tile.getAttribute('data-package') === name);
     });
     packageInput.value = name;
     if(selectedPackageText) selectedPackageText.textContent = name;
   }
-  chips.forEach(function(chip){
-    chip.addEventListener('click', function(){
-      selectPackage(chip.getAttribute('data-package'));
+  tiles.forEach(function(tile){
+    tile.addEventListener('click', function(){
+      selectPackage(tile.getAttribute('data-package'));
     });
   });
   document.querySelectorAll('[data-package]').forEach(function(el){
-    if(el.classList.contains('package-chip')) return;
+    if(el.classList.contains('package-tile')) return;
     el.addEventListener('click', function(){
       selectPackage(el.getAttribute('data-package'));
     });
