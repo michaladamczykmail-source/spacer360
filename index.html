@@ -245,7 +245,11 @@
     background:var(--bg-alt); border-radius:var(--radius-lg); padding:46px 48px;
     display:flex; align-items:center; gap:44px; flex-wrap:wrap;
   }
-  .how-heading h2{font-size:clamp(24px,2.6vw,30px); font-weight:800; letter-spacing:-.02em; line-height:1.15; flex:none; min-width:150px; margin:0;}
+  .how-heading{flex:none; width:250px; display:flex; flex-direction:column;}
+  .how-heading .eyebrow{margin-bottom:14px;}
+  .how-heading h2{font-size:clamp(24px,2.6vw,30px); font-weight:800; letter-spacing:-.02em; line-height:1.15; margin:0 0 18px;}
+  .how-divider{width:32px; height:2px; background:var(--ink-soft); margin-bottom:18px;}
+  .how-subtitle{font-size:14px; color:var(--ink-soft); line-height:1.6; margin:0;}
   .how-steps{display:flex; align-items:flex-start; gap:8px; flex:1; flex-wrap:wrap;}
   .how-arrow + .how-step{margin-left:18px;}
   .how-step{flex:1; min-width:140px; text-align:left;}
@@ -498,6 +502,7 @@
     .channels-grid{grid-template-columns:1fr 1fr; row-gap:40px;}
     .capabilities-grid{grid-template-columns:1fr; max-width:440px; margin:0 auto; row-gap:24px;}
     .how-panel{flex-direction:column; align-items:flex-start;}
+    .how-heading{width:100%;}
     .how-steps{gap:26px;}
     .how-arrow{display:none;}
     .streetview-content{grid-template-columns:1fr; gap:30px;}
@@ -756,6 +761,8 @@
       <div class="how-heading">
         <div class="eyebrow">JAK TO DZIAŁA?</div>
         <h2>Od realizacji do<br>realnych klientów.</h2>
+        <div class="how-divider"></div>
+        <p class="how-subtitle">Dbamy o każdy etap &ndash; od przygotowania przestrzeni, przez realizację, aż po gotowe materiały, które przyciągają klientów.</p>
       </div>
       <div class="how-steps">
         <div class="how-step">
@@ -766,7 +773,7 @@
             </div>
           </div>
           <div class="how-title">Przyjeżdżamy i nagrywamy</div>
-          <div class="how-desc">Spacer 360° + opcjonalnie zdjęcia, wideo i dron &ndash; bezinwazyjnie, poza godzinami obsługi klientów.</div>
+          <div class="how-desc">Na miejscu pomagamy w stagingu, dobieramy światło i dopracowujemy detale. Wykonujemy spacer 360° oraz opcjonalnie zdjęcia, wideo i dron. Realizujemy sesję poza godzinami pracy, bez klientów i pracowników.</div>
         </div>
         <div class="how-arrow">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
@@ -778,8 +785,8 @@
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
             </div>
           </div>
-          <div class="how-title">Przygotowujemy i publikujemy</div>
-          <div class="how-desc">Obróbka, konfiguracja, publikacja w Google i gotowe linki.</div>
+          <div class="how-title">Obrabiamy i publikujemy</div>
+          <div class="how-desc">Składamy materiały, konfigurujemy spacer i publikujemy go w Google. Przygotowujemy gotowe linki do wykorzystania na stronie i w social mediach.</div>
         </div>
         <div class="how-arrow">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
@@ -792,7 +799,7 @@
             </div>
           </div>
           <div class="how-title">Dostajesz gotowe materiały</div>
-          <div class="how-desc">Link, kod QR, zdjęcia i wideo &ndash; gotowe do wykorzystania.</div>
+          <div class="how-desc">Spacer 360°, link, kod QR, zdjęcia i wideo &ndash; wszystko gotowe do użycia na stronie, w Google i social mediach.</div>
         </div>
       </div>
     </div>
