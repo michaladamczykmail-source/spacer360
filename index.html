@@ -308,64 +308,18 @@
   .streetview-arrow{flex:none; color:var(--ink-faint);}
   .streetview-arrow svg{width:22px; height:22px;}
 
-  /* ---------- Pricing ---------- */
-  .pricing-section{padding:100px 0;}
-  .pricing-grid{display:grid; grid-template-columns:repeat(3, 1fr); gap:26px; align-items:stretch;}
-  .price-card{
+  /* ---------- Quote (pricing + contact) ---------- */
+  .quote-section{padding:100px 0;}
+  .quote-panel{
     position:relative; background:#fff; border:1px solid var(--line); border-radius:var(--radius-lg);
-    padding:38px 30px 30px; display:flex; flex-direction:column; align-items:center; text-align:center;
+    padding:44px 48px; box-shadow:0 20px 45px rgba(23,34,44,.07); margin-top:50px;
+    display:grid; grid-template-columns:0.72fr 1.6fr; gap:48px;
   }
-  .price-card.featured{
-    box-shadow:0 20px 45px rgba(23,34,44,.25); transform:translateY(-10px);
-  }
-  .price-card.is-selected{background:var(--navy); color:#fff; border-color:var(--navy);}
-  .badge{
-    position:absolute; top:-14px; left:50%; transform:translateX(-50%); white-space:nowrap;
-    font-size:11px; font-weight:700; letter-spacing:.08em; text-transform:uppercase;
-    background:var(--ink); color:#fff; padding:7px 16px; border-radius:999px;
-    box-shadow:0 8px 18px rgba(0,0,0,.22);
-  }
-  .price-name{font-size:17px; font-weight:800; margin-bottom:4px; letter-spacing:-.01em;}
-  .price-sub{font-size:13px; color:var(--ink-soft); margin-bottom:20px;}
-  .price-card.is-selected .price-sub{color:rgba(255,255,255,.65);}
-  .price-icons{display:flex; align-items:center; justify-content:center; gap:8px; margin-bottom:20px;}
-  .pi{
-    width:36px; height:36px; border-radius:50%; border:1.5px solid var(--line); background:#fff;
-    display:flex; align-items:center; justify-content:center; flex:none; color:var(--navy);
-  }
-  .price-card.is-selected .pi{border-color:rgba(255,255,255,.35); background:rgba(255,255,255,.08); color:#fff;}
-  .pi svg{width:16px; height:16px;}
-  .pi .logo-icon{width:18px; height:11px; color:inherit;}
-  .pi-plus{font-size:13px; font-weight:700; color:var(--ink-faint);}
-  .price-card.is-selected .pi-plus{color:rgba(255,255,255,.55);}
-  .price-includes{font-size:13.8px; color:var(--ink-soft); line-height:1.5; margin-bottom:24px; min-height:40px;}
-  .price-card.is-selected .price-includes{color:rgba(255,255,255,.8);}
-  .price-amount{display:flex; align-items:baseline; justify-content:center; gap:8px; margin-bottom:26px;}
-  .price-amount .num{font-size:34px; font-weight:800; letter-spacing:-.02em;}
-  .price-amount .netto{font-size:13.5px; color:var(--ink-soft); font-weight:600;}
-  .price-card.is-selected .netto{color:rgba(255,255,255,.7);}
-  .price-card .btn{justify-content:center; width:100%; margin-top:auto;}
-  .price-card:not(.is-selected) .btn{background:transparent; color:var(--ink); border:1.5px solid var(--ink);}
-  .price-card.is-selected .btn{background:#fff; color:var(--navy); border-color:#fff;}
 
-  .addons-note{text-align:center; margin-top:44px; font-size:13.5px; color:var(--ink-soft); line-height:1.8;}
-  .addons-label{font-weight:700; letter-spacing:.06em; color:var(--ink); text-transform:uppercase; font-size:12px;}
-
-  /* ---------- Contact form ---------- */
-  .contact-section{padding:26px 0 90px;}
-  .contact-panel{
-    position:relative; background:#fff; border:1px solid var(--line); border-radius:var(--radius-lg);
-    padding:44px 48px; box-shadow:0 20px 45px rgba(23,34,44,.07);
-    display:grid; grid-template-columns:0.85fr 1.6fr; gap:48px;
-  }
-  .contact-panel::before{
-    content:""; position:absolute; top:-11px; left:50%; transform:translateX(-50%);
-    width:64px; height:22px; background:#fff; border:1px solid var(--line); border-bottom:none;
-    border-radius:12px 12px 0 0;
-  }
-  .contact-heading{font-size:20px; font-weight:800; letter-spacing:-.01em; line-height:1.3; margin-bottom:10px;}
-  .contact-sub{font-size:13.3px; color:var(--ink-soft); line-height:1.55; margin-bottom:28px;}
-  .contact-trust{display:flex; flex-direction:column; gap:18px;}
+  .quote-sidebar{display:flex; flex-direction:column;}
+  .quote-sidebar h3{font-size:22px; font-weight:800; letter-spacing:-.01em; line-height:1.3; margin:0 0 14px;}
+  .quote-sidebar-sub{font-size:13.3px; color:var(--ink-soft); line-height:1.6; margin:0 0 30px;}
+  .quote-trust{display:flex; flex-direction:column; gap:18px; padding-bottom:28px; margin-bottom:28px; border-bottom:1px solid var(--line);}
   .contact-trust-item{display:flex; align-items:flex-start; gap:12px;}
   .contact-trust-icon{
     flex:none; width:40px; height:52px; border-radius:50%; background:var(--bg-alt);
@@ -374,13 +328,70 @@
   .contact-trust-icon svg{width:18px; height:18px;}
   .contact-trust-title{font-size:13.3px; font-weight:700; color:var(--ink); margin-bottom:1px;}
   .contact-trust-sub{font-size:12px; color:var(--ink-soft);}
+  .quote-contact-label{font-size:13.3px; font-weight:700; color:var(--ink); line-height:1.4; margin-bottom:14px;}
+  .quote-contact-line{display:flex; align-items:center; gap:10px; font-size:13.5px; color:var(--ink-soft); text-decoration:none; margin-bottom:10px;}
+  .quote-contact-line:last-child{margin-bottom:0;}
+  .quote-contact-line svg{flex:none; width:16px; height:16px; color:var(--ink-soft);}
+  .quote-contact-line:hover{color:var(--navy);}
+  .quote-contact-line:hover svg{color:var(--navy);}
 
-  .contact-form-head{
-    display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:14px;
-    margin-bottom:24px; padding-bottom:22px; border-bottom:1px solid var(--line);
+  .quote-main{min-width:0;}
+  .quote-step{display:flex; align-items:flex-start; gap:14px; margin-bottom:24px;}
+  .quote-step-num{
+    flex:none; width:32px; height:32px; border-radius:50%; background:var(--navy); color:#fff;
+    display:flex; align-items:center; justify-content:center; font-size:14px; font-weight:800;
   }
-  .contact-selected-package{font-size:14.5px; font-weight:700; color:var(--ink);}
-  .contact-selected-package strong{color:var(--navy);}
+  .quote-step-title{font-size:18px; font-weight:800; letter-spacing:-.01em; margin-bottom:3px;}
+  .quote-step-sub{font-size:13.3px; color:var(--ink-soft); line-height:1.5;}
+
+  .pricing-grid{display:grid; grid-template-columns:repeat(3, 1fr); gap:20px; align-items:stretch; margin-bottom:32px;}
+  .price-card{
+    position:relative; background:#fff; border:1px solid var(--line); border-radius:var(--radius-lg);
+    padding:34px 24px 26px; display:flex; flex-direction:column; align-items:center; text-align:center;
+    cursor:pointer; transition:border-color .15s ease, box-shadow .15s ease;
+  }
+  .price-card:hover{border-color:var(--navy);}
+  .price-card.is-selected{background:var(--navy); color:#fff; border-color:var(--navy);}
+  .price-radio{
+    position:absolute; top:18px; left:18px; width:20px; height:20px; border-radius:50%;
+    border:1.5px solid var(--line); background:#fff;
+  }
+  .price-card.is-selected .price-radio{border-color:rgba(255,255,255,.5); background:transparent;}
+  .price-card.is-selected .price-radio::after{
+    content:""; position:absolute; inset:4px; border-radius:50%; background:#fff;
+  }
+  .badge{
+    position:absolute; top:-14px; left:50%; transform:translateX(-50%); white-space:nowrap;
+    font-size:11px; font-weight:700; letter-spacing:.08em; text-transform:uppercase;
+    background:var(--ink); color:#fff; padding:7px 16px; border-radius:999px;
+    box-shadow:0 8px 18px rgba(0,0,0,.22);
+  }
+  .price-name{font-size:16px; font-weight:800; margin-bottom:4px; letter-spacing:-.01em;}
+  .price-sub{font-size:12.5px; color:var(--ink-soft); margin-bottom:18px;}
+  .price-card.is-selected .price-sub{color:rgba(255,255,255,.65);}
+  .price-icons{display:flex; align-items:center; justify-content:center; gap:8px; margin-bottom:18px;}
+  .pi{
+    width:34px; height:34px; border-radius:50%; border:1.5px solid var(--line); background:#fff;
+    display:flex; align-items:center; justify-content:center; flex:none; color:var(--navy);
+  }
+  .price-card.is-selected .pi{border-color:rgba(255,255,255,.35); background:rgba(255,255,255,.08); color:#fff;}
+  .pi svg{width:15px; height:15px;}
+  .pi .logo-icon{width:17px; height:10px; color:inherit;}
+  .pi-plus{font-size:13px; font-weight:700; color:var(--ink-faint);}
+  .price-card.is-selected .pi-plus{color:rgba(255,255,255,.55);}
+  .price-includes{font-size:13px; color:var(--ink-soft); line-height:1.5; margin-bottom:18px; min-height:38px;}
+  .price-card.is-selected .price-includes{color:rgba(255,255,255,.8);}
+  .price-amount{display:flex; align-items:baseline; justify-content:center; gap:8px;}
+  .price-amount .num{font-size:28px; font-weight:800; letter-spacing:-.02em;}
+  .price-amount .netto{font-size:13px; color:var(--ink-soft); font-weight:600;}
+  .price-card.is-selected .netto{color:rgba(255,255,255,.7);}
+
+  .quote-note{
+    display:flex; align-items:flex-start; gap:12px; background:#eef1f5; border-radius:12px;
+    padding:16px 18px; margin-bottom:40px; font-size:13px; color:var(--ink-soft); line-height:1.55;
+  }
+  .quote-note svg{flex:none; width:18px; height:18px; margin-top:1px; color:var(--ink-soft);}
+  .quote-note strong{display:block; color:var(--ink); font-weight:700; margin-bottom:2px;}
 
   .form-row{display:grid; grid-template-columns:1fr; gap:16px; margin-bottom:16px;}
   .form-row-3{grid-template-columns:1fr 1fr 1fr;}
@@ -410,7 +421,8 @@
   .form-consent-text{font-size:12.3px; color:var(--ink-soft); line-height:1.55; cursor:pointer;}
   .form-consent-text a{display:inline-block; margin-top:2px; text-decoration:underline; color:var(--ink); font-weight:600;}
 
-  .form-actions{display:flex; justify-content:flex-start;}
+  .form-actions{display:flex; justify-content:center;}
+  .form-note{text-align:center; font-size:12.5px; color:var(--ink-faint); margin-top:14px;}
   .form-submit-btn{border:none; cursor:pointer; font-family:inherit;}
   .form-submit-btn:disabled{opacity:.6; cursor:default; transform:none;}
   .form-submit-btn svg{width:15px; height:15px;}
@@ -421,6 +433,8 @@
   .form-status.is-success{color:#1a7f37; background:rgba(26,127,55,.12); display:block;}
   .form-status.is-error{color:#c0392b; background:rgba(192,57,43,.12); display:block;}
   .hp-field{position:absolute; left:-9999px; width:1px; height:1px; opacity:0; pointer-events:none;}
+  .addons-note{text-align:center; margin-top:44px; font-size:13.5px; color:var(--ink-soft); line-height:1.8;}
+  .addons-label{font-weight:700; letter-spacing:.06em; color:var(--ink); text-transform:uppercase; font-size:12px;}
 
   /* ---------- Gallery (realizacje) ---------- */
   .gallery-section{padding:100px 0; background:var(--bg-alt);}
@@ -514,8 +528,6 @@
     .nav-toggle{display:flex;}
     .hero-media-inner{height:460px;}
     .hero-verticals{grid-template-columns:1fr; margin-top:-90px; gap:14px;}
-    .pricing-grid{grid-template-columns:1fr; max-width:440px; margin:0 auto;}
-    .price-card.featured{transform:none;}
     .footer-grid{grid-template-columns:1fr 1fr; row-gap:36px;}
     .stats-box{grid-template-columns:1fr 1fr; row-gap:34px;}
     .stat-item:nth-child(3){border-left:none;}
@@ -529,7 +541,8 @@
     .streetview-row{flex-direction:column;}
     .streetview-arrow{transform:rotate(90deg);}
     .upsell-grid{grid-template-columns:1fr;}
-    .contact-panel{grid-template-columns:1fr; gap:32px; padding:32px 26px;}
+    .quote-panel{grid-template-columns:1fr; gap:32px; padding:32px 26px;}
+    .pricing-grid{grid-template-columns:1fr; max-width:440px; margin:0 auto 32px;}
     .form-row-3{grid-template-columns:1fr;}
     .form-row-2{grid-template-columns:1fr;}
     .form-actions{justify-content:stretch;}
@@ -889,65 +902,19 @@
   </div>
 </section>
 
-<section class="pricing-section" id="pakiety">
+<section class="quote-section" id="pakiety">
   <div class="wrap">
     <div class="section-head">
       <div class="eyebrow" style="text-align:center;">PROSTE PAKIETY</div>
-      <h2>Wybierz zakres dopasowany do Twojego miejsca.</h2>
+      <h2>Zamów wycenę i wybierz pakiet</h2>
+      <p>Wypełnij formularz, a skontaktujemy się z Tobą z propozycją terminu i szczegółami realizacji.</p>
     </div>
 
-    <div class="pricing-grid">
-      <div class="price-card">
-        <div class="price-name">360 START</div>
-        <div class="price-sub">mały lokal / apartament</div>
-        <div class="price-icons">
-          <span class="pi"><svg class="logo-icon"><use href="#icon-spacer-orbit"></use></svg></span>
-        </div>
-        <p class="price-includes">Spacer 360°<br>+ publikacja i oznaczenie</p>
-        <div class="price-amount"><span class="num">890 zł</span><span class="netto">netto</span></div>
-        <a href="#kontakt" class="btn btn-outline" data-package="360 START">WYBIERAM</a>
-      </div>
-
-      <div class="price-card featured is-selected">
-        <div class="badge">NAJPOPULARNIEJSZY</div>
-        <div class="price-name">MIEJSCE PRO</div>
-        <div class="price-sub">najczęstszy wybór</div>
-        <div class="price-icons">
-          <span class="pi"><svg class="logo-icon"><use href="#icon-spacer-orbit"></use></svg></span>
-          <span class="pi-plus">+</span>
-          <span class="pi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg></span>
-        </div>
-        <p class="price-includes">Spacer 360°<br>+ profesjonalne zdjęcia</p>
-        <div class="price-amount"><span class="num">1 590 zł</span><span class="netto">netto</span></div>
-        <a href="#kontakt" class="btn btn-white" data-package="MIEJSCE PRO">WYBIERAM</a>
-      </div>
-
-      <div class="price-card">
-        <div class="price-name">PEŁNA PREZENTACJA</div>
-        <div class="price-sub">noclegi / restauracja premium</div>
-        <div class="price-icons">
-          <span class="pi"><svg class="logo-icon"><use href="#icon-spacer-orbit"></use></svg></span>
-          <span class="pi-plus">+</span>
-          <span class="pi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg></span>
-          <span class="pi-plus">+</span>
-          <span class="pi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><circle cx="4" cy="4" r="2"/><circle cx="20" cy="4" r="2"/><circle cx="4" cy="20" r="2"/><circle cx="20" cy="20" r="2"/><path d="M6 6l4 4M18 6l-4 4M6 18l4-4M18 18l-4-4"/></svg></span>
-        </div>
-        <p class="price-includes">Spacer 360°<br>+ zdjęcia + wideo z drona</p>
-        <div class="price-amount"><span class="num">2 490 zł</span><span class="netto">netto</span></div>
-        <a href="#kontakt" class="btn btn-outline" data-package="PEŁNA PREZENTACJA">WYBIERAM</a>
-      </div>
-    </div>
-
-  </div>
-</section>
-
-<section class="contact-section" id="kontakt">
-  <div class="wrap">
-    <div class="contact-panel">
-      <div class="contact-copy">
-        <h2 class="contact-heading">Zapytaj o wybrany pakiet</h2>
-        <p class="contact-sub">Wypełnij krótki formularz, a odezwiemy się z wyceną i możliwym terminem.</p>
-        <div class="contact-trust">
+    <div class="quote-panel">
+      <div class="quote-sidebar">
+        <h3>Szybko, prosto,<br>bez zobowiązań</h3>
+        <p class="quote-sidebar-sub">Wybierz pakiet, zostaw dane i opisz swoje miejsce. Odezwiemy się z wyceną i możliwym terminem.</p>
+        <div class="quote-trust">
           <div class="contact-trust-item">
             <span class="contact-trust-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 3 14h8l-1 8 10-12h-8z"/></svg></span>
             <div>
@@ -970,13 +937,83 @@
             </div>
           </div>
         </div>
+        <div class="quote-contact-label">Masz pytania?<br>Napisz lub zadzwoń:</div>
+        <a href="tel:+48668476538" class="quote-contact-line">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          +48 668 476 538
+        </a>
+        <a href="mailto:info@bokaWorks.pl" class="quote-contact-line">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z"/><path d="m22 6-10 7L2 6"/></svg>
+          info@bokaWorks.pl
+        </a>
       </div>
 
-      <form id="contactForm" action="contact-handler.php" method="post" novalidate>
-        <div class="contact-form-head">
-          <div class="contact-selected-package">Wybrany pakiet: <strong id="selectedPackageText">MIEJSCE PRO</strong></div>
-          <input type="hidden" id="cf-package" name="package" value="MIEJSCE PRO">
+      <div class="quote-main">
+        <div class="quote-step">
+          <div class="quote-step-num">1</div>
+          <div>
+            <div class="quote-step-title">Wybierz pakiet</div>
+            <div class="quote-step-sub">Zaznacz pakiet, który najlepiej pasuje do Twojego miejsca.</div>
+          </div>
         </div>
+
+        <div class="pricing-grid">
+          <div class="price-card" data-package="360 START">
+            <div class="price-radio"></div>
+            <div class="price-name">360 START</div>
+            <div class="price-sub">mały lokal / apartament</div>
+            <div class="price-icons">
+              <span class="pi"><svg class="logo-icon"><use href="#icon-spacer-orbit"></use></svg></span>
+            </div>
+            <p class="price-includes">Spacer 360°<br>+ publikacja i oznaczenie</p>
+            <div class="price-amount"><span class="num">890 zł</span><span class="netto">netto</span></div>
+          </div>
+
+          <div class="price-card is-selected" data-package="MIEJSCE PRO">
+            <div class="badge">NAJPOPULARNIEJSZY</div>
+            <div class="price-radio"></div>
+            <div class="price-name">MIEJSCE PRO</div>
+            <div class="price-sub">najczęstszy wybór</div>
+            <div class="price-icons">
+              <span class="pi"><svg class="logo-icon"><use href="#icon-spacer-orbit"></use></svg></span>
+              <span class="pi-plus">+</span>
+              <span class="pi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg></span>
+            </div>
+            <p class="price-includes">Spacer 360°<br>+ profesjonalne zdjęcia</p>
+            <div class="price-amount"><span class="num">1 590 zł</span><span class="netto">netto</span></div>
+          </div>
+
+          <div class="price-card" data-package="PEŁNA PREZENTACJA">
+            <div class="price-radio"></div>
+            <div class="price-name">PEŁNA PREZENTACJA</div>
+            <div class="price-sub">noclegi / restauracja premium</div>
+            <div class="price-icons">
+              <span class="pi"><svg class="logo-icon"><use href="#icon-spacer-orbit"></use></svg></span>
+              <span class="pi-plus">+</span>
+              <span class="pi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg></span>
+              <span class="pi-plus">+</span>
+              <span class="pi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><circle cx="4" cy="4" r="2"/><circle cx="20" cy="4" r="2"/><circle cx="4" cy="20" r="2"/><circle cx="20" cy="20" r="2"/><path d="M6 6l4 4M18 6l-4 4M6 18l4-4M18 18l-4-4"/></svg></span>
+            </div>
+            <p class="price-includes">Spacer 360°<br>+ zdjęcia + wideo z drona</p>
+            <div class="price-amount"><span class="num">2 490 zł</span><span class="netto">netto</span></div>
+          </div>
+        </div>
+
+        <div class="quote-note">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
+          <div><strong>Pakiet możesz zmienić po kontakcie z nami.</strong>To tylko wstępny wybór &mdash; po kontakcie z nami dopasujemy pakiet do Twoich potrzeb.</div>
+        </div>
+
+        <div class="quote-step" id="kontakt">
+          <div class="quote-step-num">2</div>
+          <div>
+            <div class="quote-step-title">Twoje dane kontaktowe</div>
+            <div class="quote-step-sub">Wypełnij formularz, a skontaktujemy się z Tobą z wyceną i terminem realizacji.</div>
+          </div>
+        </div>
+
+      <form id="contactForm" action="contact-handler.php" method="post" novalidate>
+        <input type="hidden" id="cf-package" name="package" value="MIEJSCE PRO">
 
         <div class="form-row form-row-3">
           <div class="form-field">
@@ -1031,12 +1068,14 @@
 
         <div class="form-actions">
           <button type="submit" class="btn btn-dark form-submit-btn">
-            Wyślij wiadomość
+            Wyślij zapytanie
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
           </button>
         </div>
+        <p class="form-note">To tylko zapytanie &ndash; nie dokonujesz płatności.</p>
         <p class="form-status" id="formStatus" role="status"></p>
       </form>
+      </div>
     </div>
 
     <p class="addons-note"><span class="addons-label">DODATKI I ROZSZERZENIA</span> &middot; Sesja foto 590 zł &middot; Dron 690 zł &middot; Dodatkowa strefa 360 od 250 zł &middot; Duże obiekty: indywidualnie</p>
@@ -1370,21 +1409,17 @@
   });
 
   var packageInput = document.getElementById('cf-package');
-  var selectedPackageText = document.getElementById('selectedPackageText');
   var priceCards = document.querySelectorAll('.price-card');
   var DEFAULT_PACKAGE = 'MIEJSCE PRO';
   function selectPackage(name){
     priceCards.forEach(function(card){
-      var link = card.querySelector('[data-package]');
-      card.classList.toggle('is-selected', !!link && link.getAttribute('data-package') === name);
+      card.classList.toggle('is-selected', card.getAttribute('data-package') === name);
     });
     packageInput.value = name;
-    if(selectedPackageText) selectedPackageText.textContent = name;
   }
-  document.querySelectorAll('[data-package]').forEach(function(el){
-    el.addEventListener('click', function(e){
-      e.preventDefault();
-      selectPackage(el.getAttribute('data-package'));
+  priceCards.forEach(function(card){
+    card.addEventListener('click', function(){
+      selectPackage(card.getAttribute('data-package'));
     });
   });
 
