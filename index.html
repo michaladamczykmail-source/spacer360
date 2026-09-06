@@ -442,6 +442,23 @@
     color:#fff; font-weight:700; font-size:15px; background:rgba(0,0,0,.12);
   }
 
+  /* ---------- FAQ ---------- */
+  .faq-section{padding:100px 0;}
+  .faq-list{max-width:760px; margin:50px auto 0;}
+  .faq-item{border-bottom:1px solid var(--line);}
+  .faq-item:first-child{border-top:1px solid var(--line);}
+  .faq-question{
+    width:100%; display:flex; align-items:center; justify-content:space-between; gap:20px;
+    padding:22px 4px; background:none; border:none; cursor:pointer; text-align:left;
+    font-family:inherit; font-size:16px; font-weight:700; color:var(--ink);
+  }
+  .faq-chevron{flex:none; width:20px; height:20px; color:var(--ink-faint); transition:transform .25s ease;}
+  .faq-item.is-open .faq-question{color:var(--navy);}
+  .faq-item.is-open .faq-chevron{transform:rotate(180deg); color:var(--navy);}
+  .faq-answer{max-height:0; overflow:hidden; opacity:0; transition:max-height .3s ease, opacity .25s ease;}
+  .faq-item.is-open .faq-answer{opacity:1;}
+  .faq-answer p{margin:0 0 22px; padding:0 32px 0 4px; font-size:14.5px; color:var(--ink-soft); line-height:1.6;}
+
   /* ---------- Stats ---------- */
   .stats-section{padding:100px 0;}
   .stats-accent{color:rgba(26,29,31,.72);}
@@ -1169,6 +1186,90 @@
   </div>
 </section>
 
+<section class="faq-section" id="faq">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow" style="text-align:center;">MASZ PYTANIA?</div>
+      <h2>Wszystko, co warto wiedzieć przed sesją</h2>
+      <p>Krótko i konkretnie &ndash; od przygotowania miejsca po publikację spaceru.</p>
+    </div>
+    <div class="faq-list" id="faqList">
+      <div class="faq-item">
+        <button class="faq-question" type="button">
+          <span>Ile trwa wykonanie spaceru 360?</span>
+          <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        <div class="faq-answer">
+          <p>Najczęściej 1&ndash;2 godziny, zależnie od wielkości i liczby pomieszczeń. Termin ustalamy tak, żeby możliwie najmniej ingerować w działanie Twojej firmy.</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" type="button">
+          <span>Czy muszę sam przygotować przestrzeń?</span>
+          <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        <div class="faq-answer">
+          <p>Nie. Przed realizacją podpowiadamy, jak przygotować miejsce, a na miejscu pomagamy ustawić przestrzeń, światło i detale tak, żeby prezentowała się jak najlepiej.</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" type="button">
+          <span>Czy zdjęcia mogą być wykonane poza godzinami pracy?</span>
+          <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        <div class="faq-answer">
+          <p>Tak &ndash; i często właśnie tak pracujemy. Realizację możemy zaplanować przed otwarciem, po zamknięciu lub w czasie, gdy nie ma klientów i pracowników.</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" type="button">
+          <span>Co dokładnie otrzymuję?</span>
+          <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        <div class="faq-answer">
+          <p>Gotowy spacer 360°, który możesz wykorzystać na swojej stronie internetowej, w materiałach marketingowych i &ndash; zależnie od realizacji &ndash; także w usługach Google.</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" type="button">
+          <span>Czy spacer można dodać do Google Maps?</span>
+          <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        <div class="faq-answer">
+          <p>Tak. Możemy przygotować materiał z myślą o publikacji w Google Maps / Street View oraz Wizytówce Google.</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" type="button">
+          <span>Czy mogę umieścić spacer na swojej stronie?</span>
+          <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        <div class="faq-answer">
+          <p>Tak. Spacer można osadzić bezpośrednio na stronie internetowej lub landing page&rsquo;u, dzięki czemu klient może obejrzeć miejsce bez opuszczania Twojej strony.</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" type="button">
+          <span>Nie mam jeszcze dobrej strony internetowej. Co wtedy?</span>
+          <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        <div class="faq-answer">
+          <p>Możemy przygotować również landing page lub stronę firmową, na której spacer stanie się częścią całej prezentacji Twojej firmy.</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" type="button">
+          <span>Ile kosztuje realizacja?</span>
+          <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        <div class="faq-answer">
+          <p>Cena zależy przede wszystkim od wielkości przestrzeni i zakresu materiałów. Możesz wybrać jeden z naszych gotowych pakietów, a przed realizacją potwierdzimy dokładny zakres i koszt.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <footer id="o-nas">
   <div class="wrap">
     <div class="footer-grid">
@@ -1375,6 +1476,22 @@
       .finally(function(){
         submitBtn.disabled = false;
       });
+  });
+
+  document.querySelectorAll('.faq-question').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var item = btn.closest('.faq-item');
+      var wasOpen = item.classList.contains('is-open');
+      document.querySelectorAll('.faq-item.is-open').forEach(function(openItem){
+        openItem.classList.remove('is-open');
+        openItem.querySelector('.faq-answer').style.maxHeight = null;
+      });
+      if(!wasOpen){
+        item.classList.add('is-open');
+        var answer = item.querySelector('.faq-answer');
+        answer.style.maxHeight = answer.scrollHeight + 'px';
+      }
+    });
   });
 </script>
 
