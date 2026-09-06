@@ -489,10 +489,15 @@
   .footer-bottom a:hover{color:var(--ink);}
 
   /* ---------- Responsive ---------- */
+  @media (min-width: 981px) and (max-width: 1240px){
+    .hero-media-inner{height:460px;}
+    .hero-verticals{margin-top:-95px;}
+  }
   @media (max-width: 980px){
     .wrap{padding:0 24px;}
     nav{display:none;}
     .nav-toggle{display:flex;}
+    .hero-media-inner{height:460px;}
     .hero-verticals{grid-template-columns:1fr; margin-top:-90px; gap:14px;}
     .pricing-grid{grid-template-columns:1fr; max-width:440px; margin:0 auto;}
     .price-card.featured{transform:none;}
@@ -518,7 +523,7 @@
   }
   @media (max-width: 600px){
     header .wrap{height:50px;}
-    .hero-media-inner{height:375px;}
+    .hero-media-inner{height:455px;}
     .viewer{width:88px; height:88px;}
     .viewer .deg{font-size:22px;}
     .footer-grid{grid-template-columns:1fr;}
@@ -581,7 +586,7 @@
       <div class="viewer"><div class="deg">360°</div></div>
       <div class="viewer-hint">Kliknij i rozejrzyj się</div>
       <div class="wrap hero-head">
-        <h1>Pokaż swoje <span class="hero-accent">miejsce</span>,<br>zanim klient decyduje&hellip;</h1>
+        <h1>Pokaż swoje <span class="hero-accent">miejsce</span>,<br>zanim klient zdecyduje&hellip;</h1>
       </div>
     </div>
 
