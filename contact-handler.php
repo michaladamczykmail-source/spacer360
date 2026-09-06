@@ -29,14 +29,14 @@ if ($honeypot !== '') {
     respond(true);
 }
 
-$name    = clean_line($_POST['name'] ?? '');
-$phone   = clean_line($_POST['phone'] ?? '');
-$email   = clean_line($_POST['email'] ?? '');
-$company = clean_line($_POST['company'] ?? '');
-$nip     = clean_line($_POST['nip'] ?? '');
-$package = clean_line($_POST['package'] ?? '');
-$message = trim((string) ($_POST['message'] ?? ''));
-$consent = isset($_POST['consent']) && $_POST['consent'] === 'on';
+$name     = clean_line($_POST['name'] ?? '');
+$phone    = clean_line($_POST['phone'] ?? '');
+$email    = clean_line($_POST['email'] ?? '');
+$company  = clean_line($_POST['company'] ?? '');
+$package  = clean_line($_POST['package'] ?? '');
+$interest = clean_line($_POST['interest'] ?? '');
+$message  = trim((string) ($_POST['message'] ?? ''));
+$consent  = isset($_POST['consent']) && $_POST['consent'] === 'on';
 
 if ($name === '' || mb_strlen($name) > 200) {
     respond(false, 'Podaj poprawne imię i nazwisko.', 422);
@@ -66,8 +66,8 @@ $bodyLines = [
     "Telefon: $phone",
     "E-mail: $email",
     'Nazwa firmy: ' . ($company !== '' ? $company : '-'),
-    'NIP: ' . ($nip !== '' ? $nip : '-'),
     'Wybrany pakiet: ' . ($package !== '' ? $package : '-'),
+    'Dodatkowo zainteresowany: ' . ($interest !== '' ? $interest : '-'),
     '',
     'Wiadomość:',
     $message !== '' ? $message : '-',
