@@ -40,8 +40,8 @@ if ($phone === '' || mb_strlen($phone) > 40) {
 if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
     respond(false, 'Podaj poprawny adres e-mail.', 422);
 }
-if ($message === '' || mb_strlen($message) > 5000) {
-    respond(false, 'Wiadomość jest wymagana.', 422);
+if (mb_strlen($message) > 5000) {
+    respond(false, 'Wiadomość jest zbyt długa.', 422);
 }
 if (!$consent) {
     respond(false, 'Zgoda na przetwarzanie danych jest wymagana.', 422);
@@ -60,7 +60,7 @@ $bodyLines = [
     'Wybrany pakiet: ' . ($package !== '' ? $package : '-'),
     '',
     'Wiadomość:',
-    $message,
+    $message !== '' ? $message : '-',
 ];
 $body = implode("\n", $bodyLines);
 
