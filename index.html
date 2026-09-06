@@ -35,6 +35,7 @@
     --line: #ddd8cd;
     --white: #ffffff;
     --accent: #c9a24b;
+    --blue: #4d7ea8;
     --radius-lg: 18px;
     --radius-md: 12px;
     --radius-sm: 8px;
@@ -444,7 +445,7 @@
 
   /* ---------- Stats ---------- */
   .stats-section{padding:100px 0;}
-  .stats-accent{color:var(--ink-faint);}
+  .stats-accent{color:var(--blue);}
   .stats-box{
     background:var(--navy); border-radius:var(--radius-lg);
     display:grid; grid-template-columns:repeat(4,1fr);
@@ -455,12 +456,46 @@
     display:flex; flex-direction:column; align-items:center;
   }
   .stat-item:first-child{border-left:none;}
-  .stat-icon{
-    flex:none; width:60px; height:60px; border-radius:50%;
-    background:var(--navy-soft); border:1px solid rgba(255,255,255,.14);
-    display:flex; align-items:center; justify-content:center; margin-bottom:18px; color:#fff;
+
+  .stat-visual{width:100%; height:118px; margin-bottom:22px; display:flex; align-items:center; justify-content:center;}
+  .stat-visual-inner{position:relative; display:inline-flex;}
+  .stat-badge{
+    position:absolute; right:-14px; bottom:-14px; z-index:2;
+    width:54px; height:54px; border-radius:12px;
+    background:var(--navy-soft); border:1px solid rgba(255,255,255,.2);
+    display:flex; align-items:center; justify-content:center; flex-direction:column; gap:1px;
+    box-shadow:0 10px 22px rgba(0,0,0,.35); color:#4fd1c5;
   }
-  .stat-icon svg{width:24px; height:24px;}
+  .stat-badge svg{width:19px; height:19px; flex:none;}
+  .stat-badge.has-text{color:#fff;}
+  .stat-badge.has-text svg{width:15px; height:15px; color:#4fd1c5;}
+  .badge-num{font-size:11px; font-weight:800; line-height:1.1;}
+  .badge-label{font-size:7px; font-weight:700; letter-spacing:.02em; color:rgba(255,255,255,.65); text-transform:uppercase;}
+
+  .mock-card{position:relative; width:150px; border-radius:10px; background:#fff; box-shadow:0 14px 28px rgba(0,0,0,.3); overflow:hidden;}
+  .mock-searchbar{display:flex; align-items:center; gap:5px; padding:8px 10px; border-bottom:1px solid #eee;}
+  .mock-searchbar svg{width:10px; height:10px; color:#9aa0a6; flex:none;}
+  .mock-searchbar .mock-bar{flex:1; height:5px; border-radius:3px; background:#ececec;}
+  .mock-listing{display:flex; gap:8px; padding:10px;}
+  .mock-thumb{flex:none; width:38px; height:32px; border-radius:5px; background:linear-gradient(135deg,#cbb98f,#8f9a7a);}
+  .mock-lines{flex:1; display:flex; flex-direction:column; gap:5px; justify-content:center;}
+  .mock-lines span{display:block; height:5px; border-radius:3px; background:#e6e6e6;}
+  .mock-lines span:nth-child(2){width:75%;}
+  .mock-lines span:nth-child(3){width:48%;}
+
+  .mock-cal-head{display:flex; justify-content:space-between; padding:9px 11px 5px; font-size:8px; font-weight:800; color:var(--ink-soft); letter-spacing:.03em;}
+  .mock-cal-grid{display:grid; grid-template-columns:repeat(5,1fr); gap:4px; padding:2px 11px 11px;}
+  .mock-cal-day{aspect-ratio:1; border-radius:3px; background:#eee;}
+  .mock-cal-day.is-marked{background:var(--accent);}
+
+  .mock-photo{width:150px; height:100px; border-radius:10px; background-size:cover; background-position:center; position:relative; box-shadow:0 14px 28px rgba(0,0,0,.3);}
+  .mock-360{position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); width:42px; height:42px; border-radius:50%; background:rgba(15,20,25,.55); border:1px solid rgba(255,255,255,.55); backdrop-filter:blur(2px); -webkit-backdrop-filter:blur(2px); display:flex; align-items:center; justify-content:center; color:#fff; font-size:9px; font-weight:700;}
+
+  .mock-quote{width:172px; padding:14px 15px 16px; border-radius:10px; background:var(--navy-soft); border:1px solid rgba(255,255,255,.14); box-shadow:0 14px 28px rgba(0,0,0,.3); text-align:left;}
+  .mock-stars{display:flex; gap:2px; margin-bottom:9px;}
+  .mock-stars svg{width:12px; height:12px; color:var(--accent);}
+  .mock-quote p{margin:0; font-size:11.5px; font-style:italic; font-weight:700; color:#fff; line-height:1.4;}
+
   .stat-value{font-size:32px; font-weight:800; color:#fff; letter-spacing:-.01em; margin-bottom:14px;}
   .stat-value-text{font-size:19px; line-height:1.35;}
   .stat-title{font-size:14.5px; font-weight:800; color:#fff; line-height:1.35; margin-bottom:14px;}
@@ -811,6 +846,119 @@
   </div>
 </section>
 
+<section class="stats-section">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow" style="text-align:center;">STATYSTYKI</div>
+      <h2>Liczby, które przekładają się na <span class="stats-accent">realne efekty</span></h2>
+      <p>Spacery 360° to nie tylko piękna prezentacja. To więcej zainteresowania, dłuższy czas, lepsze decyzje i realne rezerwacje.</p>
+    </div>
+    <div class="stats-box">
+      <div class="stat-item">
+        <div class="stat-visual">
+          <div class="stat-visual-inner">
+            <div class="mock-card">
+              <div class="mock-searchbar">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+                <span class="mock-bar"></span>
+              </div>
+              <div class="mock-listing">
+                <div class="mock-thumb"></div>
+                <div class="mock-lines"><span></span><span></span><span></span></div>
+              </div>
+            </div>
+            <div class="stat-badge">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 6l-9.5 9.5-5-5L1 18"/><path d="M17 6h6v6"/></svg>
+            </div>
+          </div>
+        </div>
+        <div class="stat-value">2&times;</div>
+        <div class="stat-title">większe zainteresowanie</div>
+        <p class="stat-desc">Wizytówki ze zdjęciami i wirtualnym spacerem częściej wzbudzają zainteresowanie niż bez spaceru.</p>
+        <div class="stat-source">Źródło: <a href="https://static.googleusercontent.com/media/www.google.com/pl//streetview/hire/Power-of-maps-listings.pdf" target="_blank" rel="noopener">Google&sup1;
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><path d="M15 3h6v6"/><path d="M10 14L21 3"/></svg>
+        </a></div>
+      </div>
+
+      <div class="stat-item">
+        <div class="stat-visual">
+          <div class="stat-visual-inner">
+            <div class="mock-card">
+              <div class="mock-cal-head"><span>WRZ</span><span>2026</span></div>
+              <div class="mock-cal-grid">
+                <div class="mock-cal-day"></div><div class="mock-cal-day"></div><div class="mock-cal-day is-marked"></div><div class="mock-cal-day"></div><div class="mock-cal-day"></div>
+                <div class="mock-cal-day"></div><div class="mock-cal-day"></div><div class="mock-cal-day"></div><div class="mock-cal-day"></div><div class="mock-cal-day is-marked"></div>
+              </div>
+            </div>
+            <div class="stat-badge has-text">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/><path d="M9 16l2 2 4-4"/></svg>
+              <span class="badge-num">+14%</span>
+              <span class="badge-label">rezerwacji</span>
+            </div>
+          </div>
+        </div>
+        <div class="stat-value">14%</div>
+        <div class="stat-title">więcej rezerwacji</div>
+        <p class="stat-desc">Wzrost rezerwacji / konwersji dla obiektów z branży Travel &amp; Hospitality korzystających z Matterport.</p>
+        <div class="stat-source">Źródło: <a href="https://go.matterport.com/3DTravelHospitality_UK.html" target="_blank" rel="noopener">Matterport&sup2;
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><path d="M15 3h6v6"/><path d="M10 14L21 3"/></svg>
+        </a></div>
+      </div>
+
+      <div class="stat-item">
+        <div class="stat-visual">
+          <div class="stat-visual-inner">
+            <div class="mock-photo" style="background-image:url('hotel1.jpg')">
+              <div class="mock-360">360°</div>
+            </div>
+            <div class="stat-badge has-text">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+              <span class="badge-num">4,5&times;</span>
+              <span class="badge-label">dłużej</span>
+            </div>
+          </div>
+        </div>
+        <div class="stat-value">4,5&times;</div>
+        <div class="stat-title">więcej czasu na stronie</div>
+        <p class="stat-desc">Użytkownicy spędzają znacznie więcej czasu na stronie, gdy mogą zobaczyć obiekt w 3D.</p>
+        <div class="stat-source">Źródło: <a href="https://go.matterport.com/3DTravelHospitality_UK.html" target="_blank" rel="noopener">Matterport&sup2;
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><path d="M15 3h6v6"/><path d="M10 14L21 3"/></svg>
+        </a></div>
+      </div>
+
+      <div class="stat-item">
+        <div class="stat-visual">
+          <div class="stat-visual-inner">
+            <div class="mock-quote">
+              <div class="mock-stars">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.7 1.6 7-6.2-3.9-6.2 3.9 1.6-7L2 9.2l7.1-.6z"/></svg>
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.7 1.6 7-6.2-3.9-6.2 3.9 1.6-7L2 9.2l7.1-.6z"/></svg>
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.7 1.6 7-6.2-3.9-6.2 3.9 1.6-7L2 9.2l7.1-.6z"/></svg>
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.7 1.6 7-6.2-3.9-6.2 3.9 1.6-7L2 9.2l7.1-.6z"/></svg>
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.7 1.6 7-6.2-3.9-6.2 3.9 1.6-7L2 9.2l7.1-.6z"/></svg>
+              </div>
+              <p>&bdquo;Dokładnie to, czego szukałem!&rdquo;</p>
+            </div>
+            <div class="stat-badge">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>
+            </div>
+          </div>
+        </div>
+        <div class="stat-value stat-value-text">lepsze decyzje<br>przed wizytą</div>
+        <p class="stat-desc">Spacery 360° pomagają lepiej poznać obiekt i zwiększają intencję wizyty względem samych zdjęć.</p>
+        <div class="stat-source">Źródło: <a href="https://journals.sagepub.com/doi/10.1177/00472875211028313" target="_blank" rel="noopener">Journal of Travel Research&sup3;
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><path d="M15 3h6v6"/><path d="M10 14L21 3"/></svg>
+        </a></div>
+      </div>
+    </div>
+    <p class="stats-footnotes">
+      &sup1; Google &ndash; The Power of Media-Rich Map Listings, 2015, badanie na próbie 1201 osób. &nbsp;|&nbsp;
+      &sup2; Matterport &ndash; Travel &amp; Hospitality. &nbsp;|&nbsp;
+      &sup3; McLean &amp; Barhorst, Journal of Travel Research, 2022.
+    </p>
+  </div>
+</section>
+
 <section class="pricing-section" id="pakiety">
   <div class="wrap">
     <div class="section-head">
@@ -1105,68 +1253,6 @@
     <div style="text-align:center; margin-top:40px;">
       <a href="#kontakt" class="btn btn-outline">ZOBACZ WIĘCEJ REALIZACJI</a>
     </div>
-  </div>
-</section>
-
-<section class="stats-section">
-  <div class="wrap">
-    <div class="section-head">
-      <h2>Liczby, które przekładają się na <span class="stats-accent">realne efekty</span></h2>
-      <p>Spacery 360° to nie tylko piękna prezentacja. To więcej zainteresowania, dłuższy czas, lepsze decyzje i realne rezerwacje.</p>
-    </div>
-    <div class="stats-box">
-      <div class="stat-item">
-        <div class="stat-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 16l4-4 3 3 5-6"/><path d="M16 9h3v3"/></svg>
-        </div>
-        <div class="stat-value">2&times;</div>
-        <div class="stat-title">większe zainteresowanie</div>
-        <p class="stat-desc">Wizytówki ze zdjęciami i wirtualnym spacerem częściej wzbudzają zainteresowanie niż bez spaceru.</p>
-        <div class="stat-source">Źródło: <a href="https://static.googleusercontent.com/media/www.google.com/pl//streetview/hire/Power-of-maps-listings.pdf" target="_blank" rel="noopener">Google&sup1;
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><path d="M15 3h6v6"/><path d="M10 14L21 3"/></svg>
-        </a></div>
-      </div>
-
-      <div class="stat-item">
-        <div class="stat-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
-        </div>
-        <div class="stat-value">14%</div>
-        <div class="stat-title">więcej rezerwacji</div>
-        <p class="stat-desc">Wzrost rezerwacji / konwersji dla obiektów z branży Travel &amp; Hospitality korzystających z Matterport.</p>
-        <div class="stat-source">Źródło: <a href="https://go.matterport.com/3DTravelHospitality_UK.html" target="_blank" rel="noopener">Matterport&sup2;
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><path d="M15 3h6v6"/><path d="M10 14L21 3"/></svg>
-        </a></div>
-      </div>
-
-      <div class="stat-item">
-        <div class="stat-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
-        </div>
-        <div class="stat-value">4,5&times;</div>
-        <div class="stat-title">więcej czasu na stronie</div>
-        <p class="stat-desc">Użytkownicy spędzają znacznie więcej czasu na stronie, gdy mogą zobaczyć obiekt w 3D.</p>
-        <div class="stat-source">Źródło: <a href="https://go.matterport.com/3DTravelHospitality_UK.html" target="_blank" rel="noopener">Matterport&sup2;
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><path d="M15 3h6v6"/><path d="M10 14L21 3"/></svg>
-        </a></div>
-      </div>
-
-      <div class="stat-item">
-        <div class="stat-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>
-        </div>
-        <div class="stat-value stat-value-text">lepsze decyzje<br>przed wizytą</div>
-        <p class="stat-desc">Spacery 360° pomagają lepiej poznać obiekt i zwiększają intencję wizyty względem samych zdjęć.</p>
-        <div class="stat-source">Źródło: <a href="https://journals.sagepub.com/doi/10.1177/00472875211028313" target="_blank" rel="noopener">Journal of Travel Research&sup3;
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><path d="M15 3h6v6"/><path d="M10 14L21 3"/></svg>
-        </a></div>
-      </div>
-    </div>
-    <p class="stats-footnotes">
-      &sup1; Google &ndash; The Power of Media-Rich Map Listings, 2015, badanie na próbie 1201 osób. &nbsp;|&nbsp;
-      &sup2; Matterport &ndash; Travel &amp; Hospitality. &nbsp;|&nbsp;
-      &sup3; McLean &amp; Barhorst, Journal of Travel Research, 2022.
-    </p>
   </div>
 </section>
 
