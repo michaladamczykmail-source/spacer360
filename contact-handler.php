@@ -1,6 +1,13 @@
 <?php
 header('Content-Type: application/json; charset=utf-8');
 
+require __DIR__ . '/../api/phpmailer/src/Exception.php';
+require __DIR__ . '/../api/phpmailer/src/PHPMailer.php';
+require __DIR__ . '/../api/phpmailer/src/SMTP.php';
+
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception as PHPMailerException;
+
 function respond($success, $error = '', $code = 200) {
     http_response_code($code);
     echo json_encode(['success' => $success, 'error' => $error], JSON_UNESCAPED_UNICODE);
@@ -47,9 +54,12 @@ if (!$consent) {
     respond(false, 'Zgoda na przetwarzanie danych jest wymagana.', 422);
 }
 
-$to = 'info@bokaWorks.pl';
-$subjectText = 'Nowe zapytanie ze strony bokaWorks' . ($package !== '' ? " ($package)" : '');
-$subject = '=?UTF-8?B?' . base64_encode($subjectText) . '?=';
+$configPath = __DIR__ . '/../api/contact-config.php';
+if (!is_file($configPath)) {
+    error_log('contact-handler.php: brak pliku contact-config.php');
+    respond(false, 'Nie udało się wysłać wiadomości. Zadzwoń do nas lub napisz bezpośrednio na info@bokaWorks.pl.', 500);
+}
+$config = require $configPath;
 
 $bodyLines = [
     "Imię i nazwisko: $name",
@@ -64,14 +74,28 @@ $bodyLines = [
 ];
 $body = implode("\n", $bodyLines);
 
-$headers  = "From: bokaWorks – formularz kontaktowy <info@bokaWorks.pl>\r\n";
-$headers .= 'Reply-To: ' . str_replace(["\r", "\n"], '', "$name <$email>") . "\r\n";
-$headers .= "Content-Type: text/plain; charset=UTF-8\r\n";
+$mail = new PHPMailer(true);
+try {
+    $mail->isSMTP();
+    $mail->Host = $config['smtp_host'];
+    $mail->Port = (int) $config['smtp_port'];
+    $mail->SMTPSecure = $config['smtp_secure'] === 'tls' ? PHPMailer::ENCRYPTION_STARTTLS : PHPMailer::ENCRYPTION_SMTPS;
+    $mail->SMTPAuth = true;
+    $mail->Username = $config['smtp_user'];
+    $mail->Password = $config['smtp_pass'];
+    $mail->CharSet = 'UTF-8';
 
-$sent = @mail($to, $subject, $body, $headers);
+    $mail->setFrom($config['from_email'], $config['from_name']);
+    $mail->addAddress($config['to_email'], $config['to_name']);
+    $mail->addReplyTo($email, $name);
 
-if ($sent) {
+    $mail->Subject = 'Nowe zapytanie ze strony bokaWorks' . ($package !== '' ? " ($package)" : '');
+    $mail->isHTML(false);
+    $mail->Body = $body;
+
+    $mail->send();
     respond(true);
+} catch (PHPMailerException $e) {
+    error_log('contact-handler.php mail error: ' . $mail->ErrorInfo);
+    respond(false, 'Nie udało się wysłać wiadomości. Zadzwoń do nas lub napisz bezpośrednio na info@bokaWorks.pl.', 500);
 }
-
-respond(false, 'Nie udało się wysłać wiadomości. Zadzwoń do nas lub napisz bezpośrednio na info@bokaWorks.pl.', 500);
