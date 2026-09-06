@@ -149,9 +149,6 @@
 
   .hero-verticals{display:grid; grid-template-columns:repeat(3,1fr); gap:22px; margin-top:-134px; position:relative; z-index:10;}
   .hv-label{text-align:center; font-size:13px; font-weight:800; letter-spacing:.16em; text-transform:uppercase; color:#fff; margin-bottom:14px; text-shadow:0 2px 10px rgba(0,0,0,.4);}
-  .hero-arrows{position:absolute; inset:0; width:100%; height:100%; z-index:6; pointer-events:none; overflow:visible;}
-  .hero-arrow-path{fill:none; stroke:rgba(255,255,255,.6); stroke-width:1.6; stroke-dasharray:1 6; stroke-linecap:round;}
-  .hero-arrow-head{fill:none; stroke:rgba(255,255,255,.6); stroke-width:1.6; stroke-linecap:round; stroke-linejoin:round;}
   .hv-card{
     background:#fff; border:1px solid var(--line); border-radius:var(--radius-md);
     padding:28px 22px; text-align:center; box-shadow:0 16px 34px rgba(23,34,44,.12);
@@ -493,7 +490,6 @@
     nav{display:none;}
     .nav-toggle{display:flex;}
     .hero-verticals{grid-template-columns:1fr; margin-top:-90px; gap:14px;}
-    .hero-arrows{display:none;}
     .pricing-grid{grid-template-columns:1fr; max-width:440px; margin:0 auto;}
     .price-card.featured{transform:none;}
     .footer-grid{grid-template-columns:1fr 1fr; row-gap:36px;}
@@ -572,7 +568,6 @@
 </header>
 
 <section class="hero" id="hero">
-  <svg class="hero-arrows" id="heroArrows" aria-hidden="true"></svg>
   <div class="hero-media" id="viewerBtn" role="button" tabindex="0" aria-label="Otwórz spacer 360°">
     <div class="hero-media-inner" style="background-image:url('hotel1.jpg')">
       <div class="hero-bg-layer" id="heroLayerA"></div>
@@ -1260,42 +1255,6 @@
   var galleryRow = document.getElementById('galleryRow');
   document.getElementById('galleryNext').addEventListener('click', function(){
     galleryRow.scrollBy({left: 216, behavior: 'smooth'});
-  });
-
-  function drawHeroArrows(){
-    var svg = document.getElementById('heroArrows');
-    var heroSection = document.getElementById('hero');
-    var h1 = heroSection.querySelector('.hero-head h1');
-    var labels = heroSection.querySelectorAll('.hv-label');
-    if(!svg || !h1 || labels.length < 3 || getComputedStyle(svg).display === 'none') return;
-    var heroRect = heroSection.getBoundingClientRect();
-    if(heroRect.width === 0) return;
-    svg.setAttribute('viewBox', '0 0 ' + heroRect.width + ' ' + heroRect.height);
-    svg.innerHTML = '';
-    var h1Rect = h1.getBoundingClientRect();
-    var startX = h1Rect.left - heroRect.left + h1Rect.width * 0.7;
-    var startY = h1Rect.bottom - heroRect.top - 6;
-    labels.forEach(function(label){
-      var labelRect = label.getBoundingClientRect();
-      var endX = labelRect.left - heroRect.left + labelRect.width / 2;
-      var endY = labelRect.top - heroRect.top - 6;
-      var midY = startY + (endY - startY) * 0.6;
-      var path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
-      path.setAttribute('d', 'M' + startX + ',' + startY + ' C ' + startX + ',' + midY + ' ' + endX + ',' + midY + ' ' + endX + ',' + endY);
-      path.setAttribute('class', 'hero-arrow-path');
-      svg.appendChild(path);
-      var head = document.createElementNS('http://www.w3.org/2000/svg', 'path');
-      head.setAttribute('d', 'M' + (endX - 5) + ',' + (endY - 6) + ' L' + endX + ',' + endY + ' L' + (endX + 5) + ',' + (endY - 6));
-      head.setAttribute('class', 'hero-arrow-head');
-      svg.appendChild(head);
-    });
-  }
-  drawHeroArrows();
-  window.addEventListener('load', drawHeroArrows);
-  var heroArrowsResizeTimer;
-  window.addEventListener('resize', function(){
-    clearTimeout(heroArrowsResizeTimer);
-    heroArrowsResizeTimer = setTimeout(drawHeroArrows, 150);
   });
 
   var packageInput = document.getElementById('cf-package');
