@@ -319,31 +319,25 @@
     padding:44px 48px; box-shadow:0 20px 45px rgba(23,34,44,.07); margin-top:50px;
   }
 
-  .pricing-grid{display:grid; grid-template-columns:repeat(3, 1fr); gap:16px; margin-bottom:24px;}
-  .price-card{
-    position:relative; background:#fff; border:1px solid var(--line); border-radius:var(--radius-md);
-    padding:20px 20px 20px 46px; text-align:left; cursor:pointer;
-    transition:border-color .15s ease, box-shadow .15s ease;
-  }
-  .price-card:hover{border-color:var(--navy);}
-  .price-card.is-selected{background:var(--navy); color:#fff; border-color:var(--navy);}
-  .price-radio{
-    position:absolute; top:22px; left:18px; width:20px; height:20px; border-radius:50%;
-    border:1.5px solid var(--line); background:#fff;
-  }
-  .price-card.is-selected .price-radio{border-color:rgba(255,255,255,.5); background:transparent;}
-  .price-card.is-selected .price-radio::after{
-    content:""; position:absolute; inset:4px; border-radius:50%; background:#fff;
-  }
-  .price-name{font-size:15px; font-weight:800; letter-spacing:-.01em;}
-  .price-sub{font-size:12px; color:var(--ink-soft); margin-bottom:10px;}
-  .price-card.is-selected .price-sub{color:rgba(255,255,255,.65);}
-  .price-includes{font-size:12.5px; color:var(--ink-soft); margin-bottom:10px;}
-  .price-card.is-selected .price-includes{color:rgba(255,255,255,.75);}
-  .price-amount{font-size:14px; color:var(--ink-soft);}
-  .price-amount .num{font-size:19px; font-weight:800; color:var(--ink); letter-spacing:-.01em;}
-  .price-card.is-selected .price-amount{color:rgba(255,255,255,.7);}
-  .price-card.is-selected .price-amount .num{color:#fff;}
+  .compare-wrap{overflow-x:auto; -webkit-overflow-scrolling:touch; margin-bottom:28px; padding:4px 4px 8px;}
+  .compare-grid{display:grid; grid-template-columns:230px repeat(3, minmax(150px, 1fr)); min-width:760px; border:1px solid var(--line); border-radius:var(--radius-lg); overflow:hidden; background:#fff;}
+  .compare-cell{padding:15px 16px; display:flex; align-items:center; justify-content:center; text-align:center; border-bottom:1px solid var(--line); font-size:12.8px; color:var(--ink-soft);}
+  .compare-row-head{flex-direction:column; gap:3px; padding:26px 16px 20px;}
+  .compare-row-foot{border-bottom:none; padding:16px;}
+  .compare-feature{justify-content:flex-start; text-align:left; gap:7px; font-weight:600; color:var(--ink); font-size:12.6px;}
+  .compare-info{flex:none; width:15px; height:15px; color:var(--ink-faint); cursor:help;}
+  .compare-col-name{font-size:15px; font-weight:800; color:var(--ink); letter-spacing:-.01em;}
+  .compare-col-sub{font-size:10.6px; color:var(--ink-soft); line-height:1.4;}
+  .compare-price{font-size:20px; font-weight:800; color:var(--ink); margin-top:2px;}
+  .compare-price span{font-size:11.5px; font-weight:600; color:var(--ink-soft); margin-right:3px;}
+  .compare-check{color:var(--ink); width:18px; height:18px; flex:none;}
+  .compare-dash{color:var(--ink-faint); font-size:15px;}
+  .compare-value{font-weight:700; color:var(--ink); font-size:12.5px;}
+  .compare-highlight{background:#faf8f2; position:relative; border-left:1.5px solid var(--navy); border-right:1.5px solid var(--navy);}
+  .compare-highlight.is-top{border-top:1.5px solid var(--navy); border-radius:14px 14px 0 0;}
+  .compare-highlight.is-bottom{border-bottom:1.5px solid var(--navy); border-radius:0 0 14px 14px;}
+  .compare-badge{position:absolute; top:-13px; left:50%; transform:translateX(-50%); background:var(--navy); color:#fff; font-size:10px; font-weight:700; letter-spacing:.05em; text-transform:uppercase; padding:5px 14px; border-radius:999px; white-space:nowrap;}
+  .compare-select-btn{width:calc(100% - 8px); justify-content:center; font-size:11px; padding:12px 10px;}
 
   .quote-note{
     display:flex; align-items:center; gap:10px; background:var(--bg-alt); border-radius:12px;
@@ -516,7 +510,9 @@
     .streetview-arrow{transform:rotate(90deg);}
     .upsell-grid{grid-template-columns:1fr;}
     .quote-panel{padding:32px 26px;}
-    .pricing-grid{grid-template-columns:1fr; max-width:440px; margin:0 auto 24px;}
+    .compare-grid{grid-template-columns:190px repeat(3, minmax(130px, 1fr)); min-width:620px;}
+    .compare-cell{padding:12px 12px; font-size:12px;}
+    .compare-row-head{padding:22px 12px 16px;}
     .form-row-2{grid-template-columns:1fr;}
     .form-actions{justify-content:stretch;}
     .form-status{text-align:center;}
@@ -875,35 +871,180 @@
 <section class="quote-section" id="pakiety">
   <div class="wrap">
     <div class="section-head">
-      <div class="quote-eyebrow"><span>PROSTE PAKIETY</span></div>
-      <h2>Napisz do nas &mdash; dobierzemy najlepszy zakres</h2>
-      <p>Wybierz orientacyjny pakiet i zostaw kontakt. Po rozmowie możemy zmienić zakres tak, aby pasował do Twojego miejsca.</p>
+      <div class="quote-eyebrow"><span>PAKIETY</span></div>
+      <h2>Wybierz pakiet dopasowany do Twojego miejsca</h2>
+      <p>Jasne zasady. Konkretny efekt. Gotowe do wykorzystania.</p>
     </div>
 
     <div class="quote-panel">
-      <div class="pricing-grid">
-        <div class="price-card" data-package="360 START">
-          <div class="price-radio"></div>
-          <div class="price-name">360 START</div>
-          <div class="price-sub">mały lokal / apartament</div>
-          <div class="price-includes">Spacer 360&deg; + publikacja</div>
-          <div class="price-amount">od <span class="num">890 zł</span></div>
-        </div>
+      <div class="compare-wrap">
+        <div class="compare-grid" id="compareGrid">
+          <div class="compare-cell compare-row-head" style="align-items:flex-start; text-align:left;">
+            <div class="compare-col-name">Co otrzymujesz</div>
+          </div>
+          <div class="compare-cell compare-row-head">
+            <div class="compare-col-name">Mała przestrzeń</div>
+            <div class="compare-col-sub">Gabinet, apartament, mały salon</div>
+            <div class="compare-price"><span>od</span>890 zł</div>
+          </div>
+          <div class="compare-cell compare-row-head compare-highlight is-top">
+            <div class="compare-badge">Najczęściej wybierany</div>
+            <div class="compare-col-name">Pełny spacer</div>
+            <div class="compare-col-sub">Restauracja, beauty, pensjonat</div>
+            <div class="compare-price"><span>od</span>1 590 zł</div>
+          </div>
+          <div class="compare-cell compare-row-head">
+            <div class="compare-col-name">Duży obiekt</div>
+            <div class="compare-col-sub">Hotel, duża restauracja, większy obiekt</div>
+            <div class="compare-price"><span>od</span>2 490 zł</div>
+          </div>
 
-        <div class="price-card is-selected" data-package="MIEJSCE PRO">
-          <div class="price-radio"></div>
-          <div class="price-name">MIEJSCE PRO</div>
-          <div class="price-sub">najczęstszy wybór</div>
-          <div class="price-includes">Spacer 360&deg; + zdjęcia</div>
-          <div class="price-amount">od <span class="num">1 590 zł</span></div>
-        </div>
+          <div class="compare-cell compare-feature">
+            <span>Liczba punktów 360&deg;</span>
+            <svg class="compare-info" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" title="Liczba połączonych punktów widokowych w Twoim spacerze 360°."><circle cx="12" cy="12" r="9"/><path d="M12 16v-5M12 8h.01"/></svg>
+          </div>
+          <div class="compare-cell"><span class="compare-value">do 6</span></div>
+          <div class="compare-cell compare-highlight"><span class="compare-value">do 12</span></div>
+          <div class="compare-cell"><span class="compare-value">do 20</span></div>
 
-        <div class="price-card" data-package="PEŁNA PREZENTACJA">
-          <div class="price-radio"></div>
-          <div class="price-name">PEŁNA PREZENTACJA</div>
-          <div class="price-sub">noclegi / restauracja premium</div>
-          <div class="price-includes">Spacer 360&deg; + zdjęcia + dron</div>
-          <div class="price-amount">od <span class="num">2 490 zł</span></div>
+          <div class="compare-cell compare-feature">
+            <span>Gotowy spacer 360&deg;</span>
+            <svg class="compare-info" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" title="W pełni zmontowany, gotowy do publikacji spacer wirtualny."><circle cx="12" cy="12" r="9"/><path d="M12 16v-5M12 8h.01"/></svg>
+          </div>
+          <div class="compare-cell"><svg class="compare-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5L20 6"/></svg></div>
+          <div class="compare-cell compare-highlight"><svg class="compare-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5L20 6"/></svg></div>
+          <div class="compare-cell"><svg class="compare-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5L20 6"/></svg></div>
+
+          <div class="compare-cell compare-feature">
+            <span>Publikacja w Google Maps / Street View</span>
+            <svg class="compare-info" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" title="Spacer widoczny bezpośrednio w Mapach Google i Street View."><circle cx="12" cy="12" r="9"/><path d="M12 16v-5M12 8h.01"/></svg>
+          </div>
+          <div class="compare-cell"><svg class="compare-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5L20 6"/></svg></div>
+          <div class="compare-cell compare-highlight"><svg class="compare-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5L20 6"/></svg></div>
+          <div class="compare-cell"><svg class="compare-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5L20 6"/></svg></div>
+
+          <div class="compare-cell compare-feature">
+            <span>Link do udostępniania</span>
+            <svg class="compare-info" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" title="Gotowy link do wysłania mailem, SMS-em lub przez Messengera."><circle cx="12" cy="12" r="9"/><path d="M12 16v-5M12 8h.01"/></svg>
+          </div>
+          <div class="compare-cell"><svg class="compare-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5L20 6"/></svg></div>
+          <div class="compare-cell compare-highlight"><svg class="compare-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5L20 6"/></svg></div>
+          <div class="compare-cell"><svg class="compare-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5L20 6"/></svg></div>
+
+          <div class="compare-cell compare-feature">
+            <span>Kod QR do spaceru</span>
+            <svg class="compare-info" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" title="Kod QR do umieszczenia w lokalu, na wizytówce lub w materiałach drukowanych."><circle cx="12" cy="12" r="9"/><path d="M12 16v-5M12 8h.01"/></svg>
+          </div>
+          <div class="compare-cell"><svg class="compare-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5L20 6"/></svg></div>
+          <div class="compare-cell compare-highlight"><svg class="compare-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5L20 6"/></svg></div>
+          <div class="compare-cell"><svg class="compare-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5L20 6"/></svg></div>
+
+          <div class="compare-cell compare-feature">
+            <span>Osadzenie na stronie WWW</span>
+            <svg class="compare-info" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" title="Spacer wbudowany bezpośrednio na Twojej stronie internetowej."><circle cx="12" cy="12" r="9"/><path d="M12 16v-5M12 8h.01"/></svg>
+          </div>
+          <div class="compare-cell"><svg class="compare-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5L20 6"/></svg></div>
+          <div class="compare-cell compare-highlight"><svg class="compare-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5L20 6"/></svg></div>
+          <div class="compare-cell"><svg class="compare-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5L20 6"/></svg></div>
+
+          <div class="compare-cell compare-feature">
+            <span>Działa na telefonie i komputerze</span>
+            <svg class="compare-info" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" title="Spacer działa płynnie na każdym urządzeniu, bez dodatkowych aplikacji."><circle cx="12" cy="12" r="9"/><path d="M12 16v-5M12 8h.01"/></svg>
+          </div>
+          <div class="compare-cell"><svg class="compare-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5L20 6"/></svg></div>
+          <div class="compare-cell compare-highlight"><svg class="compare-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5L20 6"/></svg></div>
+          <div class="compare-cell"><svg class="compare-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5L20 6"/></svg></div>
+
+          <div class="compare-cell compare-feature">
+            <span>Sesja zdjęciowa (kadry do strony)</span>
+            <svg class="compare-info" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" title="Profesjonalne zdjęcia wnętrza do wykorzystania na stronie i w social mediach."><circle cx="12" cy="12" r="9"/><path d="M12 16v-5M12 8h.01"/></svg>
+          </div>
+          <div class="compare-cell"><span class="compare-dash">&ndash;</span></div>
+          <div class="compare-cell compare-highlight"><svg class="compare-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5L20 6"/></svg></div>
+          <div class="compare-cell"><svg class="compare-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5L20 6"/></svg></div>
+
+          <div class="compare-cell compare-feature">
+            <span>Logo firmy w spacerze</span>
+            <svg class="compare-info" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" title="Twoje logo widoczne w interfejsie spaceru."><circle cx="12" cy="12" r="9"/><path d="M12 16v-5M12 8h.01"/></svg>
+          </div>
+          <div class="compare-cell"><span class="compare-dash">&ndash;</span></div>
+          <div class="compare-cell compare-highlight"><svg class="compare-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5L20 6"/></svg></div>
+          <div class="compare-cell"><svg class="compare-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5L20 6"/></svg></div>
+
+          <div class="compare-cell compare-feature">
+            <span>Oznaczenie ważnych miejsc</span>
+            <svg class="compare-info" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" title="Punkty w spacerze oznaczające np. recepcję, salę czy stanowisko."><circle cx="12" cy="12" r="9"/><path d="M12 16v-5M12 8h.01"/></svg>
+          </div>
+          <div class="compare-cell"><span class="compare-dash">&ndash;</span></div>
+          <div class="compare-cell compare-highlight"><svg class="compare-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5L20 6"/></svg></div>
+          <div class="compare-cell"><svg class="compare-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5L20 6"/></svg></div>
+
+          <div class="compare-cell compare-feature">
+            <span>Interaktywne punkty informacyjne</span>
+            <svg class="compare-info" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" title="Klikalne punkty z dodatkowymi informacjami wewnątrz spaceru."><circle cx="12" cy="12" r="9"/><path d="M12 16v-5M12 8h.01"/></svg>
+          </div>
+          <div class="compare-cell"><span class="compare-dash">&ndash;</span></div>
+          <div class="compare-cell compare-highlight"><svg class="compare-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5L20 6"/></svg></div>
+          <div class="compare-cell"><svg class="compare-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5L20 6"/></svg></div>
+
+          <div class="compare-cell compare-feature">
+            <span>Opisy wybranych miejsc</span>
+            <svg class="compare-info" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" title="Krótkie opisy tekstowe przypisane do miejsc w spacerze."><circle cx="12" cy="12" r="9"/><path d="M12 16v-5M12 8h.01"/></svg>
+          </div>
+          <div class="compare-cell"><span class="compare-dash">&ndash;</span></div>
+          <div class="compare-cell compare-highlight"><svg class="compare-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5L20 6"/></svg></div>
+          <div class="compare-cell"><svg class="compare-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5L20 6"/></svg></div>
+
+          <div class="compare-cell compare-feature">
+            <span>Film osadzony w spacerze</span>
+            <svg class="compare-info" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" title="Krótkie wideo dostępne bezpośrednio w wybranym punkcie spaceru."><circle cx="12" cy="12" r="9"/><path d="M12 16v-5M12 8h.01"/></svg>
+          </div>
+          <div class="compare-cell"><span class="compare-dash">&ndash;</span></div>
+          <div class="compare-cell compare-highlight"><span class="compare-value">2</span></div>
+          <div class="compare-cell"><span class="compare-value">4</span></div>
+
+          <div class="compare-cell compare-feature">
+            <span>10-sekundowe video z Twojego spaceru</span>
+            <svg class="compare-info" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" title="Gotowy klip 10-sekundowy do Instagrama, Facebooka i TikToka."><circle cx="12" cy="12" r="9"/><path d="M12 16v-5M12 8h.01"/></svg>
+          </div>
+          <div class="compare-cell"><span class="compare-dash">&ndash;</span></div>
+          <div class="compare-cell compare-highlight"><span class="compare-value">1</span></div>
+          <div class="compare-cell"><span class="compare-value">3</span></div>
+
+          <div class="compare-cell compare-feature">
+            <span>15-sekundowe video z 2 wybranych pomieszczeń</span>
+            <svg class="compare-info" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" title="Dłuższe ujęcia wideo z kluczowych wnętrz Twojego miejsca."><circle cx="12" cy="12" r="9"/><path d="M12 16v-5M12 8h.01"/></svg>
+          </div>
+          <div class="compare-cell"><span class="compare-dash">&ndash;</span></div>
+          <div class="compare-cell compare-highlight"><span class="compare-value">1 efekt</span></div>
+          <div class="compare-cell"><span class="compare-value">3 efekty</span></div>
+
+          <div class="compare-cell compare-feature">
+            <span>Filmowanie obiektu i okolicy dronem &ndash; 3 efekty</span>
+            <svg class="compare-info" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" title="Ujęcia z powietrza pokazujące obiekt i jego otoczenie."><circle cx="12" cy="12" r="9"/><path d="M12 16v-5M12 8h.01"/></svg>
+          </div>
+          <div class="compare-cell"><span class="compare-dash">&ndash;</span></div>
+          <div class="compare-cell compare-highlight"><span class="compare-dash">&ndash;</span></div>
+          <div class="compare-cell"><svg class="compare-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5L20 6"/></svg></div>
+
+          <div class="compare-cell compare-feature">
+            <span>Rundy poprawek</span>
+            <svg class="compare-info" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" title="Liczba tur poprawek do materiałów po pierwszej wersji."><circle cx="12" cy="12" r="9"/><path d="M12 16v-5M12 8h.01"/></svg>
+          </div>
+          <div class="compare-cell"><span class="compare-value">1</span></div>
+          <div class="compare-cell compare-highlight"><span class="compare-value">2</span></div>
+          <div class="compare-cell"><span class="compare-value">2</span></div>
+
+          <div class="compare-cell compare-row-foot"></div>
+          <div class="compare-cell compare-row-foot">
+            <button type="button" class="btn btn-outline compare-select-btn" data-package="Mała przestrzeń">Wybieram ten pakiet</button>
+          </div>
+          <div class="compare-cell compare-row-foot compare-highlight is-bottom">
+            <button type="button" class="btn btn-dark compare-select-btn" data-package="Pełny spacer">Wybieram ten pakiet</button>
+          </div>
+          <div class="compare-cell compare-row-foot">
+            <button type="button" class="btn btn-outline compare-select-btn" data-package="Duży obiekt">Wybieram ten pakiet</button>
+          </div>
         </div>
       </div>
 
@@ -913,7 +1054,7 @@
       </div>
 
       <form id="contactForm" action="contact-handler.php" method="post" novalidate>
-        <input type="hidden" id="cf-package" name="package" value="MIEJSCE PRO">
+        <input type="hidden" id="cf-package" name="package" value="Pełny spacer">
 
         <div class="form-row form-row-2">
           <div class="form-field">
@@ -1337,17 +1478,17 @@
   });
 
   var packageInput = document.getElementById('cf-package');
-  var priceCards = document.querySelectorAll('.price-card');
-  var DEFAULT_PACKAGE = 'MIEJSCE PRO';
+  var compareSelectBtns = document.querySelectorAll('.compare-select-btn');
+  var DEFAULT_PACKAGE = 'Pełny spacer';
   function selectPackage(name){
-    priceCards.forEach(function(card){
-      card.classList.toggle('is-selected', card.getAttribute('data-package') === name);
-    });
     packageInput.value = name;
   }
-  priceCards.forEach(function(card){
-    card.addEventListener('click', function(){
-      selectPackage(card.getAttribute('data-package'));
+  compareSelectBtns.forEach(function(btn){
+    btn.addEventListener('click', function(){
+      selectPackage(btn.getAttribute('data-package'));
+      var nameField = document.getElementById('cf-name');
+      nameField.scrollIntoView({behavior:'smooth', block:'center'});
+      nameField.focus({preventScroll:true});
     });
   });
 
