@@ -340,7 +340,9 @@
   .compare-tooltip.is-visible{opacity:1; visibility:visible;}
   .compare-tooltip-title{padding:20px 26px 12px; font-size:17px; font-weight:800; color:var(--ink); line-height:1.3;}
   .compare-tooltip.no-img .compare-tooltip-title{padding-bottom:4px;}
-  .compare-tooltip-img{width:100%; height:252px; object-fit:cover; display:block; background:var(--bg-alt);}
+  .compare-tooltip-media{padding:0 20px 18px; background:#fff;}
+  .compare-tooltip.no-img .compare-tooltip-media{display:none;}
+  .compare-tooltip-img{width:100%; height:216px; object-fit:contain; object-position:center; display:block; background:#fff; border:1px solid var(--line); border-radius:10px;}
   .compare-tooltip-body{padding:16px 26px 24px;}
   .compare-tooltip.no-img .compare-tooltip-body{padding-top:0;}
   .compare-tooltip-desc{font-size:14px; color:var(--ink-soft); line-height:1.6; margin:0;}
@@ -1103,7 +1105,9 @@
 
       <div class="compare-tooltip" id="compareTooltip" role="tooltip">
         <div class="compare-tooltip-title" id="compareTooltipTitle"></div>
-        <img class="compare-tooltip-img" id="compareTooltipImg" alt="">
+        <div class="compare-tooltip-media">
+          <img class="compare-tooltip-img" id="compareTooltipImg" alt="">
+        </div>
         <div class="compare-tooltip-body">
           <p class="compare-tooltip-desc" id="compareTooltipDesc"></p>
         </div>
