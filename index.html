@@ -359,22 +359,18 @@
   .compare-badge{position:absolute; top:10px; left:50%; transform:translateX(-50%); background:var(--navy); color:#fff; font-size:9.5px; font-weight:700; letter-spacing:.05em; text-transform:uppercase; padding:5px 14px; border-radius:999px; white-space:nowrap;}
   .compare-select-btn{width:calc(100% - 8px); justify-content:center; font-size:11px; padding:12px 10px;}
 
-  .process-block{background:var(--bg-alt); border-radius:var(--radius-lg); padding:20px 28px; margin-bottom:32px;}
-  .process-notice{display:flex; align-items:center; gap:14px; padding-bottom:14px; margin-bottom:16px; border-bottom:1px solid var(--line); font-size:13.5px; color:var(--ink-soft); line-height:1.5;}
+  .process-block{background:var(--bg-alt); border-radius:var(--radius-lg); padding:22px 30px; margin-bottom:32px;}
+  .process-notice{display:flex; align-items:center; gap:16px; padding-bottom:16px; margin-bottom:22px; border-bottom:1px solid var(--line); font-size:13.5px; color:var(--ink-soft); line-height:1.5; flex-wrap:wrap;}
   .process-notice svg{flex:none; width:20px; height:20px; color:var(--ink);}
-  .process-notice p{margin:0;}
-  .process-notice strong{color:var(--ink); font-weight:800;}
-  .process-main{display:flex; align-items:center; gap:22px; flex-wrap:wrap; padding-bottom:14px; margin-bottom:12px; border-bottom:1px solid var(--line);}
-  .process-heading{flex:none; width:128px;}
-  .process-heading-title{font-size:19px; font-weight:800; letter-spacing:-.01em; color:var(--ink); margin-bottom:4px;}
-  .process-heading-sub{font-size:13px; color:var(--ink-soft);}
-  .process-steps{flex:1; min-width:0;}
-  .process-steps .how-step{min-width:0; flex:1 1 0;}
-  .process-steps .how-top{margin-bottom:8px;}
-  .process-steps .how-num{width:20px; height:20px; font-size:10px;}
-  .process-steps .how-icon svg{width:24px; height:24px;}
-  .process-steps .how-title{white-space:nowrap; overflow:hidden; text-overflow:ellipsis; font-size:13.5px; margin-bottom:3px;}
-  .process-steps .how-desc{display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden; font-size:12.3px; line-height:1.4; min-height:2.8em;}
+  .process-notice strong{flex:none; color:var(--ink); font-weight:800; white-space:nowrap;}
+  .process-notice-sep{flex:none; width:1px; align-self:stretch; background:var(--line);}
+  .process-steps{display:flex; align-items:flex-start; gap:8px; flex-wrap:wrap; padding-bottom:18px; margin-bottom:16px; border-bottom:1px solid var(--line);}
+  .process-steps .how-step{flex:1; min-width:150px;}
+  .process-steps .how-top{gap:14px; margin-bottom:12px;}
+  .process-steps .how-num{width:32px; height:32px; font-size:13px; border:none; background:var(--line);}
+  .process-steps .how-icon svg{width:32px; height:32px;}
+  .process-steps .how-title{white-space:nowrap; overflow:hidden; text-overflow:ellipsis; font-size:15px; margin-bottom:5px;}
+  .process-steps .how-desc{display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden; font-size:13px; line-height:1.45; min-height:2.9em;}
   .process-footnote{display:flex; align-items:center; gap:10px; font-size:13px; color:var(--ink-soft);}
   .process-footnote svg{flex:none; width:16px; height:16px; color:var(--ink-soft);}
 
@@ -543,6 +539,9 @@
     .streetview-arrow{transform:rotate(90deg);}
     .upsell-grid{grid-template-columns:1fr;}
     .quote-panel{padding:32px 26px;}
+    .process-notice-sep{display:none;}
+    .process-steps{gap:22px;}
+    .process-steps .how-step{min-width:100%;}
     .compare-grid{grid-template-columns:190px repeat(3, minmax(130px, 1fr)); min-width:620px;}
     .compare-cell{padding:8px 12px; font-size:12px;}
     .compare-row-head{padding:18px 12px 14px;}
@@ -1129,51 +1128,46 @@
       <div class="process-block">
         <div class="process-notice">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
-          <p><strong>Na tym etapie jeszcze nie płacisz.</strong> Wybór pakietu jest niezobowiązujący &ndash; płatność dopiero po ustaleniu szczegółów i wystawieniu faktury.</p>
+          <strong>Na tym etapie jeszcze nie płacisz</strong>
+          <span class="process-notice-sep"></span>
+          <span>Wybór pakietu jest wstępny. Szczegóły ustalimy podczas kontaktu.</span>
         </div>
 
-        <div class="process-main">
-          <div class="process-heading">
-            <div class="process-heading-title">Jak to działa?</div>
-            <div class="process-heading-sub">4 proste kroki.</div>
+        <div class="how-steps process-steps">
+          <div class="how-step">
+            <div class="how-top">
+              <div class="how-num">1</div>
+              <div class="how-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m9 9 5 12 1.8-5.2L21 14Z"/><path d="M7.2 2.2 8 5.1"/><path d="m5.1 8-2.9-.8"/><path d="M14 4.1 12 6"/><path d="m6 12-1.9 2"/></svg></div>
+            </div>
+            <div class="how-title">Wybór pakietu</div>
+            <div class="how-desc">Wybierasz interesujący Cię pakiet.</div>
           </div>
-
-          <div class="how-steps process-steps">
-            <div class="how-step">
-              <div class="how-top">
-                <div class="how-num">1</div>
-                <div class="how-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m9 9 5 12 1.8-5.2L21 14Z"/><path d="M7.2 2.2 8 5.1"/><path d="m5.1 8-2.9-.8"/><path d="M14 4.1 12 6"/><path d="m6 12-1.9 2"/></svg></div>
-              </div>
-              <div class="how-title">Wstępny wybór pakietu</div>
-              <div class="how-desc">Wybierasz pakiet, który najbardziej Ci odpowiada.</div>
+          <div class="how-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
+          <div class="how-step">
+            <div class="how-top">
+              <div class="how-num">2</div>
+              <div class="how-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
             </div>
-            <div class="how-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
-            <div class="how-step">
-              <div class="how-top">
-                <div class="how-num">2</div>
-                <div class="how-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
-              </div>
-              <div class="how-title">Kontakt z naszej strony</div>
-              <div class="how-desc">Oddzwaniamy lub odpisujemy, aby ustalić szczegóły i termin.</div>
+            <div class="how-title">Kontakt</div>
+            <div class="how-desc">Ustalamy szczegóły i termin.</div>
+          </div>
+          <div class="how-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
+          <div class="how-step">
+            <div class="how-top">
+              <div class="how-num">3</div>
+              <div class="how-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5z"/><polyline points="14 2 14 8 20 8"/><line x1="8" y1="13" x2="16" y2="13"/><line x1="8" y1="17" x2="16" y2="17"/><line x1="8" y1="9" x2="10" y2="9"/></svg></div>
             </div>
-            <div class="how-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
-            <div class="how-step">
-              <div class="how-top">
-                <div class="how-num">3</div>
-                <div class="how-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5z"/><polyline points="14 2 14 8 20 8"/><line x1="8" y1="13" x2="16" y2="13"/><line x1="8" y1="17" x2="16" y2="17"/><line x1="8" y1="9" x2="10" y2="9"/></svg></div>
-              </div>
-              <div class="how-title">Wystawienie faktury</div>
-              <div class="how-desc">Po ustaleniu zakresu realizacji otrzymasz fakturę.</div>
+            <div class="how-title">Faktura</div>
+            <div class="how-desc">Po ustaleniach wystawiamy fakturę.</div>
+          </div>
+          <div class="how-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
+          <div class="how-step">
+            <div class="how-top">
+              <div class="how-num">4</div>
+              <div class="how-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>
             </div>
-            <div class="how-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
-            <div class="how-step">
-              <div class="how-top">
-                <div class="how-num">4</div>
-                <div class="how-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>
-              </div>
-              <div class="how-title">Wizyta na miejscu</div>
-              <div class="how-desc">Przyjeżdżamy i realizujemy spacer 360&deg; w Twoim lokalu.</div>
-            </div>
+            <div class="how-title">Realizacja</div>
+            <div class="how-desc">Przyjeżdżamy i tworzymy spacer 360&deg;.</div>
           </div>
         </div>
 
