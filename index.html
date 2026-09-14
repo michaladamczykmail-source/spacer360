@@ -320,6 +320,7 @@
   }
 
   .compare-wrap{overflow-x:auto; -webkit-overflow-scrolling:touch; margin-bottom:28px; padding:4px 4px 8px;}
+  .compare-scroll-hint{display:none; text-align:center; font-size:12px; font-weight:600; color:var(--ink-soft); margin:0 0 10px;}
   .compare-grid{display:grid; grid-template-columns:230px repeat(3, minmax(150px, 1fr)); min-width:760px; border:1px solid var(--line); border-radius:var(--radius-lg); overflow:hidden; background:#fff;}
   .compare-cell{padding:9px 16px; display:flex; align-items:center; justify-content:center; text-align:center; border-bottom:1px solid var(--line); font-size:12.8px; color:var(--ink-soft);}
   .compare-row-head{position:relative; flex-direction:column; gap:3px; padding:22px 16px 16px;}
@@ -361,7 +362,7 @@
   .compare-highlight.is-top{border-top:1.5px solid var(--navy); border-radius:14px 14px 0 0;}
   .compare-highlight.is-bottom{border-bottom:1.5px solid var(--navy); border-radius:0 0 14px 14px;}
   .compare-badge{position:absolute; top:10px; left:50%; transform:translateX(-50%); background:var(--navy); color:#fff; font-size:9.5px; font-weight:700; letter-spacing:.05em; text-transform:uppercase; padding:5px 14px; border-radius:999px; white-space:nowrap;}
-  .compare-select-btn{width:calc(100% - 8px); justify-content:center; font-size:11px; padding:12px 10px;}
+  .compare-select-btn{width:calc(100% - 8px); justify-content:center; font-size:11px; padding:12px 10px; white-space:normal; text-align:center; line-height:1.25;}
 
   .process-block{background:var(--bg-alt); border-radius:var(--radius-lg); padding:22px 30px; margin-bottom:32px;}
   .process-notice{display:flex; align-items:center; gap:16px; padding-bottom:16px; margin-bottom:22px; border-bottom:1px solid var(--line); font-size:13.5px; color:var(--ink-soft); line-height:1.5; flex-wrap:wrap;}
@@ -548,6 +549,7 @@
     .process-steps{gap:22px;}
     .process-steps .how-step{min-width:100%;}
     .compare-grid{grid-template-columns:190px repeat(3, minmax(130px, 1fr)); min-width:620px;}
+    .compare-scroll-hint{display:block;}
     .compare-cell{padding:8px 12px; font-size:12px;}
     .compare-row-head{padding:18px 12px 14px;}
     .compare-row-head.has-badge{padding-top:32px;}
@@ -560,6 +562,7 @@
   @media (max-width: 600px){
     header .wrap{height:50px;}
     .hero-media-inner{height:455px;}
+    .hero-sub{white-space:normal; text-align:center; max-width:320px; line-height:1.45; font-size:11.5px; padding:8px 16px; transform:translateY(-40px); margin-bottom:40px;}
     .viewer{width:88px; height:88px;}
     .viewer .deg{font-size:22px;}
     .footer-grid{grid-template-columns:1fr;}
@@ -915,6 +918,7 @@
     </div>
 
     <div class="quote-panel">
+      <p class="compare-scroll-hint">&larr; Przesuń, aby zobaczyć wszystkie pakiety &rarr;</p>
       <div class="compare-wrap">
         <div class="compare-grid" id="compareGrid">
           <div class="compare-cell compare-row-head" style="align-items:flex-start; text-align:left;">
