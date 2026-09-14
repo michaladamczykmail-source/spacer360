@@ -541,8 +541,10 @@
     .how-steps{gap:26px;}
     .how-arrow{display:none;}
     .streetview-content{grid-template-columns:1fr; gap:30px;}
-    .streetview-row{flex-direction:column;}
-    .streetview-arrow{transform:rotate(90deg);}
+    .streetview-row{flex-direction:column; align-items:stretch;}
+    .streetview-item{width:100%;}
+    .streetview-media{height:320px;}
+    .streetview-arrow{transform:rotate(90deg); align-self:center;}
     .upsell-grid{grid-template-columns:1fr;}
     .quote-panel{padding:32px 26px;}
     .process-notice-sep{display:none;}
@@ -561,6 +563,10 @@
   }
   @media (max-width: 600px){
     header .wrap{height:50px;}
+    .channels-section, .capabilities-section, .how-section, .upsell-section,
+    .streetview-section, .quote-section, .gallery-section, .faq-section, .stats-section{
+      padding:64px 0;
+    }
     .hero-media-inner{height:455px;}
     .hero-sub{white-space:normal; text-align:center; max-width:320px; line-height:1.45; font-size:11.5px; padding:8px 16px; transform:translateY(-40px); margin-bottom:40px;}
     .viewer{width:88px; height:88px;}
