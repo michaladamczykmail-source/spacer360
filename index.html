@@ -364,52 +364,75 @@
   .compare-badge{position:absolute; top:10px; left:50%; transform:translateX(-50%); background:var(--navy); color:#fff; font-size:9.5px; font-weight:700; letter-spacing:.05em; text-transform:uppercase; padding:5px 14px; border-radius:999px; white-space:nowrap;}
   .compare-select-btn{width:calc(100% - 8px); justify-content:center; font-size:11px; padding:12px 10px; white-space:normal; text-align:center; line-height:1.25;}
 
-  .mobile-pkg-cards{display:none; flex-direction:column; gap:16px;}
-  .mobile-pkg-card{
-    border:1px solid var(--line); border-radius:var(--radius-lg); padding:20px 22px;
+  .mpkg-cards{display:none; flex-direction:column; gap:16px;}
+  .mpkg-card{
+    width:100%; border:1px solid var(--line); border-radius:var(--radius-md); padding:22px 20px;
     background:#fff; color:var(--ink);
   }
-  .mobile-pkg-card.is-selected{background:var(--navy); border-color:var(--navy); color:#fff;}
-  .mobile-pkg-card-badge{
-    display:inline-block; background:var(--navy); color:#fff; font-size:9.5px; font-weight:700;
-    letter-spacing:.05em; text-transform:uppercase; padding:5px 12px; border-radius:999px; margin-bottom:12px;
+  .mpkg-card--dark{background:var(--navy); border-color:var(--navy); color:#fff;}
+  .mpkg-badge{
+    display:inline-block; background:#fff; color:var(--navy); font-size:10px; font-weight:700;
+    letter-spacing:.06em; text-transform:uppercase; padding:5px 12px; border-radius:999px; margin-bottom:14px;
   }
-  .mobile-pkg-card.is-selected .mobile-pkg-card-badge{background:#fff; color:var(--navy);}
-  .mobile-pkg-card-top{display:flex; align-items:flex-start; justify-content:space-between; gap:12px;}
-  .mobile-pkg-card-num{font-size:11px; font-weight:700; color:var(--ink-faint); letter-spacing:.04em;}
-  .mobile-pkg-card.is-selected .mobile-pkg-card-num{color:rgba(255,255,255,.6);}
-  .mobile-pkg-card-price{text-align:right; flex:none;}
-  .mobile-pkg-card-price-label{font-size:10px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:var(--ink-faint);}
-  .mobile-pkg-card.is-selected .mobile-pkg-card-price-label{color:rgba(255,255,255,.6);}
-  .mobile-pkg-card-price-value{font-size:19px; font-weight:800; letter-spacing:-.01em;}
-  .mobile-pkg-card-price-note{font-size:10px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:var(--ink-faint);}
-  .mobile-pkg-card.is-selected .mobile-pkg-card-price-note{color:rgba(255,255,255,.6);}
-  .mobile-pkg-card-name{font-size:19px; font-weight:800; letter-spacing:-.01em; margin-top:14px;}
-  .mobile-pkg-card-sub{font-size:12.5px; color:var(--ink-soft); margin-top:4px;}
-  .mobile-pkg-card.is-selected .mobile-pkg-card-sub{color:rgba(255,255,255,.65);}
-  .mobile-pkg-card-divider{height:1px; background:var(--line); margin:18px 0;}
-  .mobile-pkg-card.is-selected .mobile-pkg-card-divider{background:rgba(255,255,255,.18);}
-  .mobile-pkg-card-toggle{
-    display:flex; align-items:center; justify-content:space-between; width:100%;
-    background:none; border:none; padding:0; cursor:pointer; font-size:13.5px; font-weight:700; color:inherit;
+  .mpkg-top{display:flex; align-items:flex-start; justify-content:space-between; gap:10px; flex-wrap:wrap;}
+  .mpkg-num{font-size:12px; font-weight:700; color:var(--ink-faint); letter-spacing:.04em;}
+  .mpkg-card--dark .mpkg-num{color:rgba(255,255,255,.55);}
+  .mpkg-price{text-align:right; flex:none; margin-left:auto;}
+  .mpkg-price-label{font-size:10px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:var(--ink-faint);}
+  .mpkg-card--dark .mpkg-price-label{color:rgba(255,255,255,.55);}
+  .mpkg-price-value{font-size:20px; font-weight:800; letter-spacing:-.01em; white-space:nowrap;}
+  .mpkg-price-note{font-size:10px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:var(--ink-faint);}
+  .mpkg-card--dark .mpkg-price-note{color:rgba(255,255,255,.55);}
+  .mpkg-name{font-size:19px; font-weight:800; letter-spacing:-.01em; margin-top:14px;}
+  .mpkg-sub{font-size:13px; color:var(--ink-soft); margin-top:4px; line-height:1.4;}
+  .mpkg-card--dark .mpkg-sub{color:rgba(255,255,255,.65);}
+
+  .mpkg-highlights{list-style:none; margin:18px 0 0; padding:0; display:flex; flex-direction:column; gap:10px;}
+  .mpkg-highlights li{display:flex; align-items:flex-start; gap:9px; font-size:13.3px; line-height:1.45; color:var(--ink);}
+  .mpkg-card--dark .mpkg-highlights li{color:#fff;}
+  .mpkg-highlights svg{flex:none; width:16px; height:16px; margin-top:2px; color:var(--ink);}
+  .mpkg-card--dark .mpkg-highlights svg{color:#fff;}
+  .mpkg-intro{font-size:12.5px; font-weight:700; color:var(--ink-soft); margin:18px 0 2px;}
+  .mpkg-card--dark .mpkg-intro{color:rgba(255,255,255,.7);}
+
+  .mpkg-toggle{
+    display:flex; align-items:center; gap:6px; width:100%; min-height:44px;
+    background:none; border:none; padding:14px 0; margin-top:4px; cursor:pointer;
+    font-family:inherit; font-size:13.5px; font-weight:700; color:inherit; border-top:1px solid var(--line);
   }
-  .mobile-pkg-card-toggle svg{width:16px; height:16px; flex:none; color:var(--ink-faint); transition:transform .2s ease;}
-  .mobile-pkg-card.is-selected .mobile-pkg-card-toggle svg{color:rgba(255,255,255,.6);}
-  .mobile-pkg-card-toggle.is-open svg{transform:rotate(180deg);}
-  .mobile-pkg-card-features{max-height:0; overflow:hidden; transition:max-height .3s ease;}
-  .mobile-pkg-card-features.is-open{max-height:1000px;}
-  .mobile-pkg-card-feature{display:flex; align-items:center; justify-content:space-between; gap:12px; padding:10px 0; border-top:1px solid var(--line); font-size:12.8px;}
-  .mobile-pkg-card.is-selected .mobile-pkg-card-feature{border-color:rgba(255,255,255,.18);}
-  .mobile-pkg-card-feature-label{color:var(--ink-soft);}
-  .mobile-pkg-card.is-selected .mobile-pkg-card-feature-label{color:rgba(255,255,255,.75);}
-  .mobile-pkg-card-feature-value{flex:none; font-weight:700; text-align:right;}
-  .mobile-pkg-card-feature-value .compare-check{color:var(--ink); width:16px; height:16px;}
-  .mobile-pkg-card.is-selected .mobile-pkg-card-feature-value .compare-check{color:#fff;}
-  .mobile-pkg-card-feature-value .compare-dash{color:var(--ink-faint);}
-  .mobile-pkg-card.is-selected .mobile-pkg-card-feature-value .compare-dash{color:rgba(255,255,255,.4);}
-  .mobile-pkg-card .compare-select-btn{width:100%; margin-top:18px;}
-  .mobile-pkg-card .compare-select-btn.btn-outline{background:var(--ink); color:#fff; border-color:var(--ink);}
-  .mobile-pkg-card .compare-select-btn.btn-dark{background:#fff; color:var(--ink); border:1.5px solid #fff;}
+  .mpkg-card--dark .mpkg-toggle{border-color:rgba(255,255,255,.18);}
+  .mpkg-toggle svg{width:15px; height:15px; flex:none; transition:transform .25s ease;}
+  .mpkg-toggle[aria-expanded="true"] svg{transform:rotate(180deg);}
+  .mpkg-toggle:focus-visible, .mpkg-cta:focus-visible{outline:2px solid currentColor; outline-offset:2px;}
+
+  .mpkg-full-wrap{display:grid; grid-template-rows:0fr; transition:grid-template-rows .28s ease;}
+  .mpkg-full-wrap.is-open{grid-template-rows:1fr;}
+  .mpkg-full{overflow:hidden; min-height:0;}
+  .mpkg-full-heading{font-size:11.5px; font-weight:700; letter-spacing:.06em; text-transform:uppercase; color:var(--ink-faint); margin:4px 0 10px;}
+  .mpkg-card--dark .mpkg-full-heading{color:rgba(255,255,255,.5);}
+  .mpkg-full-list{list-style:none; margin:0 0 4px; padding:0; display:flex; flex-direction:column; gap:9px;}
+  .mpkg-full-list li{display:flex; align-items:flex-start; gap:9px; font-size:13px; line-height:1.45;}
+  .mpkg-full-list svg{flex:none; width:15px; height:15px; margin-top:2px; color:var(--ink);}
+  .mpkg-card--dark .mpkg-full-list svg{color:#fff;}
+  .mpkg-note{font-size:11.5px; color:var(--ink-faint); line-height:1.5; margin-top:12px;}
+  .mpkg-card--dark .mpkg-note{color:rgba(255,255,255,.45);}
+  .mpkg-upsell{margin-top:14px; padding-top:14px; border-top:1px solid var(--line);}
+  .mpkg-card--dark .mpkg-upsell{border-color:rgba(255,255,255,.18);}
+  .mpkg-upsell-heading{font-size:11.5px; font-weight:700; color:var(--ink-faint); margin-bottom:8px;}
+  .mpkg-card--dark .mpkg-upsell-heading{color:rgba(255,255,255,.5);}
+  .mpkg-upsell-list{list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:6px;}
+  .mpkg-upsell-list li{font-size:12px; color:var(--ink-faint); line-height:1.4;}
+  .mpkg-card--dark .mpkg-upsell-list li{color:rgba(255,255,255,.4);}
+
+  .mpkg-cta{
+    display:flex; align-items:center; justify-content:center; gap:8px; width:100%;
+    min-height:50px; margin-top:18px; border-radius:999px; border:1.5px solid transparent;
+    font-family:inherit; font-size:13px; font-weight:700; letter-spacing:.04em; text-transform:uppercase;
+    cursor:pointer; background:var(--navy); color:#fff; transition:transform .15s ease, opacity .15s ease;
+  }
+  .mpkg-cta:hover{transform:translateY(-1px);}
+  .mpkg-cta svg{width:15px; height:15px;}
+  .mpkg-card--dark .mpkg-cta{background:#fff; color:var(--navy); border-color:#fff;}
 
   .process-block{background:var(--bg-alt); border-radius:var(--radius-lg); padding:22px 30px; margin-bottom:32px;}
   .process-notice{display:flex; align-items:center; gap:16px; padding-bottom:16px; margin-bottom:22px; border-bottom:1px solid var(--line); font-size:13.5px; color:var(--ink-soft); line-height:1.5; flex-wrap:wrap;}
@@ -624,8 +647,6 @@
     .hero-verticals{margin-top:28px;}
     .hv-label{color:var(--ink); text-shadow:none;}
     .compare-tooltip{width:calc(100vw - 24px); max-height:calc(100vh - 24px); overflow-y:auto;}
-    .compare-wrap, .compare-scroll-hint{display:none;}
-    .mobile-pkg-cards{display:flex;}
     .footer-grid{grid-template-columns:1fr; text-align:center;}
     .footer-about{display:flex; flex-direction:column; align-items:center;}
     .footer-about p{margin-left:auto; margin-right:auto;}
@@ -640,6 +661,11 @@
     .stat-item{border-left:none; border-top:1px solid rgba(255,255,255,.15); padding-top:30px;}
     .stat-item:first-child{border-top:none; padding-top:0;}
     .upsell-features{grid-template-columns:1fr;}
+  }
+
+  @media (max-width: 767px){
+    .compare-wrap, .compare-scroll-hint{display:none;}
+    .mpkg-cards{display:flex;}
   }
 </style>
 </head>
@@ -1159,7 +1185,170 @@
         </div>
       </div>
 
-      <div class="mobile-pkg-cards" id="mobilePkgCards"></div>
+      <div class="mpkg-cards" id="mpkgCards">
+
+        <div class="mpkg-card" data-package="Mała przestrzeń">
+          <div class="mpkg-top">
+            <span class="mpkg-num">01</span>
+            <div class="mpkg-price">
+              <div class="mpkg-price-label">od</div>
+              <div class="mpkg-price-value">890 zł</div>
+              <div class="mpkg-price-note">netto</div>
+            </div>
+          </div>
+          <h3 class="mpkg-name">Mała przestrzeń</h3>
+          <p class="mpkg-sub">Gabinet, apartament, mały salon</p>
+
+          <ul class="mpkg-highlights">
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5L20 6"/></svg><span>Gotowy spacer 360&deg; &mdash; do 6 punkt&oacute;w</span></li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5L20 6"/></svg><span>Publikacja w Google Maps / Street View</span></li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5L20 6"/></svg><span>Kod QR i link do spaceru</span></li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5L20 6"/></svg><span>Osadzenie spaceru na Twojej stronie WWW</span></li>
+          </ul>
+
+          <button type="button" class="mpkg-toggle" aria-expanded="false" aria-controls="mpkgFull1" id="mpkgToggle1">
+            <span class="mpkg-toggle-text">Pokaż pełny zakres</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <div class="mpkg-full-wrap">
+            <div class="mpkg-full" id="mpkgFull1" role="region" aria-labelledby="mpkgToggle1">
+              <div class="mpkg-full-heading">Pełny zakres pakietu</div>
+              <ul class="mpkg-full-list">
+                <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5L20 6"/></svg><span>Gotowy spacer 360&deg;</span></li>
+                <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5L20 6"/></svg><span>Do 6 punkt&oacute;w 360&deg;</span></li>
+                <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5L20 6"/></svg><span>Publikacja w Google Maps / Street View</span></li>
+                <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5L20 6"/></svg><span>Kod QR oraz link do spaceru</span></li>
+                <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5L20 6"/></svg><span>Osadzenie na stronie WWW</span></li>
+                <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5L20 6"/></svg><span>1 runda poprawek</span></li>
+              </ul>
+              <div class="mpkg-upsell">
+                <div class="mpkg-upsell-heading">Dostępne w wyższych pakietach:</div>
+                <ul class="mpkg-upsell-list">
+                  <li>&ndash; Sesja zdjęciowa</li>
+                  <li>&ndash; Logo i wizyt&oacute;wka firmy w spacerze</li>
+                  <li>&ndash; Przycisk rezerwacji</li>
+                  <li>&ndash; Oznaczenie ważnych miejsc</li>
+                  <li>&ndash; Filmy osadzone w spacerze</li>
+                  <li>&ndash; Automatyczny spacer</li>
+                  <li>&ndash; Kr&oacute;tkie video</li>
+                  <li>&ndash; Filmowanie dronem</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <button type="button" class="mpkg-cta" data-package="Mała przestrzeń">
+            Wybieram ten pakiet
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </button>
+        </div>
+
+        <div class="mpkg-card mpkg-card--dark" data-package="Pełny spacer">
+          <div class="mpkg-badge">Najczęściej wybierany</div>
+          <div class="mpkg-top">
+            <span class="mpkg-num">02</span>
+            <div class="mpkg-price">
+              <div class="mpkg-price-label">od</div>
+              <div class="mpkg-price-value">1 590 zł</div>
+              <div class="mpkg-price-note">netto</div>
+            </div>
+          </div>
+          <h3 class="mpkg-name">Pełny spacer</h3>
+          <p class="mpkg-sub">Restauracja, beauty, pensjonat</p>
+
+          <div class="mpkg-intro">Wszystko z Małej przestrzeni +</div>
+          <ul class="mpkg-highlights">
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5L20 6"/></svg><span>Większy spacer &mdash; do 12 punkt&oacute;w</span></li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5L20 6"/></svg><span>Sesja zdjęciowa &mdash; kadry do strony</span></li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5L20 6"/></svg><span>Elementy interaktywne w spacerze</span></li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5L20 6"/></svg><span>Kr&oacute;tkie video + efekt</span></li>
+          </ul>
+
+          <button type="button" class="mpkg-toggle" aria-expanded="false" aria-controls="mpkgFull2" id="mpkgToggle2">
+            <span class="mpkg-toggle-text">Pokaż pełny zakres</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <div class="mpkg-full-wrap">
+            <div class="mpkg-full" id="mpkgFull2" role="region" aria-labelledby="mpkgToggle2">
+              <div class="mpkg-full-heading">Pełny zakres pakietu</div>
+              <ul class="mpkg-full-list">
+                <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5L20 6"/></svg><span>Gotowy spacer 360&deg;</span></li>
+                <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5L20 6"/></svg><span>Do 12 punkt&oacute;w 360&deg;</span></li>
+                <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5L20 6"/></svg><span>Publikacja w Google Maps / Street View</span></li>
+                <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5L20 6"/></svg><span>Kod QR oraz link do spaceru</span></li>
+                <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5L20 6"/></svg><span>Osadzenie na stronie WWW</span></li>
+                <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5L20 6"/></svg><span>Sesja zdjęciowa &ndash; kadry do strony</span></li>
+                <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5L20 6"/></svg><span>Logo oraz wizyt&oacute;wka firmy w spacerze</span></li>
+                <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5L20 6"/></svg><span>Przycisk rezerwacji</span></li>
+                <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5L20 6"/></svg><span>Oznaczenie ważnych miejsc</span></li>
+                <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5L20 6"/></svg><span>2 filmy osadzone w spacerze</span></li>
+                <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5L20 6"/></svg><span>Automatyczny spacer</span></li>
+                <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5L20 6"/></svg><span>1 kr&oacute;tkie video 10&ndash;15 s + 1 efekt</span></li>
+                <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5L20 6"/></svg><span>2 rundy poprawek</span></li>
+              </ul>
+              <p class="mpkg-note">Filmowanie dronem dostępne w pakiecie Duży obiekt.</p>
+            </div>
+          </div>
+
+          <button type="button" class="mpkg-cta" data-package="Pełny spacer">
+            Wybieram ten pakiet
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </button>
+        </div>
+
+        <div class="mpkg-card" data-package="Duży obiekt">
+          <div class="mpkg-top">
+            <span class="mpkg-num">03</span>
+            <div class="mpkg-price">
+              <div class="mpkg-price-label">od</div>
+              <div class="mpkg-price-value">2 490 zł</div>
+              <div class="mpkg-price-note">netto</div>
+            </div>
+          </div>
+          <h3 class="mpkg-name">Duży obiekt</h3>
+          <p class="mpkg-sub">Hotel, duża restauracja, większy obiekt</p>
+
+          <div class="mpkg-intro">Wszystko z Pełnego spaceru +</div>
+          <ul class="mpkg-highlights">
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5L20 6"/></svg><span>Rozbudowany spacer &mdash; do 20 punkt&oacute;w</span></li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5L20 6"/></svg><span>Więcej materiał&oacute;w video</span></li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5L20 6"/></svg><span>Filmowanie obiektu i okolicy dronem &mdash; 3 efekty</span></li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5L20 6"/></svg><span>Rozszerzony zakres materiał&oacute;w promocyjnych</span></li>
+          </ul>
+
+          <button type="button" class="mpkg-toggle" aria-expanded="false" aria-controls="mpkgFull3" id="mpkgToggle3">
+            <span class="mpkg-toggle-text">Pokaż pełny zakres</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <div class="mpkg-full-wrap">
+            <div class="mpkg-full" id="mpkgFull3" role="region" aria-labelledby="mpkgToggle3">
+              <div class="mpkg-full-heading">Pełny zakres pakietu</div>
+              <ul class="mpkg-full-list">
+                <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5L20 6"/></svg><span>Gotowy spacer 360&deg;</span></li>
+                <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5L20 6"/></svg><span>Do 20 punkt&oacute;w 360&deg;</span></li>
+                <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5L20 6"/></svg><span>Publikacja w Google Maps / Street View</span></li>
+                <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5L20 6"/></svg><span>Kod QR oraz link do spaceru</span></li>
+                <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5L20 6"/></svg><span>Osadzenie na stronie WWW</span></li>
+                <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5L20 6"/></svg><span>Sesja zdjęciowa &ndash; kadry do strony</span></li>
+                <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5L20 6"/></svg><span>Logo oraz wizyt&oacute;wka firmy w spacerze</span></li>
+                <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5L20 6"/></svg><span>Przycisk rezerwacji</span></li>
+                <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5L20 6"/></svg><span>Oznaczenie ważnych miejsc</span></li>
+                <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5L20 6"/></svg><span>4 filmy osadzone w spacerze</span></li>
+                <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5L20 6"/></svg><span>Automatyczny spacer</span></li>
+                <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5L20 6"/></svg><span>3 kr&oacute;tkie video 10&ndash;15 s + 3 efekty</span></li>
+                <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5L20 6"/></svg><span>Filmowanie obiektu i okolicy dronem &ndash; 3 efekty</span></li>
+                <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5L20 6"/></svg><span>2 rundy poprawek</span></li>
+              </ul>
+            </div>
+          </div>
+
+          <button type="button" class="mpkg-cta" data-package="Duży obiekt">
+            Wybieram ten pakiet
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </button>
+        </div>
+
+      </div>
 
       <div class="compare-tooltip" id="compareTooltip" role="tooltip">
         <div class="compare-tooltip-title" id="compareTooltipTitle"></div>
@@ -1663,137 +1852,7 @@
   var PACKAGE_COLUMNS = ['Mała przestrzeń', 'Pełny spacer', 'Duży obiekt'];
   var DEFAULT_PACKAGE = 'Pełny spacer';
 
-  (function buildMobilePkgCards(){
-    var container = document.getElementById('mobilePkgCards');
-    if(!container || !compareGrid) return;
-    var cells = Array.prototype.filter.call(compareGrid.children, function(el){
-      return el.classList.contains('compare-cell');
-    });
-    var rowCount = cells.length / 4;
-    var headerRow = cells.slice(0, 4);
-    var packages = [0, 1, 2].map(function(i){
-      var head = headerRow[i + 1];
-      var badge = head.querySelector('.compare-badge');
-      var priceEl = head.querySelector('.compare-price');
-      return {
-        name: head.querySelector('.compare-col-name').textContent.trim(),
-        sub: head.querySelector('.compare-col-sub') ? head.querySelector('.compare-col-sub').textContent.trim() : '',
-        priceValue: priceEl.lastChild.textContent.trim(),
-        badge: badge ? badge.textContent.trim() : null,
-        features: []
-      };
-    });
-    for(var r = 1; r < rowCount - 1; r++){
-      var rowCells = cells.slice(r * 4, r * 4 + 4);
-      var label = rowCells[0].querySelector('span').textContent.trim();
-      for(var c = 0; c < 3; c++){
-        var valCell = rowCells[c + 1];
-        var display;
-        if(valCell.querySelector('.compare-check')){ display = {type: 'check'}; }
-        else if(valCell.querySelector('.compare-value')){ display = {type: 'value', text: valCell.querySelector('.compare-value').textContent.trim()}; }
-        else { display = {type: 'dash'}; }
-        packages[c].features.push({label: label, display: display});
-      }
-    }
-    packages.forEach(function(pkg, idx){
-      var card = document.createElement('div');
-      card.className = 'mobile-pkg-card';
-      card.setAttribute('data-package', pkg.name);
-
-      if(pkg.badge){
-        var badgeEl = document.createElement('div');
-        badgeEl.className = 'mobile-pkg-card-badge';
-        badgeEl.textContent = pkg.badge;
-        card.appendChild(badgeEl);
-      }
-
-      var top = document.createElement('div');
-      top.className = 'mobile-pkg-card-top';
-      var num = document.createElement('div');
-      num.className = 'mobile-pkg-card-num';
-      num.textContent = String(idx + 1).padStart(2, '0');
-      var priceBox = document.createElement('div');
-      priceBox.className = 'mobile-pkg-card-price';
-      var priceLabel = document.createElement('div');
-      priceLabel.className = 'mobile-pkg-card-price-label';
-      priceLabel.textContent = 'od';
-      var priceValue = document.createElement('div');
-      priceValue.className = 'mobile-pkg-card-price-value';
-      priceValue.textContent = pkg.priceValue;
-      var priceNote = document.createElement('div');
-      priceNote.className = 'mobile-pkg-card-price-note';
-      priceNote.textContent = 'netto';
-      priceBox.appendChild(priceLabel);
-      priceBox.appendChild(priceValue);
-      priceBox.appendChild(priceNote);
-      top.appendChild(num);
-      top.appendChild(priceBox);
-      card.appendChild(top);
-
-      var name = document.createElement('div');
-      name.className = 'mobile-pkg-card-name';
-      name.textContent = pkg.name;
-      card.appendChild(name);
-
-      var sub = document.createElement('div');
-      sub.className = 'mobile-pkg-card-sub';
-      sub.textContent = pkg.sub;
-      card.appendChild(sub);
-
-      var divider = document.createElement('div');
-      divider.className = 'mobile-pkg-card-divider';
-      card.appendChild(divider);
-
-      var toggle = document.createElement('button');
-      toggle.type = 'button';
-      toggle.className = 'mobile-pkg-card-toggle';
-      var toggleLabel = document.createElement('span');
-      toggleLabel.textContent = 'Co zawiera pakiet';
-      toggle.appendChild(toggleLabel);
-      toggle.insertAdjacentHTML('beforeend', '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>');
-      card.appendChild(toggle);
-
-      var features = document.createElement('div');
-      features.className = 'mobile-pkg-card-features';
-      pkg.features.forEach(function(f){
-        var row = document.createElement('div');
-        row.className = 'mobile-pkg-card-feature';
-        var labelEl = document.createElement('span');
-        labelEl.className = 'mobile-pkg-card-feature-label';
-        labelEl.textContent = f.label;
-        var valueEl = document.createElement('span');
-        valueEl.className = 'mobile-pkg-card-feature-value';
-        if(f.display.type === 'check'){
-          valueEl.insertAdjacentHTML('beforeend', '<svg class="compare-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5L20 6"/></svg>');
-        } else if(f.display.type === 'value'){
-          valueEl.textContent = f.display.text;
-        } else {
-          valueEl.innerHTML = '<span class="compare-dash">&ndash;</span>';
-        }
-        row.appendChild(labelEl);
-        row.appendChild(valueEl);
-        features.appendChild(row);
-      });
-      card.appendChild(features);
-
-      toggle.addEventListener('click', function(){
-        var isOpen = toggle.classList.toggle('is-open');
-        features.classList.toggle('is-open', isOpen);
-      });
-
-      var selectBtn = document.createElement('button');
-      selectBtn.type = 'button';
-      selectBtn.className = 'btn compare-select-btn';
-      selectBtn.setAttribute('data-package', pkg.name);
-      selectBtn.textContent = 'Wybieram ten pakiet';
-      card.appendChild(selectBtn);
-
-      container.appendChild(card);
-    });
-  })();
-
   var compareSelectBtns = document.querySelectorAll('.compare-select-btn');
-  var mobilePkgCardEls = document.querySelectorAll('.mobile-pkg-card');
   function highlightPackage(name){
     var colIndex = PACKAGE_COLUMNS.indexOf(name);
     if(colIndex === -1) return;
@@ -1813,9 +1872,6 @@
       btn.classList.toggle('btn-dark', selected);
       btn.classList.toggle('btn-outline', !selected);
     });
-    mobilePkgCardEls.forEach(function(card){
-      card.classList.toggle('is-selected', card.getAttribute('data-package') === name);
-    });
   }
   function selectPackage(name){
     packageInput.value = name;
@@ -1825,6 +1881,31 @@
   compareSelectBtns.forEach(function(btn){
     btn.addEventListener('click', function(){
       selectPackage(btn.getAttribute('data-package'));
+    });
+  });
+
+  document.querySelectorAll('.mpkg-cta').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      selectPackage(btn.getAttribute('data-package'));
+    });
+  });
+
+  var mpkgToggles = document.querySelectorAll('.mpkg-toggle');
+  mpkgToggles.forEach(function(toggle){
+    var wrap = toggle.nextElementSibling;
+    toggle.addEventListener('click', function(){
+      var willOpen = toggle.getAttribute('aria-expanded') !== 'true';
+      mpkgToggles.forEach(function(other){
+        var otherWrap = other.nextElementSibling;
+        other.setAttribute('aria-expanded', 'false');
+        other.querySelector('.mpkg-toggle-text').textContent = 'Pokaż pełny zakres';
+        otherWrap.classList.remove('is-open');
+      });
+      if(willOpen){
+        toggle.setAttribute('aria-expanded', 'true');
+        toggle.querySelector('.mpkg-toggle-text').textContent = 'Ukryj pełny zakres';
+        wrap.classList.add('is-open');
+      }
     });
   });
 
